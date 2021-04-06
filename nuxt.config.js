@@ -82,6 +82,10 @@ export default {
     }
   },
 
+  privateRuntimeConfig: {
+    //  basically dotenv but not
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
