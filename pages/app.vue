@@ -4,17 +4,17 @@
       <v-app-bar-title >Campus Central</v-app-bar-title>
       <v-spacer></v-spacer>
       <div v-if='user'>
-        {{user.name_display}}
+        {{$store.state.user.name_display}}
         <v-avatar>
           <img
-            :src='user.picture_url'
+            :src='$store.state.user.picture_url'
             alt="John"
           >
         </v-avatar></div>
     </v-app-bar>
     <v-main>
   <div>
-    {{JSON.stringify(user, null, 4)}}
+    {{JSON.stringify($store.state.user, null, 4)}}
   </div>
   </v-main>
 </div>
@@ -23,16 +23,17 @@
 <script>
 export default {
   name: 'app',
+  middleware:'storeUser',
   layout: 'appLayout',
   data: ()=>({
     //user: null
   }),
-  async asyncData(ctx) {
+  /*async asyncData(ctx) {
 
     const user = ctx.req.user
     return {user}
   },
-  fetchOnServer: true
+  fetchOnServer: true*/
 }
 </script>
 
