@@ -1,0 +1,64 @@
+<template>
+  <v-app dark>
+  <v-app-bar app>
+    <v-app-bar-title >Campus Central</v-app-bar-title>
+    <v-spacer></v-spacer>
+    <v-btn v-if='!$store.state.user' color='primary' href='/api/sign-in'>login</v-btn>
+    <v-btn v-else color='primary' to='/app'>open campus</v-btn>
+  </v-app-bar>
+    <v-main>
+      <v-container>
+        <nuxt />
+      </v-container>
+    </v-main>
+
+    <v-footer
+      :absolute="!fixed"
+      app
+    >
+      <span>&copy; {{ new Date().getFullYear() }} Saumya Singhal</span>
+    </v-footer>
+  </v-app>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      user: false,
+      clipped: false,
+      drawer: false,
+      fixed: false,
+      items: [
+        {
+          icon: 'mdi-apps',
+          title: 'Welcome',
+          to: '/'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Inspire',
+          to: '/inspire'
+        }
+      ],
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
+      title: 'Vuetify.js'
+    }
+  },
+  async fetch(ctx) {
+
+    const user = ctx.req.user
+    this.user = user;
+    console.log(user)
+  },
+}
+</script>
+<style>
+.v-app-bar-title__placeholder, .v-app-bar-title__content {
+  overflow: hidden;
+  text-overflow: initial !important;
+  white-space: nowrap;
+}
+</style>
