@@ -19,7 +19,8 @@ export default {
     const sections = await $axios.$get('/api/users/me/sections');
     //console.log(sections)
     return {sections}
-  }
+  },
+
 }
 </script>
 

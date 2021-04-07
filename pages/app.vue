@@ -1,5 +1,6 @@
 <template>
 <div>
+
   <v-navigation-drawer v-model='sidebar'  app>
     <!-- -->
     <v-list-item>
@@ -36,8 +37,9 @@
     </v-list>
 
   </v-navigation-drawer>
+
     <v-app-bar app>
-      <v-btn icon @click='sidebar=!sidebar'><v-app-bar-nav-icon></v-app-bar-nav-icon></v-btn>
+  <v-app-bar-nav-icon @click='sidebar=!sidebar'></v-app-bar-nav-icon>
       <v-app-bar-title v-if='false' >Campus Central</v-app-bar-title>
       <v-spacer></v-spacer>
       <div v-if='$store.state.user'>
