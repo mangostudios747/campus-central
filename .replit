@@ -1,2 +1,7 @@
 language = "nodejs"
 run = "yarn build && yarn start"
+
+[packager]
+#afterInstall="date >> package_install_log"
+ignoredPaths=[".nuxt"]
+#ignoredPackages=["twitter", "discord"]
