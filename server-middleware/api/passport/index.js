@@ -23,18 +23,19 @@ passport.use('schoology',new SchoologyStrategy({
         getProfile(token, tokenSecret).then(function(userProfile) {
             usersdb.set(userProfile.uid, userProfile).write()
             authdb.set(userProfile.uid, {token, tokenSecret}).write()
-            done(null, userProfile)
+            done(null, {profile:userProfile, credentials:{token, tokenSecret}})
         })
 
     }));
 
 passport.serializeUser(function(user, done) {
-    done(null, user.uid);
+    done(null, user.profile.uid);
 });
 
 passport.deserializeUser(function(uid, done) {
     const u = usersdb.get(uid).value();
-    done(null, u);
+    const c = authdb.get(uid).value();
+    done(null, {credentials:c, profile:u});
 });
 
 module.exports = passport

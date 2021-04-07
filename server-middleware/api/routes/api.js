@@ -2,7 +2,9 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('../passport')
+var usersRouter = require('./users');
 
+router.use('/users', usersRouter) // so we can have /api/users
 
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'HAHAHA'});
@@ -22,7 +24,7 @@ router.get('/sign-in',
     passport.authenticate('schoology'));
 
 router.get('/thanks-sgy', passport.authenticate('schoology', {
-    successRedirect: '/app', // todo: change this to the frontend url
+    successRedirect: '/app', // frontend url
     failureRedirect: '/api/oops' }))
 
 module.exports = router;

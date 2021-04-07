@@ -3,7 +3,7 @@
   <nuxt/>
 
     <v-footer
-      absolute
+      fixed
       app
     >
       <span>&copy; {{ new Date().getFullYear() }} Saumya Singhal</span>
@@ -17,7 +17,7 @@ export default {
   user:null
   }),
   async fetch(ctx) {
-    console.log('THE USER IS',ctx.req.user)
+    //console.log('THE USER IS',ctx.req.user)
     this.user = ctx.req.user;
   }
 }
