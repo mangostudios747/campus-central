@@ -30,9 +30,9 @@ function follow303 (err) {
 }
 
 async function getFrom(path, creds){
-    return await oauth.get(`${apiBase}${!path.startsWith('/')? '/':''}${path}`, creds.token, creds.tokenSecret)
+    return await (oauth.get(`${apiBase}${!path.startsWith('/')? '/':''}${path}`, creds.token, creds.tokenSecret)
         .catch(follow303)
-        .then(toJson)
+        .then(toJson))
 }
 
 async function getProfile(creds){
