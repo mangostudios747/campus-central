@@ -106,6 +106,6 @@ export default {
   },
   server: {
     host: process.env.NODE_ENV === 'production'? '0':null, // default: localhost
-    port: process.env.PORT
+    port: process.env.PORT || '3000'
   }
 }
