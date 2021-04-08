@@ -7,6 +7,8 @@ const session = require('express-session')
 const LowdbStore = require('lowdb-session-store')(session);
 var sassMiddleware = require('node-sass-middleware');
 const passport = require('passport');
+var uuid = require('node-uuid');
+
 
 var indexRouter = require('./routes/index')
 var apiRouter = require('./routes/api');
@@ -25,6 +27,9 @@ app.use(session({
   store: new LowdbStore(sessionStoragedb, {
     ttl: 86400
   }),
+  genid: function () {
+    return uuid.v4();
+  },
   saveUninitialized: true,
   cookie: { secure: false }
 }));
