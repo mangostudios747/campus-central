@@ -105,6 +105,7 @@ export default {
   build: {
   },
   server: {
-    host: process.env.NODE_ENV === 'production'? '0':null // default: localhost
+    host: process.env.NODE_ENV === 'production'? '0':null, // default: localhost
+    port: process.env.PORT
   }
 }
