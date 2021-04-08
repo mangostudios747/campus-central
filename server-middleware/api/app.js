@@ -3,16 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const redis = require('redis')
 const session = require('express-session')
-
-let RedisStore = require('connect-redis')(session)
-let redisClient = redis.createClient()
+const LowdbStore = require('lowdb-session-store')(session);
 var sassMiddleware = require('node-sass-middleware');
 const passport = require('passport');
 
 var indexRouter = require('./routes/index')
 var apiRouter = require('./routes/api');
+const {sessionStoragedb} = require("./database");
 
 
 var app = express();
@@ -24,7 +22,9 @@ app.set('view engine', 'pug');
 app.use(session({
   secret: 'keyboard cat', // TODO: legit secret
   resave: false,
-  store: new RedisStore({ client: redisClient }),
+  store: new LowdbStore(sessionStoragedb, {
+    ttl: 86400
+  }),
   saveUninitialized: true,
   cookie: { secure: false }
 }));

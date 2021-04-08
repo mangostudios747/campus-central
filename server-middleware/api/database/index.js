@@ -14,10 +14,12 @@ const userDatadb = low(new FileSync(path.join(__dirname, '../db/userData.json'))
 userDatadb.defaults({}).write();
 
 
+const sessionStoragedb = low(new FileSync(path.join(__dirname, '../db/sessionStorage.json'), { defaultValue: [] }));
 
 
 module.exports = {
     usersdb,
     authdb,
-    userDatadb
+    userDatadb,
+  sessionStoragedb
 }
