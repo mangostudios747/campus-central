@@ -92,4 +92,4 @@ sw.*
 # the redis download on repl.it
 redis-6.0.5
 
-server-middleware/api/db
+server-middleware/api/db/*.json
