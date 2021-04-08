@@ -3,16 +3,22 @@
 
   <v-navigation-drawer v-model='sidebar'  app>
     <!-- -->
-    <v-list-item>
-      <v-list-item-content>
-        <v-list-item-title class="title">
-          Campus Central
-        </v-list-item-title>
-        <v-list-item-subtitle>
-          The date is SOMETHING
-        </v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
+    <v-list v-if='$store.state.user'>
+      <v-list-item class="px-2">
+        <v-list-item-avatar>
+          <v-img :src='$store.state.user.picture_url'></v-img>
+        </v-list-item-avatar>
+      </v-list-item>
+
+      <v-list-item >
+        <v-list-item-content>
+          <v-list-item-title class="title">
+            {{$store.state.user.name_display}}
+          </v-list-item-title>
+          <v-list-item-subtitle>{{$store.state.user.primary_email}}</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
 
     <v-divider></v-divider>
 
@@ -21,7 +27,7 @@
       nav
     >
       <v-list-item
-        v-for="item in [{title:'Home', icon:'mdi-home', to:'/app'},{title:'Courses',icon:'mdi-book-multiple', to:'/app/courses'}]"
+        v-for="item in [{title:'Home', icon:'mdi-home', to:'/app'},{title:'Todo',icon:'mdi-format-list-checks', to:'/app/todo'},{title:'Courses',icon:'mdi-book-multiple', to:'/app/courses'},{title:'Profile',icon:'mdi-account', to:'/app/profile'}]"
         :key="item.title"
         link exact
         :to='item.to'
@@ -39,7 +45,11 @@
   </v-navigation-drawer>
 
     <v-app-bar app>
-  <v-app-bar-nav-icon @click='sidebar=!sidebar'></v-app-bar-nav-icon>
+  <v-app-bar-nav-icon  @click='sidebar=!sidebar'>
+    <template v-slot>
+      <v-icon>mdi-{{sidebar?'chevron-left':'menu'}}</v-icon>
+    </template>
+  </v-app-bar-nav-icon>
       <v-app-bar-title v-if='false' >Campus Central</v-app-bar-title>
       <v-spacer></v-spacer>
       <div v-if='$store.state.user'>

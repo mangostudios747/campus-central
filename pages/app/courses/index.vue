@@ -1,14 +1,18 @@
 <template>
 <div >
-  <h1>Classes</h1>
-  <v-list v-if='sections'>
-    <v-list-item link v-for='section in sections' :key='section.id' two-line>
-      <v-list-item-content>
-        <v-list-item-title>{{ section.course_title }}</v-list-item-title>
-        <v-list-item-subtitle>{{ section.section_title }}</v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
-  </v-list>
+
+  <v-sheet class='pt-5' elevation='0' color='transparent' rounded='lg'>
+    <v-row><h1  class='px-4 pb-2'>Classes </h1><v-spacer></v-spacer><v-btn class='mr-7' style='padding: 0 0' rounded color='primary' ><v-icon >mdi-reload</v-icon></v-btn></v-row>
+    <v-list color='transparent' rounded class='rounded-b-lg'  v-if='sections'>
+      <v-list-item link v-for='section in sections' :key='section.id' two-line>
+        <v-list-item-content>
+          <v-list-item-title>{{ section.course_title }}</v-list-item-title>
+          <v-list-item-subtitle>{{ section.section_title }}</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+  </v-sheet>
+
 </div>
 </template>
 

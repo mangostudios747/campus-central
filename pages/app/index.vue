@@ -1,7 +1,7 @@
 <template>
-<div>
-  /app i guess
-</div>
+  <v-container>
+  Under development
+    </v-container>
 </template>
 
 <script>

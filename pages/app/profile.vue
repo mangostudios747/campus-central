@@ -1,15 +1,12 @@
 <template>
-<div>
-  <v-container>
-    <nuxt-child/>
-  </v-container>
-
-</div>
+<v-container>
+  Under development
+</v-container>
 </template>
 
 <script>
 export default {
-
+  name: 'profile'
 }
 </script>
 

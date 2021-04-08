@@ -37,7 +37,9 @@ async function fetchAssignments(sectionId, creds) {
 
 async function fetchSections(user){
   const apiResult = await getFrom(`/users/${user.profile.uid}/sections`, user.credentials)
-  return apiResult.section; // an array of sections loll
+  return apiResult.section.sort((section1, section2) => {
+    return section1.section_title.split(' ')[0] - section2.section_title.split(' ')[0]
+  }); // an array of sections loll
 }
 
 async function reloadSections(user){
