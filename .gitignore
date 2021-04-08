@@ -88,3 +88,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# the redis download on repl.it
+redis-6.0.5

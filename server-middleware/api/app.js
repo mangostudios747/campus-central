@@ -3,7 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const redis = require('redis')
 const session = require('express-session')
+
+let RedisStore = require('connect-redis')(session)
+let redisClient = redis.createClient()
 var sassMiddleware = require('node-sass-middleware');
 const passport = require('passport');
 
@@ -20,6 +24,7 @@ app.set('view engine', 'pug');
 app.use(session({
   secret: 'keyboard cat', // TODO: legit secret
   resave: false,
+  store: new RedisStore({ client: redisClient }),
   saveUninitialized: true,
   cookie: { secure: false }
 }));
