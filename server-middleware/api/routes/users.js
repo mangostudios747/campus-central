@@ -4,6 +4,7 @@ const {getSections,reloadSections, getPendingAssignmentsForSection, getAssignmen
 
 // middleware: reject the request when there is no user - this way we can keep the code clean
 router.use((req, res, next) => {
+
   if (!req.user) return res.status(401).end();
   // todo: implement token acceptance, so that developers may sign in using tokens.
   //  for now, only frontend will be accessing this.
@@ -45,6 +46,7 @@ router.get('/me/sections/:sectionid/assignments/pending', async function(req, re
 
 router.get('/me/sections/:sectionid', async function(req, res, next){
   const sections = await getSections(req.user);
+
   const poss = sections.filter(section => section.id===req.params.sectionid);
   if (!poss) return res.status(404).end()
   res.send(poss[0])

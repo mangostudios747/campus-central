@@ -10,7 +10,7 @@
         </v-list-item-avatar>
       </v-list-item>
 
-      <v-list-item >
+      <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title">
             {{$store.state.user.name_display}}

@@ -8,6 +8,7 @@
   </v-app-bar>
     <v-main>
       <v-container>
+        {{$store.state.user}}
         <nuxt />
       </v-container>
     </v-main>
