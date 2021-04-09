@@ -6,7 +6,7 @@
     <v-list-item v-for='asg in assignments' :key='asg.id'>
       <v-list-item-content>
         <v-list-item-title>{{ asg.title }}</v-list-item-title>
-        <v-list-item-subtitle>{{ asg.completion_status }} two</v-list-item-subtitle>
+        <v-list-item-subtitle>{{ asg.completion_status }}</v-list-item-subtitle>
       </v-list-item-content>
       <v-list-item-action>
         <v-btn icon :href='asg.web_url'>
