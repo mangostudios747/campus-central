@@ -1,4 +1,4 @@
-const { key, secret } = require('../keys/sc.json')
+const { key, secret } = { key: process.env.schoology_key, secret: process.env.schoology_secret}
 const {OAuth} = require('oauth')
 const apiBase = 'https://api.schoology.com/v1'
 

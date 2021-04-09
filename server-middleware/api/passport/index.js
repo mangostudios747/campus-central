@@ -4,7 +4,7 @@ const passport = require('passport')
 
 const {usersdb, authdb} = require("../database");
 const {getProfile} = require('../schoology')
-const { key, secret } = require('./../keys/sc.json')
+const { key, secret } = { key: process.env.schoology_key, secret: process.env.schoology_secret}
 
 /* CONSTANTS */
 const HOSTING_DOMAIN = process.env.HOST || 'http://localhost:3000';
