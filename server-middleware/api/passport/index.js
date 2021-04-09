@@ -18,11 +18,11 @@ passport.use('schoology',new SchoologyStrategy({
         sgyDomain
     },
     async function(token, tokenSecret, profile, done) {
-        console.log(token, tokenSecret)
+        //console.log(token, tokenSecret)
         // these are access tokens and access secrets!
         // we need to fetch the user profile now
         getProfile({token, tokenSecret}).then(function(userProfile) {
-          console.log(userProfile.name_display)
+          //console.log(userProfile.name_display)
             usersdb.set(userProfile.uid, userProfile).write()
             authdb.set(userProfile.uid, {token, tokenSecret}).write()
             done(null, {profile:userProfile, credentials:{token, tokenSecret}})

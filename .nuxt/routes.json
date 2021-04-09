@@ -8,8 +8,7 @@
         "name": "app",
         "path": "",
         "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/index.vue",
-        "chunkName": "pages/app/index",
-        "_name": "_99382ce0"
+        "chunkName": "pages/app/index"
       },
       {
         "path": "courses",
@@ -20,48 +19,40 @@
             "name": "app-courses",
             "path": "",
             "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/courses/index.vue",
-            "chunkName": "pages/app/courses/index",
-            "_name": "_fc09f40e"
+            "chunkName": "pages/app/courses/index"
           },
           {
             "name": "app-courses-course",
             "path": ":course",
             "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/courses/_course.vue",
-            "chunkName": "pages/app/courses/_course",
-            "_name": "_98f0c2be"
+            "chunkName": "pages/app/courses/_course"
           }
-        ],
-        "_name": "_5508cff6"
+        ]
       },
       {
         "name": "app-profile",
         "path": "profile",
         "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/profile.vue",
-        "chunkName": "pages/app/profile",
-        "_name": "_6387d567"
+        "chunkName": "pages/app/profile"
       },
       {
         "name": "app-todo",
         "path": "todo",
         "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/todo.vue",
-        "chunkName": "pages/app/todo",
-        "_name": "_5f3443f8"
+        "chunkName": "pages/app/todo"
       }
-    ],
-    "_name": "_1d241e66"
+    ]
   },
   {
     "name": "inspire",
     "path": "/inspire",
     "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/inspire.vue",
-    "chunkName": "pages/inspire",
-    "_name": "_42f37b06"
+    "chunkName": "pages/inspire"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_032209fe"
+    "chunkName": "pages/index"
   }
 ]
