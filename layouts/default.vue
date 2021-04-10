@@ -13,6 +13,7 @@
     </v-main>
 
     <v-footer
+      color='secondary'
       :absolute="!fixed"
       app
     >

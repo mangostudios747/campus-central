@@ -68,10 +68,7 @@ export default {
       ogHost: 'https://campuscentral.repl.co',
       mobileAppIOS:true,
       appleStatusBarStyle:'black-translucent',
-      ogImage:{
-        path:'/app_preview.png',
-
-      }
+      ogImage:true
     }
   },
 
