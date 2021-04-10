@@ -7,7 +7,7 @@ const {getProfile} = require('../schoology')
 const { key, secret } = { key: process.env.schoology_key, secret: process.env.schoology_secret}
 
 /* CONSTANTS */
-const HOSTING_DOMAIN = process.env.HOST || 'http://localhost:3000';
+const HOSTING_DOMAIN = process.env.RHOST || 'http://localhost:3000';
 const sgyDomain = 'https://pausd.schoology.com'
 
 

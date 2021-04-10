@@ -1,21 +1,21 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors')
+const express = require('express')
+const path = require('path')
+const cookieParser = require('cookie-parser')
+const logger = require('morgan')
 const session = require('express-session')
 const LowdbStore = require('lowdb-session-store')(session);
-var sassMiddleware = require('node-sass-middleware');
+const sassMiddleware = require('node-sass-middleware')
 const passport = require('passport');
-var uuid = require('node-uuid');
+const uuid = require('node-uuid')
 
 
-var indexRouter = require('./routes/index')
-var apiRouter = require('./routes/api');
+const indexRouter = require('./routes/index')
+const apiRouter = require('./routes/api')
 const {sessionStoragedb} = require("./database");
 
 
-var app = express();
+const app = express()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -56,7 +56,7 @@ app.use('/api', apiRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(
-    createError(404)
+    //createError(404)
   );
 });
 

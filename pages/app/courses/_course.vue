@@ -9,7 +9,7 @@
         <v-list-item-subtitle>{{ asg.completion_status }}</v-list-item-subtitle>
       </v-list-item-content>
       <v-list-item-action>
-        <v-btn icon :href='asg.web_url'>
+        <v-btn icon  :href='asg.web_url'>
           <v-icon>mdi-open-in-new</v-icon>
         </v-btn>
       </v-list-item-action>

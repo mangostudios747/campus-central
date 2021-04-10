@@ -99,7 +99,7 @@ export default {
 
   privateRuntimeConfig: {
     //  basically dotenv but not
-    HOST: process.env.HOST || 'http://192.168.50.125:3000'
+    RHOST: process.env.RHOST || 'http://192.168.50.125:3000'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
