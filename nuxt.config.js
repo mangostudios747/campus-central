@@ -52,7 +52,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL:process.env.HOST || 'http://localhost:3000'
+    baseURL:process.env.RHOST || 'http://localhost:3000'
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -76,18 +76,25 @@ export default {
       },
       themes: {
         dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
+          primary: '#3066C7',
+          accent: '#cd786a',
+          accentDark:'#8F321E',
+          secondary: '#0F3261',
+          tertiary:'#04173B',
+         //background: '#0A295E',
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          success: colors.green.accent3,
+
+
         },
         light: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
+          primary: '#3066C7',
+          accent: '#e0897b',
+          accentDark:'#8F321E',
+          secondary: '#0F3261',
+          tertiary:'#04173B',
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,

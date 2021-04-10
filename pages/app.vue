@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <v-navigation-drawer v-model='sidebar' app>
+    <v-navigation-drawer  :color='"accent"' v-model='sidebar' app>
       <!-- -->
       <v-list v-if='$store.state.user'>
         <v-list-item class='px-2'>
@@ -27,7 +27,7 @@
         nav
       >
         <v-list-item
-          v-for="item in [{title:'Home', icon:'mdi-home', to:'/app'},{title:'Todo',icon:'mdi-format-list-checks', to:'/app/todo'},{title:'Courses',icon:'mdi-book-multiple', to:'/app/courses'},{title:'Profile',icon:'mdi-account', to:'/app/profile'}]"
+          v-for="item in routes"
           :key='item.title'
           link exact
           :to='item.to'
@@ -44,7 +44,7 @@
 
     </v-navigation-drawer>
 
-    <v-app-bar app>
+    <v-app-bar color='secondary' app>
       <v-app-bar-nav-icon @click='sidebar=!sidebar'>
         <template v-slot>
           <v-icon>mdi-{{ sidebar ? 'chevron-left' : 'menu' }}</v-icon>
@@ -53,8 +53,8 @@
       <v-app-bar-title v-if='false'>Campus Central</v-app-bar-title>
       <v-spacer></v-spacer>
       <div v-if='$store.state.user'>
-        {{ $store.state.user.name_display }}
-        <v-avatar>
+        <span>{{ $store.state.user.name_display }}</span>
+        <v-avatar class='ml-3' size='40'>
           <img
             :src='$store.state.user.picture_url'
             :alt='$store.state.user.name_display'

@@ -1,14 +1,13 @@
 <template>
   <v-app dark>
-  <v-app-bar app>
+  <v-app-bar color='secondary' app>
     <v-app-bar-title >Campus Central</v-app-bar-title>
     <v-spacer></v-spacer>
-    <v-btn v-if='!$store.state.user' color='primary' href='/api/sign-in'>login</v-btn>
-    <v-btn v-else color='primary' to='/app'>open campus</v-btn>
+    <v-btn v-if='!$store.state.user' color='accentDark' href='/api/sign-in'>login</v-btn>
+    <v-btn v-else color='accent' to='/app'>open campus</v-btn>
   </v-app-bar>
     <v-main>
       <v-container>
-        {{$store.state.user}}
         <nuxt />
       </v-container>
     </v-main>

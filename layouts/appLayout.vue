@@ -5,6 +5,7 @@
     <v-footer
       fixed
       app
+      color='secondary'
     >
       <span>&copy; {{ new Date().getFullYear() }} Saumya Singhal</span>
     </v-footer>

@@ -2,7 +2,7 @@
 <div>
   <h1>{{course.section_title}}</h1>
   <h2 class='my-2'>Todo</h2>
-  <v-list>
+  <v-list rounded='lg' v-if='assignments.length > 0' color='secondary'>
     <v-list-item v-for='asg in assignments' :key='asg.id'>
       <v-list-item-content>
         <v-list-item-title>{{ asg.title }}</v-list-item-title>
@@ -15,6 +15,12 @@
       </v-list-item-action>
     </v-list-item>
   </v-list>
+  <v-card rounded='lg' color='secondary' class='text-center' v-else>
+    <v-container>
+      <h2 class=''>Nothing to do! :-)</h2>
+    </v-container>
+
+  </v-card>
 </div>
 </template>
 
