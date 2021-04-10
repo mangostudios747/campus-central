@@ -10,6 +10,9 @@ const _5508cff6 = () => interopDefault(import('../pages/app/courses.vue' /* webp
 const _fc09f40e = () => interopDefault(import('../pages/app/courses/index.vue' /* webpackChunkName: "pages/app/courses/index" */))
 const _98f0c2be = () => interopDefault(import('../pages/app/courses/_course.vue' /* webpackChunkName: "pages/app/courses/_course" */))
 const _7b834cfe = () => interopDefault(import('../pages/app/messages.vue' /* webpackChunkName: "pages/app/messages" */))
+const _77159d01 = () => interopDefault(import('../pages/app/messages/index.vue' /* webpackChunkName: "pages/app/messages/index" */))
+const _1e599cb5 = () => interopDefault(import('../pages/app/messages/inbox.vue' /* webpackChunkName: "pages/app/messages/inbox" */))
+const _77a5668e = () => interopDefault(import('../pages/app/messages/sent.vue' /* webpackChunkName: "pages/app/messages/sent" */))
 const _6387d567 = () => interopDefault(import('../pages/app/profile.vue' /* webpackChunkName: "pages/app/profile" */))
 const _5f3443f8 = () => interopDefault(import('../pages/app/todo.vue' /* webpackChunkName: "pages/app/todo" */))
 const _42f37b06 = () => interopDefault(import('../pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
@@ -48,7 +51,19 @@ export const routerOptions = {
     }, {
       path: "messages",
       component: _7b834cfe,
-      name: "app-messages"
+      children: [{
+        path: "",
+        component: _77159d01,
+        name: "app-messages"
+      }, {
+        path: "inbox",
+        component: _1e599cb5,
+        name: "app-messages-inbox"
+      }, {
+        path: "sent",
+        component: _77a5668e,
+        name: "app-messages-sent"
+      }]
     }, {
       path: "profile",
       component: _6387d567,

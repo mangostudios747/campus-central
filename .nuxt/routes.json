@@ -34,10 +34,32 @@
         "_name": "_5508cff6"
       },
       {
-        "name": "app-messages",
         "path": "messages",
         "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/messages.vue",
         "chunkName": "pages/app/messages",
+        "children": [
+          {
+            "name": "app-messages",
+            "path": "",
+            "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/messages/index.vue",
+            "chunkName": "pages/app/messages/index",
+            "_name": "_77159d01"
+          },
+          {
+            "name": "app-messages-inbox",
+            "path": "inbox",
+            "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/messages/inbox.vue",
+            "chunkName": "pages/app/messages/inbox",
+            "_name": "_1e599cb5"
+          },
+          {
+            "name": "app-messages-sent",
+            "path": "sent",
+            "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/messages/sent.vue",
+            "chunkName": "pages/app/messages/sent",
+            "_name": "_77a5668e"
+          }
+        ],
         "_name": "_7b834cfe"
       },
       {

@@ -1,5 +1,5 @@
 {
-  "title": "campus-central",
+  "title": "Campus Central",
   "meta": [
     {
       "hid": "charset",
@@ -18,7 +18,7 @@
     {
       "hid": "apple-mobile-web-app-title",
       "name": "apple-mobile-web-app-title",
-      "content": "campus-central"
+      "content": "Campus Central"
     },
     {
       "hid": "description",
@@ -35,13 +35,13 @@
       "hid": "og:title",
       "name": "og:title",
       "property": "og:title",
-      "content": "campus-central"
+      "content": "Campus Central"
     },
     {
       "hid": "og:site_name",
       "name": "og:site_name",
       "property": "og:site_name",
-      "content": "campus-central"
+      "content": "Campus Central"
     },
     {
       "hid": "og:description",
@@ -54,17 +54,17 @@
     {
       "hid": "shortcut-icon",
       "rel": "shortcut icon",
-      "href": "/_nuxt/icons/icon_64x64.5f6a36.png"
+      "href": "/_nuxt/icons/icon_64x64.d7e231.png"
     },
     {
       "hid": "apple-touch-icon",
       "rel": "apple-touch-icon",
-      "href": "/_nuxt/icons/icon_512x512.5f6a36.png",
+      "href": "/_nuxt/icons/icon_512x512.d7e231.png",
       "sizes": "512x512"
     },
     {
       "rel": "manifest",
-      "href": "/_nuxt/manifest.d2fff767.json",
+      "href": "/_nuxt/manifest.9dde7161.json",
       "hid": "manifest"
     }
   ],

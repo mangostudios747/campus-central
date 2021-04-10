@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <v-navigation-drawer  :color='"accent"' v-model='sidebar' app>
+    <v-navigation-drawer :color='"accent"' v-model='sidebar' app>
       <!-- -->
       <v-list v-if='$store.state.user'>
         <v-list-item class='px-2'>
@@ -18,6 +18,7 @@
             <v-list-item-subtitle>{{ $store.state.user.primary_email }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
+
       </v-list>
 
       <v-divider></v-divider>
@@ -27,9 +28,10 @@
         nav
       >
         <v-list-item
-          v-for="item in routes"
+          v-for='item in routes'
           :key='item.title'
-          link exact
+          link
+          :exact='!item.inexact'
           :to='item.to'
         >
           <v-list-item-icon>
@@ -40,11 +42,43 @@
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <!--<v-list-group
+          prepend-icon='mdi-inbox'
+          color='white'
+          group='/app/messages'
+
+
+        >
+          <template v-slot:activator>
+
+              <v-list-item-content>
+                <v-list-item-title>Messages</v-list-item-title>
+              </v-list-item-content>
+
+          </template>
+
+          <v-list-item
+            to='/app/messages/inbox'
+          >
+            <v-list-item-icon>
+              <v-icon >mdi-inbox-arrow-down</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Inbox</v-list-item-title>
+          </v-list-item>
+          <v-list-item
+            to='/app/messages/sent'
+          >
+            <v-list-item-icon>
+              <v-icon >mdi-inbox-arrow-up</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Sent</v-list-item-title>
+          </v-list-item>
+        </v-list-group>-->
       </v-list>
 
     </v-navigation-drawer>
 
-    <v-app-bar color='secondary' app>
+    <v-app-bar color='secondary' elevation='0' flat app>
       <v-app-bar-nav-icon @click='sidebar=!sidebar'>
         <template v-slot>
           <v-icon>mdi-{{ sidebar ? 'chevron-left' : 'menu' }}</v-icon>
@@ -87,16 +121,23 @@ export default {
       title: 'Todo',
       icon: 'mdi-format-list-checks',
       to: '/app/todo'
-    }, { title: 'Courses', icon: 'mdi-book-multiple', to: '/app/courses' }, {
-      title: 'Profile',
-      icon: 'mdi-account',
-      to: '/app/profile'
     },
+      { title: 'Courses',
+        icon: 'mdi-book-multiple',
+        to: '/app/courses',
+        inexact: true
+      },
       {
+        title: 'Profile',
+        icon: 'mdi-account',
+        to: '/app/profile'
+      },
+      /*{
         title: 'Messages',
-        icon: 'mdi-mail',
-        to: '/app/messages'
-      }
+        icon: 'mdi-email',
+        to: '/app/messages',
+        inexact: true
+      }*/
     ]
   })
   /*async asyncData(ctx) {

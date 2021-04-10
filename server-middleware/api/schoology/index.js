@@ -39,6 +39,9 @@ async function getProfile(creds){
     return await getFrom('users/me', creds)
 }
 
+async function getProfileFor(creds, uid){
+  return await getFrom('users/'+uid, creds)
+}
 
 async function fetchSections(user){
   const apiResult = await getFrom(`/users/${user.profile.uid}/sections`, user.credentials)
@@ -99,6 +102,18 @@ async function getPendingAssignmentsForSection(user, sectionId){
   })
 }
 
+async function fetchMessagesInbox(user){
+  const messages = (await getFrom('/messages/inbox', user.credentials)).message;
+  //console.log(messages);
+  for (let index in messages){
+    const {recipient_ids, author_id} = messages[index];
+    console.log(messages[index].id)
+    messages[index]['recipient'] = await getProfileFor(user.credentials, recipient_ids);
+    messages[index]['author'] = await getProfileFor(user.credentials, author_id);
+  }
+  return messages
+}
+
 module.exports = {
   // these should only be get or reload functions
   getFrom,
@@ -107,7 +122,9 @@ module.exports = {
   getSections,
   reloadAssignmentsForSection,
   getAssignmentsForSection,
-  getPendingAssignmentsForSection
+  getPendingAssignmentsForSection,
+  fetchMessagesInbox,
+  getProfileFor
 
 
 }
