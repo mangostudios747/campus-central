@@ -12,8 +12,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/auth', function(req, res, next){
-  if (req.user) next();
-  else res.redirect('/sign-in');
+  if (req.user) res.redirect('/app');
+  else res.redirect('/api/sign-in');
 })
 
 router.get('/oops', function(req, res, next) {

@@ -3,13 +3,13 @@
   <v-app-bar color='secondary' app>
     <v-app-bar-title >Campus Central</v-app-bar-title>
     <v-spacer></v-spacer>
-    <v-btn v-if='!$store.state.user' color='accentDark' href='/api/sign-in'>login</v-btn>
+    <v-btn v-if='!$store.state.user' color='accent' href='/api/sign-in'>login</v-btn>
     <v-btn v-else color='accent' to='/app'>open campus</v-btn>
   </v-app-bar>
     <v-main>
-      <v-container>
+
         <nuxt />
-      </v-container>
+
     </v-main>
 
     <v-footer
