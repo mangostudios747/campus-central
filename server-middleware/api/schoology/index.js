@@ -112,10 +112,23 @@ async function fetchMessagesInbox(user){
   const messages = (await getFrom('/messages/inbox', user.credentials)).message;
   //console.log(messages);
   for (let index in messages){
-    const {recipient_ids, author_id} = messages[index];
+    const { author_id} = messages[index];
     console.log(messages[index].id)
-    messages[index]['recipient'] = await getProfileFor(user.credentials, recipient_ids);
+    //messages[index]['recipient'] = await getProfileFor(user.credentials, recipient_ids);
     messages[index]['author'] = await getProfileFor(user.credentials, author_id);
+  }
+  return messages
+}
+
+async function fetchMessagesSent(user){
+  const messages = (await getFrom('/messages/sent', user.credentials)).message;
+  //console.log(messages);
+  for (let index in messages){
+    const { recipient_ids} = messages[index];
+    console.log(messages[index].id)
+
+    //messages[index]['recipient'] = await getProfileFor(user.credentials, recipient_ids);
+    if (recipient_ids) messages[index]['recipient'] = await getProfileFor(user.credentials, recipient_ids);
   }
   return messages
 }
@@ -130,6 +143,7 @@ module.exports = {
   getAssignmentsForSection,
   getPendingAssignmentsForSection,
   fetchMessagesInbox,
+  fetchMessagesSent,
   getProfileFor
 
 

@@ -5,7 +5,7 @@
       color='#ffffffaa'
       grow
     >
-      <v-tab to='/app/messages/inbox'>Inbox</v-tab>
+      <v-tab  to='/app/messages/inbox'>Inbox</v-tab>
       <v-tab to='/app/messages/sent'>Sent</v-tab>
     </v-tabs>
     <nuxt-child/>
@@ -14,8 +14,7 @@
 
 <script>
 export default {
-  name: 'messages',
-
+  name: 'messages'
 }
 </script>
 

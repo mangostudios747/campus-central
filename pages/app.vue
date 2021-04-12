@@ -93,7 +93,6 @@
             :src='$store.state.user.picture_url'
             :alt='$store.state.user.name_display'
           >
-          <!-- todo: replace with some meaningful alt text -->
           <!-- todo: make this a profile dropdown -->
         </v-avatar>
       </div>
@@ -132,12 +131,12 @@ export default {
         icon: 'mdi-account',
         to: '/app/profile'
       },
-      /*{
+      {
         title: 'Messages',
         icon: 'mdi-email',
         to: '/app/messages',
         inexact: true
-      }*/
+      }
     ]
   })
   /*async asyncData(ctx) {
