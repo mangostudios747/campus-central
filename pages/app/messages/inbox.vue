@@ -12,6 +12,7 @@
   >
   <v-list-item
     link
+    :class="{'v-list-item--active':focusedMessage&&(message.id===focusedMessage[0].id)}"
     @click='focusMessage(message.id)'
   v-for='message of messages'
   :key='message.id'

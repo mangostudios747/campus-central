@@ -13,9 +13,9 @@
   >
     <v-list-item
       link
+      :class="{'v-list-item--active':focusedMessage&&(message.id===focusedMessage[0].id)}"
       @click='focusMessage(message.id)'
       v-for='message of messages'
-
       :key='message.id'
     ><v-list-item-avatar v-if='message.recipients' > <!-- we're not going to even be fetching the author for a bit --->
       <v-img :src="message.recipients[0].picture_url"></v-img>
