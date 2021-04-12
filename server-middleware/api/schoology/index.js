@@ -125,7 +125,7 @@ async function fetchMessagesSent(user){
   //console.log(messages);
   for (let index in messages){
     const { recipient_ids} = messages[index];
-    console.log(messages[index].id)
+    //console.log(messages[index].id)
 
     //messages[index]['recipient'] = await getProfileFor(user.credentials, recipient_ids);
     if (recipient_ids) messages[index]['recipient'] = await getProfileFor(user.credentials, recipient_ids);

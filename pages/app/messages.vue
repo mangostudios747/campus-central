@@ -14,7 +14,12 @@
 
 <script>
 export default {
-  name: 'messages'
+  name: 'messages',
+  middleware(ctx){
+    if(ctx.route.fullPath === '/app/messages'){
+      ctx.redirect('/app/messages/inbox')
+    }
+  }
 }
 </script>
 

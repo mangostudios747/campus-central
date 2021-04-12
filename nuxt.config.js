@@ -72,6 +72,9 @@ export default {
     }
   },
 
+  router:{
+    //middleware:'redirectMessages'
+  },
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
 
