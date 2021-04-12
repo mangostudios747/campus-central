@@ -46,8 +46,14 @@ export default {
     }
   },
   async fetch() {
-    this.messages = await this.$axios.$get('/api/users/me/messages/sent');
-    // todo: metadata fetching logic here
+    if (this.$store.state.messages.sent.length > 0){
+      this.messages= this.$store.state.messages.sent
+    }
+    else {
+      const messages = await this.$axios.$get('/api/users/me/messages/sent');
+      this.$store.commit('setMessagesSent', messages)
+      this.messages = messages
+    }
   },
   fetchOnServer: false
 }

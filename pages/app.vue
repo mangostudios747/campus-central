@@ -85,6 +85,20 @@
         </template>
       </v-app-bar-nav-icon>
       <v-app-bar-title v-if='false'>Campus Central</v-app-bar-title>
+
+      <v-progress-circular class=" elevation-0 mr-5" style="border-radius: 50%"
+
+                           :rotate="270"
+                           :size="30"
+                           :width="5"
+                           :value="50"
+
+                           :color="({color:'blue-grey'}).color"
+
+
+      ></v-progress-circular>
+      <v-toolbar-title>15 mins left in hell</v-toolbar-title>
+
       <v-spacer></v-spacer>
       <div v-if='$store.state.user'>
         <span>{{ $store.state.user.name_display }}</span>

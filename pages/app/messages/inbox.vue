@@ -46,8 +46,14 @@ export default {
     }
   },
   async fetch() {
-    this.messages = await this.$axios.$get('/api/users/me/messages/inbox');
-    // todo: metadata fetching logic here
+    if (this.$store.state.messages.inbox.length > 0){
+      this.messages= this.$store.state.messages.inbox
+    }
+    else {
+      const messages = await this.$axios.$get('/api/users/me/messages/inbox');
+      this.$store.commit('setMessagesInbox', messages)
+      this.messages = messages
+    }
   },
   fetchOnServer: false
 }
