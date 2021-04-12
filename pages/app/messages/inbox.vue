@@ -58,7 +58,7 @@
           </v-list-item-content>
 
         </v-list-item>
-        <v-card-text style='white-space: pre-wrap' v-text='entry.message'>
+        <v-card-text v-linkified style='white-space: pre-wrap' v-text='entry.message'>
         </v-card-text>
       </div>
 

@@ -5,15 +5,15 @@
                          :size="350"
                          :width="35"
 
-                         :value="50"
-                         :color="({color:'blue-grey'}).color"
+                         :value="$store.getters['hc/currentEvent'].percent"
+                         :color="($store.state.hc.customizations[$store.getters['hc/currentEvent'].id]||{color:'blue-grey'}).color"
     >
       <v-col class="text-center">
         <v-row>
-          <span class="display-4 mx-auto">{{15}}</span>
+          <span class="display-4 mx-auto">{{Math.ceil($store.getters['hc/currentEvent'].remaining||$store.getters['hc/currentEvent'].elapsed)}}</span>
         </v-row>
-        <v-row><span class=" mx-auto">minutes left in</span></v-row>
-        <v-row><span class=" display-1 mx-auto mt-2">Hell</span></v-row>
+        <v-row><span class=" mx-auto">minutes {{ $store.getters['hc/currentEvent'].displayText }}</span></v-row>
+        <v-row><span class=" display-1 mx-auto mt-2">{{ $store.getters['hc/currentEvent'].name }}</span></v-row>
         <v-row></v-row>
       </v-col>
     </v-progress-circular>

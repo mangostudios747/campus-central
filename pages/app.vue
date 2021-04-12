@@ -91,13 +91,14 @@
                            :rotate="270"
                            :size="30"
                            :width="5"
-                           :value="50"
+                           :value="$store.getters['hc/currentEvent'].percent"
 
-                           :color="({color:'blue-grey'}).color"
+                           :color="($store.state.hc.customizations[$store.getters['hc/currentEvent'].id]||{color:'blue-grey'}).color"
 
 
       ></v-progress-circular>
-      <v-toolbar-title>15 mins left in hell</v-toolbar-title>
+      <v-toolbar-title>{{Math.ceil($store.getters['hc/currentEvent'].remaining||$store.getters['hc/currentEvent'].elapsed)}} mins
+        {{ $store.getters['hc/currentEvent'].displayText }} {{ $store.getters['hc/currentEvent'].name }}</v-toolbar-title>
 
       <v-spacer></v-spacer>
       <div v-if='$store.state.user'>
@@ -152,7 +153,13 @@ export default {
         inexact: true
       }
     ]
-  })
+  }),
+  mounted() {
+    const vapp = this;
+    setInterval(()=>{
+      vapp.$store.commit('hc/resetTime')
+    }, 1000)
+  }
   /*async asyncData(ctx) {
 
     const user = ctx.req.user

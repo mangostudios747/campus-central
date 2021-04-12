@@ -6,7 +6,7 @@
   <v-list
     style='overflow: scroll; max-height: 77vh'
     color='tertiary'
-    class='ml-2'
+    class='ml-2 my-5'
     v-if='messages.length > 0'
     three-line
     nav
@@ -44,7 +44,8 @@
   <v-col>
   <v-card style='max-height: 77vh; overflow: scroll' v-if='focusedMessage' elevation='0' color='#0F326144' class='my-5 mr-5 px-4'>
     <v-card-title>{{focusedMessage[0].subject}}</v-card-title>
-    <div
+    <v-sheet color='#04173B33' rounded
+
     v-for='entry in focusedMessage'
     >
       <v-list-item >
@@ -58,7 +59,7 @@
       </v-list-item>
       <v-card-text style='white-space: pre-wrap' v-text='entry.message'>
       </v-card-text>
-    </div>
+    </v-sheet>
 
 
     <v-textarea placeholder='Type a response . . . (just for fun, nothing will send.)' color='white' filled>
