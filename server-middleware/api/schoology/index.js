@@ -2,8 +2,9 @@ const oauth = require('./oauth');
 const {userDatadb} = require("../database");
 const sgyDomain = 'https://pausd.schoology.com';
 const apiBase = 'https://api.schoology.com/v1';
-
+const usersCache = {};
 // todo: getUserByID(uid) = fetchForUser(uid, 'users/me')
+
 
 function tobigjson(data){
   let out="[";
@@ -36,11 +37,16 @@ async function getFrom(path, creds){
 }
 
 async function getProfile(creds){
-    return await getFrom('users/me', creds)
+    const value = await getFrom('users/me', creds);
+    usersCache[value.uid] = value;
+    return value;
 }
 
 async function getProfileFor(creds, uid){
-  return await getFrom('users/'+uid, creds)
+  if (usersCache[uid]) return usersCache[uid];
+  const returnValue =  await getFrom('users/'+uid, creds);
+  usersCache[uid] = returnValue;
+  return returnValue;
 }
 
 async function fetchSections(user){
