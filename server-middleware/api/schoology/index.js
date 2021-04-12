@@ -120,17 +120,47 @@ async function fetchMessagesInbox(user){
   return messages
 }
 
-async function fetchMessagesSent(user){
-  const messages = (await getFrom('/messages/sent', user.credentials)).message;
+async function fetchMessagesSent(user, page=1){
+  const { message:messages, unreadCount } = (await getFrom(`/messages/sent?start=${20*(page-1)}&limit=${page*20}`, user.credentials));
   //console.log(messages);
   for (let index in messages){
     const { recipient_ids} = messages[index];
     //console.log(messages[index].id)
-
-    //messages[index]['recipient'] = await getProfileFor(user.credentials, recipient_ids);
-    if (recipient_ids) messages[index]['recipient'] = await getProfileFor(user.credentials, recipient_ids);
+    const rids = recipient_ids.split(',');
+    messages[index]['recipients'] = [];
+    for (const rid of rids){
+      messages[index]['recipients'].push(await getProfileFor(user.credentials, rid));
+    }
   }
   return messages
+}
+
+async function fetchInboxMessage(user, messageId){
+  const { message } = await getFrom(`/messages/inbox/${messageId}`, user.credentials);
+  for (let index in message){
+    const { recipient_ids, author_id } = message[index];
+    message[index]['author'] = await getProfileFor(user.credentials, author_id);
+    message[index]['recipients'] = [];
+    const rids = recipient_ids.split(',');
+    for (const rid of rids){
+      message[index]['recipients'].push(await getProfileFor(user.credentials, rid));
+    }
+  }
+  return message;
+}
+
+async function fetchSentMessage(user, messageId){
+  const { message } = await getFrom(`/messages/sent/${messageId}`, user.credentials);
+  for (let index in message){
+    const { recipient_ids, author_id } = message[index];
+    message[index]['author'] = await getProfileFor(user.credentials, author_id);
+    message[index]['recipients'] = [];
+    const rids = recipient_ids.split(',');
+    for (const rid of rids){
+      message[index]['recipients'].push(await getProfileFor(user.credentials, rid));
+    }
+  }
+  return message;
 }
 
 module.exports = {
@@ -144,7 +174,9 @@ module.exports = {
   getPendingAssignmentsForSection,
   fetchMessagesInbox,
   fetchMessagesSent,
-  getProfileFor
+  getProfileFor,
+  fetchInboxMessage,
+  fetchSentMessage
 
 
 }
