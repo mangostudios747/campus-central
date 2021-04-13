@@ -30,10 +30,24 @@ function follow303 (err) {
     }
 }
 
-async function getFrom(path, creds){
+/*async function getFrom(path, creds){
     return await (oauth.get(`${apiBase}${!path.startsWith('/')? '/':''}${path}`, creds.token, creds.tokenSecret)
         .catch(follow303)
         .then(toJson))
+}*/
+async function getFrom(path, creds, method='get', body=null){
+  if (method === 'get') {
+    return await (oauth[method](`${apiBase}${!path.startsWith('/')? '/':''}${path}`, creds.token, creds.tokenSecret)
+      .then(toJson))
+      .catch(console.error)
+  }
+  else {
+    return await (oauth[method](`${apiBase}${!path.startsWith('/')? '/':''}${path}`, creds.token, creds.tokenSecret, body, 'application/json')
+      .then(toJson))
+      .catch(console.error)
+  }
+
+  //.catch(k=>console.log(k.out[1].headers))
 }
 
 async function getProfile(creds){
@@ -163,6 +177,15 @@ async function fetchSentMessage(user, messageId){
   return message;
 }
 
+async function replyToMessage(user, messageId, datums){
+  // datums should have {recipient_ids, subject, message}
+  return await getFrom(`/messages/${messageId}`,  user.credentials, 'post',
+    JSON.stringify(datums));
+  // the client should now reload the messages.
+
+}
+
+
 module.exports = {
   // these should only be get or reload functions
   getFrom,
@@ -176,7 +199,8 @@ module.exports = {
   fetchMessagesSent,
   getProfileFor,
   fetchInboxMessage,
-  fetchSentMessage
+  fetchSentMessage,
+  replyToMessage
 
 
 }

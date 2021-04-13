@@ -39,6 +39,7 @@ function promiseify (fn) {
 oauth.getOAuthRequestToken = promiseify(oauth.getOAuthRequestToken.bind(oauth))
 oauth.getOAuthAccessToken = promiseify(oauth.getOAuthAccessToken.bind(oauth))
 oauth.get = promiseify(oauth.get.bind(oauth))
-
+oauth.put = promiseify(oauth.put.bind(oauth))
+oauth.post = promiseify(oauth.post.bind(oauth))
 
 module.exports = oauth;

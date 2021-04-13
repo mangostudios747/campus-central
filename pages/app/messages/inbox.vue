@@ -74,9 +74,19 @@
       </div>
 
 
-      <v-textarea clearable placeholder='Type a response . . . (just for fun, nothing will send.)' color='accent' filled>
+      <v-textarea rows='3' v-model='response[focusedMessage[0].id]' clearable placeholder='Type a response . . . (this is real, things will send)' color='accent' filled>
 
       </v-textarea>
+      <v-row class='mb-5 mr-4'>
+        <v-spacer/>
+        <v-btn
+          @click='sendReply'
+          :loading='sending'
+          :disabled='sending'
+          color='accent'>
+          <v-icon left>mdi-send</v-icon>
+          Send</v-btn>
+      </v-row>
     </v-card>
   </v-col>
 </v-row>
@@ -88,7 +98,9 @@ export default {
   data(){
     return {
       messages:[],
-      focusedMessage:null
+      focusedMessage:null,
+      response:{},
+      sending:false
     }
   },
   async fetch() {
@@ -107,7 +119,20 @@ export default {
       return await this.$axios.$get('/api/users/me/messages/inbox/'+id);
     },
     async focusMessage(id){
-      this.focusedMessage= await this.fetchMessage(id)
+      this.focusedMessage= await this.fetchMessage(id);
+
+    },
+    async sendReply(){
+      if (!this.response[this.focusedMessage[0].id]) return;
+      this.sending = true;
+      await this.$axios.$post('/api/users/me/messages/'+this.focusedMessage[0].id, {
+        subject: this.focusedMessage[0].subject,
+        message: this.response[this.focusedMessage[0].id],
+        recipient_ids: this.focusedMessage[0].recipient_ids
+      });
+      await this.focusMessage(this.focusedMessage[0].id)
+      this.sending = false
+      this.response[this.focusedMessage[0].id] = null
     }
   }
 }

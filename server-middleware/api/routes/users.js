@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const {getSections, fetchMessagesSent, fetchInboxMessage, fetchSentMessage, reloadSections, getProfileFor, getPendingAssignmentsForSection,fetchMessagesInbox , getAssignmentsForSection, reloadAssignmentsForSection} = require('../schoology')
+const {getSections, fetchMessagesSent, replyToMessage, fetchInboxMessage, fetchSentMessage, reloadSections, getProfileFor, getPendingAssignmentsForSection,fetchMessagesInbox , getAssignmentsForSection, reloadAssignmentsForSection} = require('../schoology')
 
 // middleware: reject the request when there is no user - this way we can keep the code clean
 router.use((req, res, next) => {
@@ -71,6 +71,15 @@ router.get('/me/messages/sent/:messageid', async function (req, res, next){
 router.get('/profile/:uid', async function (req, res, next) {
   res.send(await getProfileFor(user.credentials, req.params.uid))
   // use this on the client lol!
+})
+
+// to reply to a thread
+router.post('/me/messages/:messageid', async function (req, res, next) {
+  // recipient, message, subject
+  const datums = req.body;
+  await replyToMessage(req.user, req.params.messageid, datums);
+  res.sendStatus(204).end();
+
 })
 
 
