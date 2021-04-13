@@ -933,7 +933,7 @@ export const state = ()=>({
 export const mutations = {
   resetTime(state){
     //console.log('bye')
-    state.now = (new Date()).addHours(15);
+    state.now = (new Date())//.addHours(15);
   },
   setCustomizations(state, customizations){
     state.customizations = customizations
