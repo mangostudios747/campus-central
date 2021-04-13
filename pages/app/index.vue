@@ -1,5 +1,7 @@
 <template>
-  <div style='height: 100%' class='text-center mt-10'>
+<v-row class='mt-10 px-4'>
+  <v-col cols='4'>
+    <v-card elevation='3' color='#0F326144' class='text-center py-7'>
     <v-progress-circular class=" elevation-10 " style="border-radius: 50%"
                          :rotate="270"
                          :size="350"
@@ -17,7 +19,27 @@
         <v-row></v-row>
       </v-col>
     </v-progress-circular>
-    </div>
+  </v-card></v-col>
+<v-col >
+  <v-card v-if='$store.getters["hc/currentEvent"].meta' class='py-3' color='#0F326144'>
+    <v-list-item class='ml-3 '>
+      <v-list-item-avatar>
+        <v-img
+        :src="$store.getters['hc/currentEvent'].meta.photo"
+        ></v-img>
+      </v-list-item-avatar>
+      <v-card-title>
+        {{ $store.getters['hc/currentEvent'].name }}
+      </v-card-title>
+
+      <v-list-item-action>
+        <v-btn title='Course Home Page' target='_blank' :href='$store.getters["hc/currentEvent"].meta.course_home' icon><v-icon>mdi-open-in-new</v-icon></v-btn>
+      </v-list-item-action>
+    </v-list-item>
+
+  </v-card>
+</v-col>
+</v-row>
 </template>
 
 <script>
