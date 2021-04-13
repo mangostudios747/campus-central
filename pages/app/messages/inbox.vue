@@ -47,9 +47,10 @@
     <v-card style='max-height: 77vh; overflow: scroll' v-if='focusedMessage' elevation='0' color='#0F326144' class='my-5 mr-5 px-4'>
       <v-card-title>{{focusedMessage[0].subject}}</v-card-title>
       <div
-        v-for='entry in focusedMessage'
+        :key='index'
+        v-for='(entry, index) in focusedMessage'
       >
-        <v-list-item >
+        <v-list-item   >
           <v-list-item-avatar>
             <v-img  :src='entry.author.picture_url'/>
           </v-list-item-avatar>
@@ -58,7 +59,11 @@
           </v-list-item-content>
 
         </v-list-item>
-        <v-card-text v-linkified style='white-space: pre-wrap' v-text='entry.message'>
+
+        <v-card-text v-linkified  >
+          <div v-html='entry.message' style='white-space: pre-wrap'>
+
+          </div>
         </v-card-text>
       </div>
 
@@ -103,5 +108,7 @@ export default {
 </script>
 
 <style scoped>
-
+.v-card__text, .v-card__title {
+  word-break: normal; /* maybe !important  */
+}
 </style>

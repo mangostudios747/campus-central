@@ -45,8 +45,8 @@
   <v-card style='max-height: 77vh; overflow: scroll' v-if='focusedMessage' elevation='0' color='#0F326144' class='my-5 mr-5 px-4'>
     <v-card-title>{{focusedMessage[0].subject}}</v-card-title>
     <v-sheet color='#04173B33' rounded
-
-    v-for='entry in focusedMessage'
+    :key='index'
+    v-for='(entry, index) in focusedMessage'
     >
       <v-list-item >
         <v-list-item-avatar>
@@ -102,7 +102,8 @@ export default {
 </script>
 
 <style scoped>
-::-webkit-scrollbar-thumb {
-  background: #5bd938;
+
+.v-card__text, .v-card__title {
+  word-break: normal; /* maybe !important  */
 }
 </style>
