@@ -27,7 +27,7 @@
     "oauth": "^0.9.15",
     "passport": "^0.4.1",
     "passport-schoology-oauth": "^1.0.3",
-    "vue-linkify": "^1.0.1",
+    "vue-linkify": "https://github.com/yuichkun/vue-linkify.git",
     "vuetify": "^2.4.9"
   },
   "devDependencies": {
