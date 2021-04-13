@@ -66,9 +66,9 @@
 
         </v-list-item>
 
-        <v-card-text v-linkified >
-          <div  style='white-space: pre-wrap'>
-{{entry.message}}
+        <v-card-text >
+          <div v-linkified v-html='entry.message' style='white-space: pre-wrap'>
+
           </div>
         </v-card-text>
       </div>
