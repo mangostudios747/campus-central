@@ -1,5 +1,23 @@
 import colors from 'vuetify/es5/util/colors'
 
+Date.prototype.addDays = function(days) {
+  var date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+}
+
+Date.prototype.addHours = function(hrs) {
+  let date = new Date(this.valueOf());
+  date.setHours(date.getHours() + hrs);
+  return date;
+}
+
+Date.prototype.addMinutes = function(hrs) {
+  let date = new Date(this.valueOf());
+  date.setMinutes(date.getMinutes() + hrs);
+  return date;
+}
+
 export const state = ()=>({
   theSchedule:{
     "holidays": {
@@ -915,7 +933,22 @@ export const state = ()=>({
 export const mutations = {
   resetTime(state){
     //console.log('bye')
-    state.now = new Date();
+    state.now = (new Date()).addHours(15);
+  },
+  setCustomizations(state, customizations){
+    state.customizations = customizations
+  }
+}
+
+export const actions = {
+  customize({ state }, courses){
+    for (const {course_title, section_title} of courses){
+        const key = section_title.split(" ")[0]
+        if (+key){
+          // valid period class
+          state.customizations["Period "+key].name = course_title;
+        }
+    }
   }
 }
 

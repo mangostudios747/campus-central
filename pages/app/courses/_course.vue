@@ -1,6 +1,20 @@
 <template>
 <div>
-  <h1>{{course.section_title}}</h1>
+
+
+  <v-row class='mt-5 text-center align-center justify-center'>
+    <v-avatar size='150' class='mr-4'>
+      <v-img
+        :src='course.profile_url'
+      ></v-img>
+    </v-avatar>
+
+  </v-row>
+  <v-row class='my-5 text-center align-center justify-center'>
+    <h1 class='my-5'>{{course.section_title}}</h1>
+
+  </v-row>
+
   <h2 class='my-2'>Todo</h2>
   <v-list rounded='lg' v-if='assignments.length > 0' color='secondary'>
     <v-list-item v-for='asg in assignments' :key='asg.id'>
@@ -21,6 +35,9 @@
     </v-container>
 
   </v-card>
+
+  <h2 class='mb-2 mt-4'>Materials</h2>
+  <p>Coming Soon!</p>
 </div>
 </template>
 

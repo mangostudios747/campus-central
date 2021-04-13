@@ -154,11 +154,14 @@ export default {
       }
     ]
   }),
-  mounted() {
+  async mounted() {
     const vapp = this;
     setInterval(()=>{
       vapp.$store.commit('hc/resetTime')
-    }, 1000)
+    }, 1000);
+    // fetch the courses once!
+    this.$store.dispatch('setCourses', await this.$axios.$get('/api/users/me/sections'));
+
   }
   /*async asyncData(ctx) {
 

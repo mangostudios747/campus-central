@@ -2,7 +2,8 @@ export const state = () => ({
   user: null,
   messages:{
     sent:[], inbox:[]
-  }
+  },
+  courses:null // will store
 })
 
 export const mutations = {
@@ -15,8 +16,16 @@ export const mutations = {
   },
   setMessagesSent(state, messages) {
     state.messages.sent = messages
+  },
+  setCourses(state, courses){
+    state.courses = courses;
   }
 
 }
 
-
+export const actions = {
+  setCourses({commit, dispatch}, courses){
+    commit('setCourses', courses);
+    dispatch('hc/customize', courses)
+  }
+}

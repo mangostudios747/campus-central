@@ -4,19 +4,22 @@
   <v-list
 
     style='overflow: scroll; max-height: 77vh'
-    color='tertiary'
+    color='transparent'
     class='ml-2 my-5'
     v-if='messages.length > 0'
     three-line
     nav
   >
+
   <v-list-item
     link
-    :class="{'v-list-item--active':focusedMessage&&(message.id===focusedMessage[0].id)}"
+    :class="{'v-list-item--active ':focusedMessage&&(message.id===focusedMessage[0].id)}"
     @click='focusMessage(message.id)'
   v-for='message of messages'
   :key='message.id'
-  ><v-list-item-avatar v-if='message.author' > <!-- we're not going to even be fetching the author for a bit --->
+  >
+
+    <v-list-item-avatar v-if='message.author' > <!-- we're not going to even be fetching the author for a bit --->
     <v-img :src="message.author.picture_url"></v-img>
   </v-list-item-avatar>
 
@@ -45,7 +48,10 @@
     </v-col>
   <v-col>
     <v-card style='max-height: 77vh; overflow: scroll' v-if='focusedMessage' elevation='0' color='#0F326144' class='my-5 mr-5 px-4'>
-      <v-card-title>{{focusedMessage[0].subject}}</v-card-title>
+      <v-sheet style='position: sticky;top: 0;z-index: 5' color='#071F45'>
+        <v-card-title style='color:#fff'>{{focusedMessage[0].subject}}</v-card-title>
+
+      </v-sheet>
       <div
         :key='index'
         v-for='(entry, index) in focusedMessage'
@@ -60,15 +66,15 @@
 
         </v-list-item>
 
-        <v-card-text v-linkified  >
-          <div v-html='entry.message' style='white-space: pre-wrap'>
+        <v-card-text  >
+          <div v-text='entry.message' style='white-space: pre-wrap'>
 
           </div>
         </v-card-text>
       </div>
 
 
-      <v-textarea placeholder='Type a response . . . (just for fun, nothing will send.)' color='white' filled>
+      <v-textarea clearable placeholder='Type a response . . . (just for fun, nothing will send.)' color='accent' filled>
 
       </v-textarea>
     </v-card>
@@ -111,4 +117,6 @@ export default {
 .v-card__text, .v-card__title {
   word-break: normal; /* maybe !important  */
 }
+
+
 </style>
