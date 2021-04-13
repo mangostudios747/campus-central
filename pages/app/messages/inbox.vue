@@ -1,6 +1,6 @@
 <template>
 <v-row>
-  <v-col cols='3'>
+  <v-col :cols='focusedMessage?3:12'>
   <v-list
 
     style='overflow: scroll; max-height: 77vh'
