@@ -38,8 +38,8 @@ function follow303 (err) {
 async function getFrom(path, creds, method='get', body=null){
   if (method === 'get') {
     return await (oauth[method](`${apiBase}${!path.startsWith('/')? '/':''}${path}`, creds.token, creds.tokenSecret)
+      .catch(follow303)
       .then(toJson))
-      .catch(console.error)
   }
   else {
     return await (oauth[method](`${apiBase}${!path.startsWith('/')? '/':''}${path}`, creds.token, creds.tokenSecret, body, 'application/json')
