@@ -52,9 +52,9 @@
         <v-card-title style='color:#fff'>{{focusedMessage[0].subject}}</v-card-title>
 
       </v-sheet>
-      <div
-        :key='index'
-        v-for='(entry, index) in focusedMessage'
+      <v-sheet rounded color='transparent'
+               :key='index'
+               v-for='(entry, index) in focusedMessage'
       >
         <v-list-item   >
           <v-list-item-avatar>
@@ -71,7 +71,7 @@
 
           </div>
         </v-card-text>
-      </div>
+      </v-sheet>
 
 
       <v-textarea rows='3' v-model='response[focusedMessage[0].id]' clearable placeholder='Type a response . . . (this is real, things will send)' color='accent' filled>

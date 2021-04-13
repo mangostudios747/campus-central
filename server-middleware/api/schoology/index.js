@@ -185,6 +185,11 @@ async function replyToMessage(user, messageId, datums){
 
 }
 
+async function newMessage(user, datums){
+  return await getFrom(`/messages`,  user.credentials, 'post',
+    JSON.stringify(datums));
+}
+
 
 module.exports = {
   // these should only be get or reload functions

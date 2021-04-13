@@ -43,8 +43,11 @@
     </v-col>
   <v-col>
   <v-card style='max-height: 77vh; overflow: scroll' v-if='focusedMessage' elevation='0' color='#0F326144' class='my-5 mr-5 px-4'>
-    <v-card-title>{{focusedMessage[0].subject}}</v-card-title>
-    <v-sheet color='#04173B33' rounded
+    <v-sheet style='position: sticky;top: 0;z-index: 5' color='#071F45'>
+      <v-card-title style='color:#fff'>{{focusedMessage[0].subject}}</v-card-title>
+
+    </v-sheet>
+    <v-sheet rounded color='transparent'
     :key='index'
     v-for='(entry, index) in focusedMessage'
     >
@@ -62,9 +65,18 @@
     </v-sheet>
 
 
-    <v-textarea placeholder='Type a response . . . (just for fun, nothing will send.)' color='white' filled>
-
+    <v-textarea rows='3' v-model='response[focusedMessage[0].id]' clearable placeholder='Type a response . . . (this is real, things will send)' color='accent' filled>
     </v-textarea>
+    <v-row class='mb-5 mr-4'>
+      <v-spacer/>
+      <v-btn
+        @click='sendReply'
+        :loading='sending'
+        :disabled='sending'
+        color='accent'>
+        <v-icon left>mdi-send</v-icon>
+        Send</v-btn>
+    </v-row>
   </v-card>
   </v-col>
 </v-row>
@@ -76,7 +88,9 @@ export default {
   data(){
     return {
       messages:[],
-      focusedMessage: null
+      focusedMessage: null,
+      response:{},
+      sending:false
     }
   },
   async fetch() {
@@ -96,6 +110,18 @@ export default {
     },
     async focusMessage(id){
       this.focusedMessage= await this.fetchMessage(id)
+    },
+    async sendReply(){
+      if (!this.response[this.focusedMessage[0].id]) return;
+      this.sending = true;
+      await this.$axios.$post('/api/users/me/messages/'+this.focusedMessage[0].id, {
+        subject: this.focusedMessage[0].subject,
+        message: this.response[this.focusedMessage[0].id],
+        recipient_ids: this.focusedMessage[0].recipient_ids
+      });
+      await this.focusMessage(this.focusedMessage[0].id)
+      this.sending = false
+      this.response[this.focusedMessage[0].id] = null
     }
   }
 }
