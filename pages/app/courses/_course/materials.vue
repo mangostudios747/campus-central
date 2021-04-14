@@ -48,13 +48,14 @@ export default {
   }),
   async asyncData({ params, $axios }) {
     const courseid = params.course;
+    const course  = await $axios.$get(`/api/users/me/sections/${courseid}`)
     const folderContents = await $axios.$get('/api/sections/'+courseid+'/folder/0')
     const items = {};
-
+    console.log(course)
     folderContents.forEach(function(item) {
       items[item.id] = item;
     })
-    return {courseid, folderContents, items}
+    return {courseid, course_id:course.parent_id, folderContents, items}
   },
   methods:{
     async fetchChildren(item){
@@ -80,7 +81,7 @@ export default {
           url = 'assignment/'+item.id+'/info';
           break;
         case 'document':
-          url = 'materials/link/view/'+item.id;
+          url = 'course/'+this.course_id+'/materials/link/view/'+item.id;
           break;
       }
       if (url) window.open('https://pausd.schoology.com/'+url, '_blank');

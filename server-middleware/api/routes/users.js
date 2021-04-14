@@ -12,7 +12,7 @@ const {
   fetchMessagesInbox,
   getAssignmentsForSection,
   reloadAssignmentsForSection,
-  getSectionFolder
+  getSection
 } = require('../schoology')
 
 // middleware: reject the request when there is no user - this way we can keep the code clean
@@ -58,11 +58,9 @@ router.get('/me/sections/:sectionid/assignments/pending', async function(req, re
 })
 
 router.get('/me/sections/:sectionid', async function(req, res, next) {
-  const sections = await getSections(req.user)
+  const section = await getSection(req.user, req.params.sectionid)
 
-  const poss = sections.filter(section => section.id === req.params.sectionid)
-  if (!poss) return res.status(404).end()
-  res.send(poss[0])
+  res.send(section)
 
 })
 

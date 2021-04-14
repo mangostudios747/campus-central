@@ -192,7 +192,11 @@ async function newMessage(user, datums){
 
 async function getSectionFolder(user, sectionid, folderid=0){
   return await getFrom(`/courses/${sectionid}/folder/${folderid}/`, user.credentials)
-    .then(e=>e['folder-item'].map(k=>({ name: k.title, color: k.color, type:k.type, body: k.body, id:k.id, children:k.type==='folder'?[]:undefined })));
+    .then(e=>e['folder-item'].map(k=>({ ...k, name: k.title, children:k.type==='folder'?[]:undefined })));
+}
+
+async function getSection(user, sectionid){
+  return await getFrom(`/sections/2772306298/`, user.credentials);
 }
 
 
@@ -210,9 +214,8 @@ module.exports = {
   fetchInboxMessage,
   fetchSentMessage,
   replyToMessage,
-  getSectionFolder
-
-
+  getSectionFolder,
+  getSection
 }
 
 
