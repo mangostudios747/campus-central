@@ -952,6 +952,14 @@ export const actions = {
         state.customizations['Period ' + key].meta.photo = profile_url
         state.customizations['Period ' + key].meta.course_home = `https://pausd.schoology.com/course/${id}/materials`
       }
+      else if (key==='SELF'){
+        state.customizations[key] = {};
+        state.customizations[key].meta = {};
+        state.customizations[key].meta.id = id
+        state.customizations[key].name = course_title
+        state.customizations[key].meta.photo = profile_url
+        state.customizations[key].meta.course_home = `https://pausd.schoology.com/course/${id}/materials`
+      }
     }
     state.customizations['Gunn Together'] = {};
     state.customizations['Gunn Together'].meta = state.customizations['Period 5'].meta
