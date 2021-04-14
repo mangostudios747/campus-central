@@ -54,7 +54,7 @@ export default {
     folderContents.forEach(function(item) {
       items[item.id] = item;
     })
-    return {courseid, course_id:course.parent_id, folderContents, items}
+    return {courseid, course_id:(course.parent_id || course.id), folderContents, items}
   },
   methods:{
     async fetchChildren(item){
