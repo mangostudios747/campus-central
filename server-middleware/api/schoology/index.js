@@ -196,7 +196,7 @@ async function getSectionFolder(user, sectionid, folderid=0){
 }
 
 async function getSection(user, sectionid){
-  return await getFrom(`/sections/2772306298/`, user.credentials);
+  return await getFrom(`/sections/${sectionid}/`, user.credentials);
 }
 
 
