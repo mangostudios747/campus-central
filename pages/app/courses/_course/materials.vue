@@ -4,7 +4,6 @@
   <div
     v-if='folderContents'
   >
-    {{course}}
     <v-treeview
     :items='folderContents'
     :load-children='fetchChildren'
@@ -52,11 +51,10 @@ export default {
     const course  = await $axios.$get(`/api/users/me/sections/${courseid}`)
     const folderContents = await $axios.$get('/api/sections/'+courseid+'/folder/0')
     const items = {};
-    console.log(course)
     folderContents.forEach(function(item) {
       items[item.id] = item;
     })
-    return {courseid, course_id:course.parent_id, course, folderContents, items}
+    return {courseid, course_id:course.parent_id, folderContents, items}
   },
   methods:{
     async fetchChildren(item){
