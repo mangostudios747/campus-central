@@ -1,4 +1,7 @@
 {
+  "CourseMaterials": {
+    "description": "Auto imported from components/CourseMaterials.vue"
+  },
   "Logo": {
     "description": "Auto imported from components/Logo.vue"
   },

@@ -945,15 +945,16 @@ export const actions = {
     for (const { course_title, section_title, id, profile_url } of courses) {
       const key = section_title.split(' ')[0]
       if (+key) {
-        state.customizations['Period ' + key].meta = {
-          photo:'https://ymath.io/favicon.png'
-        };
         // valid period class
+        state.customizations['Period ' + key].meta = {};
+        state.customizations['Period ' + key].meta.id = id
         state.customizations['Period ' + key].name = course_title
         state.customizations['Period ' + key].meta.photo = profile_url
         state.customizations['Period ' + key].meta.course_home = `https://pausd.schoology.com/course/${id}/materials`
       }
     }
+    state.customizations['Gunn Together'] = {};
+    state.customizations['Gunn Together'].meta = state.customizations['Period 5'].meta
   }
 }
 

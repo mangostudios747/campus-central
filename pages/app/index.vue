@@ -33,18 +33,28 @@
       </v-card-title>
 
       <v-list-item-action>
-        <v-btn title='Course Home Page' target='_blank' :href='$store.getters["hc/currentEvent"].meta.course_home' icon><v-icon>mdi-open-in-new</v-icon></v-btn>
+        <v-btn color='accent' v-if='$store.getters["hc/currentEvent"].meta.course_home' title='Course Home Page' target='_blank' :href='$store.getters["hc/currentEvent"].meta.course_home' icon>
+          <!--<v-avatar size='35'>
+            <img src='/schoology-logo.png'/>
+          </v-avatar>--->
+          <v-icon>mdi-open-in-new</v-icon>
+        </v-btn>
       </v-list-item-action>
     </v-list-item>
-</iframe>
+
+    <course-materials v-if='$store.getters["hc/currentEvent"].meta.id' :courseid='$store.getters["hc/currentEvent"].meta.id'></course-materials>
   </v-card>
 </v-col>
 </v-row>
 </template>
 
 <script>
+import CourseMaterials from '@/components/CourseMaterials'
 export default {
-  name: 'index'
+  name: 'index',
+  components:{
+    CourseMaterials
+  }
 }
 </script>
 
