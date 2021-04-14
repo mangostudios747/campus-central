@@ -151,6 +151,10 @@ export default {
         icon: 'mdi-email',
         to: '/app/messages',
         inexact: true
+      },
+      {
+        title:'Grades',
+        icon:'mdi-book-open-variant'
       }
     ]
   }),

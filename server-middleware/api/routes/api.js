@@ -1,11 +1,16 @@
 /* IMPORTS */
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const passport = require('../passport')
-var usersRouter = require('./users');
+const usersRouter = require('./users');
+const sectionsRouter = require('./sections');
 
+/* USES */
+router.use('/sections', sectionsRouter);
 router.use('/users', usersRouter) // so we can have /api/users
 
+
+/* ROUTES */
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'HAHAHA'});
   // lol ok just a random homepage
@@ -13,7 +18,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/auth', function(req, res, next){
   if (req.user) res.redirect('/app');
-  else res.redirect('/api/sign-in');
+  else res.redirect('/api/sign-in'); // used by the homepage
 })
 
 router.get('/oops', function(req, res, next) {

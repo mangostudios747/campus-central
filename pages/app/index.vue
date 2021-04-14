@@ -36,7 +36,7 @@
         <v-btn title='Course Home Page' target='_blank' :href='$store.getters["hc/currentEvent"].meta.course_home' icon><v-icon>mdi-open-in-new</v-icon></v-btn>
       </v-list-item-action>
     </v-list-item>
-
+</iframe>
   </v-card>
 </v-col>
 </v-row>

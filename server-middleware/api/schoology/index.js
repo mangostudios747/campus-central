@@ -190,10 +190,14 @@ async function newMessage(user, datums){
     JSON.stringify(datums));
 }
 
+async function getSectionFolder(user, sectionid, folderid=0){
+  return await getFrom(`/courses/${sectionid}/folder/${folderid}/`, user.credentials)
+    .then(e=>e['folder-item'].map(k=>({ name: k.title, color: k.color, type:k.type, body: k.body, id:k.id, children:k.type==='folder'?[]:undefined })));
+}
+
 
 module.exports = {
   // these should only be get or reload functions
-  getFrom,
   getProfile,
   reloadSections,
   getSections,
@@ -205,7 +209,8 @@ module.exports = {
   getProfileFor,
   fetchInboxMessage,
   fetchSentMessage,
-  replyToMessage
+  replyToMessage,
+  getSectionFolder
 
 
 }

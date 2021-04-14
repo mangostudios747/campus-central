@@ -24,10 +24,32 @@
             "_name": "_fc09f40e"
           },
           {
-            "name": "app-courses-course",
             "path": ":course",
             "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/courses/_course.vue",
             "chunkName": "pages/app/courses/_course",
+            "children": [
+              {
+                "name": "app-courses-course",
+                "path": "",
+                "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/courses/_course/index.vue",
+                "chunkName": "pages/app/courses/_course/index",
+                "_name": "_2370e864"
+              },
+              {
+                "name": "app-courses-course-materials",
+                "path": "materials",
+                "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/courses/_course/materials.vue",
+                "chunkName": "pages/app/courses/_course/materials",
+                "_name": "_6c7835be"
+              },
+              {
+                "name": "app-courses-course-todo",
+                "path": "todo",
+                "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/courses/_course/todo.vue",
+                "chunkName": "pages/app/courses/_course/todo",
+                "_name": "_b63bcab8"
+              }
+            ],
             "_name": "_98f0c2be"
           }
         ],
