@@ -69,7 +69,7 @@ export default {
     meta: {
       name: 'Campus Central',
       description: 'A clean and intuitive interface for Schoology, Campus Central is your new go-to app during class.',
-      theme_color:'#cd786a',
+      theme_color:'#0F3261',
       ogSiteName:'CampusCentral.repl.co',
       ogHost: 'https://campuscentral.repl.co',
       mobileAppIOS:true,
