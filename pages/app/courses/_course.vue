@@ -23,10 +23,6 @@
       exact
     :to='`/app/courses/${courseid}/todo`'
     >Todo</v-tab>
-    <v-tab
-      exact
-      :to='`/app/courses/${courseid}/materials`'
-    >Materials</v-tab>
     <v-tab>Updates</v-tab>
     <v-tab>Grades</v-tab>
   </v-tabs>
