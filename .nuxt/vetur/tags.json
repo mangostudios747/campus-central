@@ -7,5 +7,8 @@
   },
   "VuetifyLogo": {
     "description": "Auto imported from components/VuetifyLogo.vue"
+  },
+  "WeekCalendar": {
+    "description": "Auto imported from components/WeekCalendar.vue"
   }
 }

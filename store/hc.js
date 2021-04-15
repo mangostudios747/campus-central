@@ -1049,7 +1049,7 @@ export const getters = {
           elapsed: (+now - end) / 60000,
           total: null,
           percent: null,
-          isValid: true
+          isValid: false  // we don't want to be like since 7th period happened you're still at school
         }
 
       }

@@ -65,7 +65,7 @@ export default {
       this.folderContents.forEach(function(item) {
         v.items[item.id] = item;
       })
-      this.course_id = course.parent_id || course.id
+      this.course_id = course.parent_id != 0? course.parent_id : course.id
     },
     async fetchChildren(item){
       const folderContents = await this.$axios.$get('/api/sections/'+this.courseid+'/folder/'+item.id);
