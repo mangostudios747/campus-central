@@ -59,7 +59,12 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
+      lang: 'en',
+      theme_color:'#0F3261',
+      short_name: 'Campus Central',
+      name: 'Campus Central',
+      start_url:'/app?standalone=true',
+      background_color: '#04173B'
     },
     meta: {
       name: 'Campus Central',
