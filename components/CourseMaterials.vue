@@ -13,7 +13,7 @@
     >
       <template v-slot:prepend="{ item, open }">
         <v-icon :color='item.color' v-if="item.type=='folder'">
-          {{ open ? 'mdi-folder-open-outline' : 'mdi-folder-outline' }}
+          {{ open ? 'mdi-folder-open' : 'mdi-folder' }}
         </v-icon>
         <v-icon  v-else-if='item.type==="document"'>
           {{ ((name)=>{
@@ -22,18 +22,18 @@
             const ext = parts[1].toLowerCase();
             switch (ext){
               case "pdf":
-                return "mdi-pdf-box"
+                return "mdi-file-pdf-box-outline"
               case "mp4":
-                return "mdi-file-video"
+                return "mdi-file-video-outline"
               default:
-                return "mdi-file-document"
+                return "mdi-file-document-outline"
             }
           }
-          else return "mdi-file-document"
+          else return "mdi-file-document-outline"
         })(item.name)}}
         </v-icon>
         <v-icon v-else-if="item.type==='page'">
-          mdi-book
+          mdi-book-outline
         </v-icon>
         <v-icon v-else-if="item.type==='assignment'">
           mdi-pencil
@@ -92,6 +92,9 @@ export default {
     openItem([itemid]){
       if (!itemid) return;
       const item = this.items[itemid];
+
+      //console.log(item);
+
       let url;
       switch (item.type) {
         case 'page':
@@ -104,24 +107,15 @@ export default {
           url = 'assignment/'+item.id+'/info';
           break;
         case 'document':
-          const parts = item.name.split('.');
-          if (parts.length === 2){
-            const ext = parts[1].toLowerCase();
-            switch (ext){
-              case "pdf":
-                url = 'course/'+this.course_id+'/materials/gp/'+item.id;
-                break;
-              case "mp4":
-                url = 'course/'+this.course_id+'/materials/gp/'+item.id;
-                break;
-              default:
-                url = 'course/'+this.course_id+'/materials/link/view/'+item.id;
-                break;
-            }
+          switch (item.document_type){
+            case "file":
+              url = 'course/'+this.course_id+'/materials/gp/'+item.id;
+              break;
+            default:
+              url = 'course/'+this.course_id+'/materials/link/view/'+item.id;
+              break;
           }
-          else {
-            url = 'course/'+ this.course_id + '/materials/link/view/' + item.id
-          }
+
           break;
       }
       if (url) window.open('https://pausd.schoology.com/'+url, '_blank');
