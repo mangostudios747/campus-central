@@ -16,9 +16,9 @@
           {{ open ? 'mdi-folder-open' : 'mdi-folder' }}
         </v-icon>
         <v-icon  v-else-if='item.type==="document"'>
-          {{ ((name)=>{
-          const parts = name.split('.');
-          if (parts.length === 2){
+          {{ ((item)=>{
+          const parts = item.name.split('.');
+          if (item.document_type==='file'){
             const ext = parts[1].toLowerCase();
             switch (ext){
               case "pdf":
@@ -29,8 +29,9 @@
                 return "mdi-file-document-outline"
             }
           }
+          else if (item.document_type==='link') return "mdi-link"
           else return "mdi-file-document-outline"
-        })(item.name)}}
+        })(item)}}
         </v-icon>
         <v-icon v-else-if="item.type==='page'">
           mdi-book-outline
@@ -93,7 +94,7 @@ export default {
       if (!itemid) return;
       const item = this.items[itemid];
 
-      //console.log(item);
+      console.log(item);
 
       let url;
       switch (item.type) {
