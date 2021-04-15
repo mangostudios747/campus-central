@@ -22,3 +22,7 @@ $yellow: (
   'accent-3': #ffc400,
   'accent-4': #ffab00
 );
+
+.v-card__text, .v-card__title {
+  word-break: normal; /* maybe !important  */
+}

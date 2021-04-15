@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style='height: 100%;'>
 
     <v-navigation-drawer :color='"accent"' v-model='sidebar' app>
       <!-- -->
@@ -112,7 +112,7 @@
         </v-avatar>
       </div>
     </v-app-bar>
-    <v-main>
+    <v-main style='height: 100%;'>
 
       <nuxt-child />
 
@@ -131,21 +131,22 @@ export default {
   data: () => ({
     //user: null
     sidebar: true,
-    routes: [{ title: 'Home', icon: 'mdi-home', to: '/app' }, {
-      title: 'Todo',
-      icon: 'mdi-format-list-checks',
-      to: '/app/todo'
+    routes: [{ title: 'Home', icon: 'mdi-home', to: '/app' },
+      {
+      title: 'Schedule',
+      icon: 'mdi-calendar',
+      to: '/app/schedule'
     },
       { title: 'Courses',
         icon: 'mdi-book-multiple',
         to: '/app/courses',
         inexact: true
       },
-      {
+      /*{
         title: 'Profile',
         icon: 'mdi-account',
         to: '/app/profile'
-      },
+      },*/
       {
         title: 'Messages',
         icon: 'mdi-email',

@@ -49,7 +49,7 @@ function follow303(err) {
   }
 }
 
-/*async function getFrom(path, creds){
+/*export async function getFrom(path, creds){
     return await (oauth.get(`${apiBase}${!path.startsWith('/')? '/':''}${path}`, creds.token, creds.tokenSecret)
         .catch(follow303)
         .then(toJson))
@@ -70,27 +70,27 @@ async function getFrom(path, creds, method = 'get', body = null) {
   //.catch(k=>console.log(k.out[1].headers))
 }
 
-async function getProfile(creds) {
+export async function getProfile(creds) {
   const value = await getFrom('users/me', creds)
   usersCache[value.uid] = value
   return value
 }
 
-async function getProfileFor(creds, uid) {
+export async function getProfileFor(creds, uid) {
   if (usersCache[uid]) return usersCache[uid]
   const returnValue = await getFrom('users/' + uid, creds)
   usersCache[uid] = returnValue
   return returnValue
 }
 
-async function fetchSections(user) {
+export async function fetchSections(user) {
   const apiResult = await getFrom(`/users/${user.profile.uid}/sections`, user.credentials)
   return apiResult.section.sort((section1, section2) => {
     return (+section1.section_title.split(' ')[0] || Infinity) - (+section2.section_title.split(' ')[0] || Infinity)
   }) // an array of sections loll
 }
 
-async function reloadSections(user) {
+export async function reloadSections(user) {
   // get the sections
   const sections = await fetchSections(user)
   // put them in the database
@@ -98,7 +98,7 @@ async function reloadSections(user) {
   return sections
 }
 
-async function getSections(user) {
+export async function getSections(user) {
   // we only need the uid hmm
   let sections = userDatadb.get(`${user.profile.uid}.sections`).value()
   if (!sections) {
@@ -108,12 +108,12 @@ async function getSections(user) {
   return sections
 }
 
-async function fetchAssignmentsForSection(sectionId, creds) {
+export async function fetchAssignmentsForSection(sectionId, creds) {
   // get the assignments from a specific course!
   return (await getFrom(`/sections/${sectionId}/assignments`, creds)).assignment
 }
 
-async function reloadAssignmentsForSection(user, sectionId) {
+export async function reloadAssignmentsForSection(user, sectionId) {
   const asg = await fetchAssignmentsForSection(sectionId, user.credentials)
   // put them in the database
 
@@ -124,7 +124,7 @@ async function reloadAssignmentsForSection(user, sectionId) {
   return asg
 }
 
-async function getAssignmentsForSection(user, sectionId) {
+export async function getAssignmentsForSection(user, sectionId) {
   // we only need the uid hmm
   let data = null//userDatadb.get(`${user.profile.uid}.assignments.${sectionId}`).value();
   if (!data) {
@@ -134,7 +134,7 @@ async function getAssignmentsForSection(user, sectionId) {
   return data
 }
 
-async function getPendingAssignmentsForSection(user, sectionId) {
+export async function getPendingAssignmentsForSection(user, sectionId) {
   // we only need the uid hmm
   let data = await getAssignmentsForSection(user, sectionId)
   return data.filter(assignment => {
@@ -142,7 +142,7 @@ async function getPendingAssignmentsForSection(user, sectionId) {
   })
 }
 
-async function fetchMessagesInbox(user) {
+export async function fetchMessagesInbox(user) {
   const messages = (await getFrom('/messages/inbox', user.credentials)).message
   //console.log(messages);
   for (let index in messages) {
@@ -154,7 +154,7 @@ async function fetchMessagesInbox(user) {
   return messages
 }
 
-async function fetchMessagesSent(user, page = 1) {
+export async function fetchMessagesSent(user, page = 1) {
   const {
     message: messages,
     unreadCount
@@ -172,7 +172,7 @@ async function fetchMessagesSent(user, page = 1) {
   return messages
 }
 
-async function fetchInboxMessage(user, messageId) {
+export async function fetchInboxMessage(user, messageId) {
   const { message } = await getFrom(`/messages/inbox/${messageId}`, user.credentials)
   for (let index in message) {
     const { recipient_ids, author_id } = message[index]
@@ -186,7 +186,7 @@ async function fetchInboxMessage(user, messageId) {
   return message
 }
 
-async function fetchSentMessage(user, messageId) {
+export async function fetchSentMessage(user, messageId) {
   const { message } = await getFrom(`/messages/sent/${messageId}`, user.credentials)
   for (let index in message) {
     const { recipient_ids, author_id } = message[index]
@@ -200,29 +200,28 @@ async function fetchSentMessage(user, messageId) {
   return message
 }
 
-async function replyToMessage(user, messageId, datums) {
+export async function replyToMessage(user, messageId, datums) {
   // datums should have {recipient_ids, subject, message}
   return await getFrom(`/messages/${messageId}`, user.credentials, 'post',
     JSON.stringify(datums))
   // the client should now reload the messages.
-
 }
 
-async function newMessage(user, datums) {
+export async function newMessage(user, datums) {
   return await getFrom(`/messages`, user.credentials, 'post',
     JSON.stringify(datums))
 }
 
-async function getSectionFolder(user, sectionid, folderid = 0) {
+export async function getSectionFolder(user, sectionid, folderid = 0) {
   return await getFrom(`/courses/${sectionid}/folder/${folderid}/`, user.credentials)
     .then(e => e['folder-item']? e['folder-item'].map(k => ({ ...k, name: k.title, children: k.type === 'folder' ? [] : undefined })) : [])
 }
 
-async function getSection(user, sectionid) {
+export async function getSection(user, sectionid) {
   return await getFrom(`/sections/${sectionid}/`, user.credentials)
 }
 
-async function fetchWeekUserEvents(user) {
+export async function fetchWeekUserEvents(user) {
   const base = new Date
   const today = dateToString(base)
   const friday = dateToString(getNextDayOfWeek(base))
@@ -239,7 +238,7 @@ async function fetchWeekUserEvents(user) {
     })
 }
 
-async function fetchAllSectionEventsForWeek(user){
+export async function fetchAllSectionEventsForWeek(user){
   const base = new Date
   const monday = dateToString(getMonday(base))
   const friday = dateToString(getNextDayOfWeek(base))
@@ -264,25 +263,21 @@ async function fetchAllSectionEventsForWeek(user){
 
 }
 
-
-module.exports = {
-  // these should only be get or reload functions
-  getProfile,
-  reloadSections,
-  getSections,
-  reloadAssignmentsForSection,
-  getAssignmentsForSection,
-  getPendingAssignmentsForSection,
-  fetchMessagesInbox,
-  fetchMessagesSent,
-  getProfileFor,
-  fetchInboxMessage,
-  fetchSentMessage,
-  replyToMessage,
-  getSectionFolder,
-  getSection,
-  fetchWeekUserEvents,
-  fetchAllSectionEventsForWeek
+export async function fetchLinkDetails(user, sectionid, documentid) {
+  return await getFrom(`/sections/${sectionid}/documents/${documentid}`, user.credentials)
+    .then(e => e.attachments.links.link[0])
 }
+
+export async function fetchExternalToolDetails(user, sectionid, documentid) {
+  return await getFrom(`/sections/${sectionid}/documents/${documentid}`, user.credentials)
+    .then(e => e.attachments.external_tools.external_tool[0])
+}
+
+export async function fetchFileDetails(user, sectionid, documentid) {
+  return await getFrom(`/sections/${sectionid}/documents/${documentid}`, user.credentials)
+    .then(e => e.attachments.files.file[0])
+}
+
+
 
 

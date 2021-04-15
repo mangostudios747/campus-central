@@ -16,7 +16,7 @@ const _77159d01 = () => interopDefault(import('../pages/app/messages/index.vue' 
 const _1e599cb5 = () => interopDefault(import('../pages/app/messages/inbox.vue' /* webpackChunkName: "pages/app/messages/inbox" */))
 const _77a5668e = () => interopDefault(import('../pages/app/messages/sent.vue' /* webpackChunkName: "pages/app/messages/sent" */))
 const _6387d567 = () => interopDefault(import('../pages/app/profile.vue' /* webpackChunkName: "pages/app/profile" */))
-const _5f3443f8 = () => interopDefault(import('../pages/app/todo.vue' /* webpackChunkName: "pages/app/todo" */))
+const _0c6540c9 = () => interopDefault(import('../pages/app/schedule.vue' /* webpackChunkName: "pages/app/schedule" */))
 const _42f37b06 = () => interopDefault(import('../pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
 const _032209fe = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
@@ -79,9 +79,9 @@ export const routerOptions = {
       component: _6387d567,
       name: "app-profile"
     }, {
-      path: "todo",
-      component: _5f3443f8,
-      name: "app-todo"
+      path: "schedule",
+      component: _0c6540c9,
+      name: "app-schedule"
     }]
   }, {
     path: "/inspire",

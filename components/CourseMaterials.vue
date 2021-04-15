@@ -2,6 +2,7 @@
   <div
   >
     <v-treeview
+      color='white'
       v-if='folderContents'
       :items='folderContents'
       :load-children='fetchChildren'
@@ -30,6 +31,7 @@
             }
           }
           else if (item.document_type==='link') return "mdi-link"
+          else if (item.document_type==='external_tool') return "mdi-ruler-square"
           else return "mdi-file-document-outline"
         })(item)}}
         </v-icon>
@@ -39,7 +41,7 @@
         <v-icon v-else-if="item.type==='assignment'">
           mdi-pencil
         </v-icon>
-        <v-icon v-else-if="item.type==='assessment'||item.type==='assessment_v2'">
+        <v-icon v-else-if="['assessment','assessment_v2','managed_assessment'].includes(item.type)">
           mdi-pencil-ruler
         </v-icon>
       </template>
@@ -49,7 +51,6 @@
     </v-treeview>
     <v-skeleton-loader
       style='background:transparent'
-
       type='article@3'
       v-else/>
   </div>
@@ -58,7 +59,8 @@
 <script>
 export default {
   name: 'CourseMaterials',
-  props:['courseid'],
+  props:['courseid', 'onOpen'],
+
   data:()=>({
     active:[],
     folderContents:null,
@@ -93,11 +95,12 @@ export default {
     openItem([itemid]){
       if (!itemid) return;
       const item = this.items[itemid];
-
+      if (this.onOpen) return this.onOpen(item);
       console.log(item);
 
       let url;
       switch (item.type) {
+
         case 'page':
           url = 'page/'+item.id;
           break;
@@ -111,6 +114,9 @@ export default {
           switch (item.document_type){
             case "file":
               url = 'course/'+this.course_id+'/materials/gp/'+item.id;
+              break;
+            case "external_tool":
+              url = `external_tool/${item.id}/launch`;
               break;
             default:
               url = 'course/'+this.course_id+'/materials/link/view/'+item.id;
