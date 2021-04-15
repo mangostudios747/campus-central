@@ -13,10 +13,24 @@
     >
       <template v-slot:prepend="{ item, open }">
         <v-icon :color='item.color' v-if="item.type=='folder'">
-          {{ open ? 'mdi-folder-open' : 'mdi-folder' }}
+          {{ open ? 'mdi-folder-open-outline' : 'mdi-folder-outline' }}
         </v-icon>
         <v-icon  v-else-if='item.type==="document"'>
-          mdi-file-document
+          {{ ((name)=>{
+          const parts = name.split('.');
+          if (parts.length === 2){
+            const ext = parts[1].toLowerCase();
+            switch (ext){
+              case "pdf":
+                return "mdi-pdf-box"
+              case "mp4":
+                return "mdi-file-video"
+              default:
+                return "mdi-file-document"
+            }
+          }
+          else return "mdi-file-document"
+        })(item.name)}}
         </v-icon>
         <v-icon v-else-if="item.type==='page'">
           mdi-book
@@ -24,7 +38,7 @@
         <v-icon v-else-if="item.type==='assignment'">
           mdi-pencil
         </v-icon>
-        <v-icon v-else-if="item.type==='assessment'">
+        <v-icon v-else-if="item.type==='assessment'||item.type==='assessment_v2'">
           mdi-pencil-ruler
         </v-icon>
       </template>
@@ -90,7 +104,24 @@ export default {
           url = 'assignment/'+item.id+'/info';
           break;
         case 'document':
-          url = 'course/'+this.course_id+'/materials/link/view/'+item.id;
+          const parts = item.name.split('.');
+          if (parts.length === 2){
+            const ext = parts[1].toLowerCase();
+            switch (ext){
+              case "pdf":
+                url = 'course/'+this.course_id+'/materials/gp/'+item.id;
+                break;
+              case "mp4":
+                url = 'course/'+this.course_id+'/materials/gp/'+item.id;
+                break;
+              default:
+                url = 'course/'+this.course_id+'/materials/link/view/'+item.id;
+                break;
+            }
+          }
+          else {
+            url = 'course/'+ this.course_id + '/materials/link/view/' + item.id
+          }
           break;
       }
       if (url) window.open('https://pausd.schoology.com/'+url, '_blank');
