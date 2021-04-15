@@ -10,7 +10,6 @@ const _5508cff6 = () => interopDefault(import('../pages/app/courses.vue' /* webp
 const _fc09f40e = () => interopDefault(import('../pages/app/courses/index.vue' /* webpackChunkName: "pages/app/courses/index" */))
 const _98f0c2be = () => interopDefault(import('../pages/app/courses/_course.vue' /* webpackChunkName: "pages/app/courses/_course" */))
 const _2370e864 = () => interopDefault(import('../pages/app/courses/_course/index.vue' /* webpackChunkName: "pages/app/courses/_course/index" */))
-const _6c7835be = () => interopDefault(import('../pages/app/courses/_course/materials.vue' /* webpackChunkName: "pages/app/courses/_course/materials" */))
 const _b63bcab8 = () => interopDefault(import('../pages/app/courses/_course/todo.vue' /* webpackChunkName: "pages/app/courses/_course/todo" */))
 const _7b834cfe = () => interopDefault(import('../pages/app/messages.vue' /* webpackChunkName: "pages/app/messages" */))
 const _77159d01 = () => interopDefault(import('../pages/app/messages/index.vue' /* webpackChunkName: "pages/app/messages/index" */))
@@ -53,10 +52,6 @@ export const routerOptions = {
           path: "",
           component: _2370e864,
           name: "app-courses-course"
-        }, {
-          path: "materials",
-          component: _6c7835be,
-          name: "app-courses-course-materials"
         }, {
           path: "todo",
           component: _b63bcab8,

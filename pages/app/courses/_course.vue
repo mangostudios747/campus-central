@@ -14,14 +14,17 @@
     <h1 class='my-5'>{{course.section_title}}</h1>
   </v-row>
 
-  <v-tabs background-color='transparent' grow color='white'>
+  <v-tabs background-color='transparent'  grow color='white'>
     <v-tab
+      exact
     :to='`/app/courses/${courseid}/`'
     >Home</v-tab>
     <v-tab
+      exact
     :to='`/app/courses/${courseid}/todo`'
     >Todo</v-tab>
     <v-tab
+      exact
       :to='`/app/courses/${courseid}/materials`'
     >Materials</v-tab>
     <v-tab>Updates</v-tab>
