@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>Updates</h1>
+
     <div v-if='updates'>
       <v-card class='my-3 py-2' color='#0F326199' :key='update.id' v-for='update of updates'
       >
