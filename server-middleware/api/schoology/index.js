@@ -304,3 +304,13 @@ export async function fetchRecentUpdates(user){
   return updates
 }
 
+export async function fetchCourseUpdates(user, courseid){
+  const updates =  await getFrom(`/sections/${courseid}/updates`, user.credentials)
+    .then(e => e.update)
+  for (let update of updates){
+    update.author = await getProfileFor(user.credentials, update.uid)
+    //Object.assign(update, await getUpdate(user, update.id))
+  }
+  return updates
+}
+

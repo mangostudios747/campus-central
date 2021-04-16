@@ -52,6 +52,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style >
+.linkified{
+  color: var(--v-accent-base) !important;
+}
 </style>

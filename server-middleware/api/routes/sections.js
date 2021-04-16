@@ -1,5 +1,5 @@
 const express = require('express')
-const { getSectionFolder } = require('../schoology')
+const sgy = require('../schoology')
 const router = express.Router()
 
 router.use((req, res, next) => {
@@ -16,7 +16,12 @@ router.get('/', (req, res, next) =>{
 
 router.get('/:sectionid/folder/:folderid', async function(req, res, next) {
   const { sectionid, folderid } = req.params
-  res.send( await getSectionFolder(req.user, sectionid, folderid));
+  res.send( await sgy.getSectionFolder(req.user, sectionid, folderid));
+})
+
+router.get('/:sectionid/updates', async function(req, res, next) {
+  const { sectionid } = req.params
+  res.send( await sgy.fetchCourseUpdates(req.user, sectionid));
 })
 
 module.exports = router
