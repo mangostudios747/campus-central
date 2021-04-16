@@ -1,8 +1,9 @@
 const oauth = require('./oauth')
-const { userDatadb } = require('../database')
-const sgyDomain = 'https://pausd.schoology.com'
-const apiBase = 'https://api.schoology.com/v1'
-const usersCache = {}
+const { userDatadb } = require('../database');
+const sgyDomain = 'https://pausd.schoology.com';
+const apiBase = 'https://api.schoology.com/v1';
+const usersCache = {};
+const updatesCache = {};
 
 function getNextDayOfWeek(date, dayOfWeek = 5) {
   // Code to check that date and dayOfWeek are valid left as an exercise ;)
@@ -15,20 +16,20 @@ function getNextDayOfWeek(date, dayOfWeek = 5) {
 }
 
 function getMonday(d) {
-  d = new Date(d);
+  d = new Date(d)
   var day = d.getDay(),
-    diff = d.getDate() - day + (day === 0 ? -6:1); // adjust when day is sunday
-  return new Date(d.setDate(diff));
+    diff = d.getDate() - day + (day === 0 ? -6 : 1) // adjust when day is sunday
+  return new Date(d.setDate(diff))
 }
 
 function dateToString(date) {
-  return (([a,b,c])=>([a,b,c-1].join('-')))(date.toISOString().split('T')[0].split('-'))
+  return (([a, b, c]) => ([a, b, c - 1].join('-')))(date.toISOString().split('T')[0].split('-'))
 }
 
-function flattenArray(arr){
+function flattenArray(arr) {
   const result = []
-  for (let sub of arr){
-    result.push(...sub);
+  for (let sub of arr) {
+    result.push(...sub)
   }
   return result
 }
@@ -214,7 +215,11 @@ export async function newMessage(user, datums) {
 
 export async function getSectionFolder(user, sectionid, folderid = 0) {
   return await getFrom(`/courses/${sectionid}/folder/${folderid}/`, user.credentials)
-    .then(e => e['folder-item']? e['folder-item'].map(k => ({ ...k, name: k.title, children: k.type === 'folder' ? [] : undefined })) : [])
+    .then(e => e['folder-item'] ? e['folder-item'].map(k => ({
+      ...k,
+      name: k.title,
+      children: k.type === 'folder' ? [] : undefined
+    })) : [])
 }
 
 export async function getSection(user, sectionid) {
@@ -229,43 +234,43 @@ export async function fetchWeekUserEvents(user) {
     user.credentials))
     .event
     .map(event => {
-      if (!event.has_end){
-        event.end = event.start;
+      if (!event.has_end) {
+        event.end = event.start
       }
-      event.color = {event:'grey', assignment:'primary', discussion:'accent'}[event.type]
+      event.color = { event: 'grey', assignment: 'primary', discussion: 'accent' }[event.type]
       console.log(event.type)
       event.timed = !event.all_day
-      event.name = event.title;
-      event.links = undefined;
-      return event;
+      event.name = event.title
+      event.links = undefined
+      return event
     })
 }
 
-export async function fetchAllSectionEventsForWeek(user){
+export async function fetchAllSectionEventsForWeek(user) {
   const base = new Date
   const monday = dateToString(getMonday(base))
   const friday = dateToString(getNextDayOfWeek(base))
   // a list of section ids
   const sections = (await getSections(user))
-    .map(a=>a.id)
-    .map(a => `/v1/sections/${a}/events?start_date=${monday}&end_date=${friday}`);
+    .map(a => a.id)
+    .map(a => `/v1/sections/${a}/events?start_date=${monday}&end_date=${friday}`)
   //console.log(sections)
   return flattenArray((await getFrom(`/multiget`, user.credentials, 'post', JSON.stringify({
     request: sections
   })))
     .response
-    .map(a=>a.body.event))
+    .map(a => a.body.event))
     .map(event => {
-    if (!event.has_end){
-      event.end = event.start;
-    }
-      event.color = {event:'grey', assignment:'primary', discussion:'yellow', external_tool:'accent'}[event.type]
+      if (!event.has_end) {
+        event.end = event.start
+      }
+      event.color = { event: 'grey', assignment: 'primary', discussion: 'yellow', external_tool: 'accent' }[event.type]
       console.log(event.type)
-    event.timed = !event.all_day
-    event.name = event.title;
-    event.links = undefined;
-    return event;
-  });
+      event.timed = !event.all_day
+      event.name = event.title
+      event.links = undefined
+      return event
+    })
 
 }
 
@@ -284,6 +289,18 @@ export async function fetchFileDetails(user, sectionid, documentid) {
     .then(e => e.attachments.files.file[0])
 }
 
+export async function getUpdate(user, updateid){
+  return await getFrom(`/users/${user.profile.uid}/updates/${updateid}`, user.credentials)
 
+}
 
+export async function fetchRecentUpdates(user){
+  const updates =  await getFrom(`/recent`, user.credentials)
+    .then(e => e.update)
+  for (let update of updates){
+    update.author = await getProfileFor(user.credentials, update.uid)
+    //Object.assign(update, await getUpdate(user, update.id))
+  }
+  return updates
+}
 

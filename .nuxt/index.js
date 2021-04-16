@@ -15,6 +15,7 @@ import { createStore } from './store.js'
 
 import nuxt_plugin_plugin_eeb6906c from 'nuxt_plugin_plugin_eeb6906c' // Source: ./components/plugin.js (mode: 'all')
 import nuxt_plugin_plugin_3e20b064 from 'nuxt_plugin_plugin_3e20b064' // Source: ./vuetify/plugin.js (mode: 'all')
+import nuxt_plugin_index_0376dca4 from 'nuxt_plugin_index_0376dca4' // Source: ./firebase/index.js (mode: 'all')
 import nuxt_plugin_pluginclient_7bdce374 from 'nuxt_plugin_pluginclient_7bdce374' // Source: ./content/plugin.client.js (mode: 'client')
 import nuxt_plugin_pluginserver_27caffce from 'nuxt_plugin_pluginserver_27caffce' // Source: ./content/plugin.server.js (mode: 'server')
 import nuxt_plugin_workbox_cd878208 from 'nuxt_plugin_workbox_cd878208' // Source: ./workbox.js (mode: 'client')
@@ -22,6 +23,7 @@ import nuxt_plugin_metaplugin_36566be2 from 'nuxt_plugin_metaplugin_36566be2' //
 import nuxt_plugin_iconplugin_2d0720fa from 'nuxt_plugin_iconplugin_2d0720fa' // Source: ./pwa/icon.plugin.js (mode: 'all')
 import nuxt_plugin_axios_2994c1e0 from 'nuxt_plugin_axios_2994c1e0' // Source: ./axios.js (mode: 'all')
 import nuxt_plugin_vuelinkify_2060a592 from 'nuxt_plugin_vuelinkify_2060a592' // Source: ../plugins/vue-linkify.js (mode: 'all')
+import nuxt_plugin_vuemoment_732aa8ba from 'nuxt_plugin_vuemoment_732aa8ba' // Source: ../plugins/vue-moment.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -226,6 +228,10 @@ async function createApp(ssrContext, config = {}) {
     await nuxt_plugin_plugin_3e20b064(app.context, inject)
   }
 
+  if (typeof nuxt_plugin_index_0376dca4 === 'function') {
+    await nuxt_plugin_index_0376dca4(app.context, inject)
+  }
+
   if (process.client && typeof nuxt_plugin_pluginclient_7bdce374 === 'function') {
     await nuxt_plugin_pluginclient_7bdce374(app.context, inject)
   }
@@ -252,6 +258,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_vuelinkify_2060a592 === 'function') {
     await nuxt_plugin_vuelinkify_2060a592(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_vuemoment_732aa8ba === 'function') {
+    await nuxt_plugin_vuemoment_732aa8ba(app.context, inject)
   }
 
   // Lock enablePreview in context

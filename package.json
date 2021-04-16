@@ -30,7 +30,9 @@
     "passport": "^0.4.1",
     "passport-schoology-oauth": "^1.0.3",
     "vue-linkify": "https://github.com/yuichkun/vue-linkify.git",
-    "vuetify": "^2.4.9"
+    "vue-moment": "^4.1.0",
+    "vuetify": "^2.4.9",
+    "vuexfire": "^3.2.5"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.3",

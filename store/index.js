@@ -1,3 +1,5 @@
+import { vuexfireMutations } from 'vuexfire'
+
 export const state = () => ({
   user: null,
   messages:{
@@ -11,6 +13,7 @@ export const mutations = {
     //console.log(user)
     state.user = user
   },
+  ...vuexfireMutations,
   setMessagesInbox(state, messages) {
     state.messages.inbox = messages
   },

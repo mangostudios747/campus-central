@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import {  firebaseAction } from 'vuexfire'
 
 Date.prototype.addDays = function(days) {
   var date = new Date(this.valueOf())
@@ -931,16 +932,25 @@ export const state = () => ({
 })
 
 export const mutations = {
+
   resetTime(state) {
     //console.log('bye')
     state.now = (new Date())//.addHours(15);
   },
   setCustomizations(state, customizations) {
     state.customizations = customizations
-  }
+  },
+  updateSchedule:function(state, schedule){
+    state.theSchedule = schedule
+  },
 }
 
 export const actions = {
+  bindSchedule: firebaseAction(async function ({ bindFirebaseRef }) {
+    const ref = this.$fire.database
+      .ref('/schedule')
+    await bindFirebaseRef('theSchedule', ref, { wait: true })
+  }),
   customize({ state }, courses) {
     for (const { course_title, section_title, id, profile_url } of courses) {
       const key = section_title.split(' ')[0]

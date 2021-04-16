@@ -86,5 +86,8 @@ router.get('/me/events/week/sections', async function(req, res, next) {
   res.send(await sgy.fetchAllSectionEventsForWeek(req.user))
 })
 
+router.get('/me/recent', async function(req, res, next) {
+  res.send(await sgy.fetchRecentUpdates(req.user));
+});
 
 module.exports = router

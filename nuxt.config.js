@@ -21,7 +21,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/vue-linkify.js'
+    '~/plugins/vue-linkify.js',
+    '~/plugins/vue-moment.js'
   ],
 
   serverMiddleware: [
@@ -49,6 +50,23 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyDjLQAzre_M7puZsitnnXhu7uH6M-JIerc",
+          authDomain: "homeworkcentral.firebaseapp.com",
+          databaseURL: "https://homeworkcentral.firebaseio.com",
+          projectId: "homeworkcentral",
+          storageBucket: "homeworkcentral.appspot.com",
+          messagingSenderId: "709390643857",
+          appId: "1:709390643857:web:7ee7ad222cf5f2ba9f4530"
+        },
+        services: {
+          database: true // Just as example. Can be any other service.
+        }
+      }
+    ]
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

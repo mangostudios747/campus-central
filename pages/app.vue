@@ -142,11 +142,11 @@ export default {
         to: '/app/courses',
         inexact: true
       },
-      /*{
-        title: 'Profile',
-        icon: 'mdi-account',
-        to: '/app/profile'
-      },*/
+      {
+        title: 'Updates',
+        icon: 'mdi-inbox',
+        to: '/app/updates'
+      },
       {
         title: 'Messages',
         icon: 'mdi-email',
@@ -163,13 +163,31 @@ export default {
       }
     ]
   }),
+
+  async fetch() {
+    if (process.browser) return
+    try {
+      const ref = this.$fire.database.ref('schedule')
+      const schedule = (await ref.get()).val()
+      //this.$store.commit('hc/updateSchedule', schedule)
+    } catch (e) {
+      console.error(e)
+    }
+  },
+
   async mounted() {
     const vapp = this;
     setInterval(()=>{
       vapp.$store.commit('hc/resetTime')
     }, 1000);
     // fetch the courses once!
-    this.$store.dispatch('setCourses', await this.$axios.$get('/api/users/me/sections'));
+    try {
+      await this.$store.dispatch('setCourses', await this.$axios.$get('/api/users/me/sections'));
+      //await this.$store.dispatch('hc/bindSchedule')
+    } catch (e) {
+      console.error(e)
+    }
+    console.log(this.$store.getters['hc/scheduleForDate'](this.$store.state.hc.now))
 
   }
   /*async asyncData(ctx) {
