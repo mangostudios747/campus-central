@@ -232,6 +232,9 @@ export async function fetchWeekUserEvents(user) {
       if (!event.has_end){
         event.end = event.start;
       }
+      event.color = {event:'grey', assignment:'primary', discussion:'accent'}[event.type]
+      console.log(event.type)
+      event.timed = !event.all_day
       event.name = event.title;
       event.links = undefined;
       return event;
@@ -256,6 +259,9 @@ export async function fetchAllSectionEventsForWeek(user){
     if (!event.has_end){
       event.end = event.start;
     }
+      event.color = {event:'grey', assignment:'primary', discussion:'yellow', external_tool:'accent'}[event.type]
+      console.log(event.type)
+    event.timed = !event.all_day
     event.name = event.title;
     event.links = undefined;
     return event;

@@ -156,6 +156,10 @@ export default {
       {
         title:'Grades',
         icon:'mdi-book-open-variant'
+      },
+      {
+        title:'Settings',
+        icon:'mdi-cog'
       }
     ]
   }),

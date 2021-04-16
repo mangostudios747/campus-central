@@ -79,11 +79,7 @@ router.post('/me/messages/:messageid', async function(req, res, next) {
 })
 
 router.get('/me/events/week', async function(req, res, next) {
-  res.send(await sgy.fetchWeekUserEvents(req.user))
-})
-
-router.get('/me/events/week', async function(req, res, next) {
-  res.send(await sgy.fetchWeekUserEvents(req.user))
+  res.send([...(await sgy.fetchWeekUserEvents(req.user)), ...(await sgy.fetchAllSectionEventsForWeek(req.user))])
 })
 
 router.get('/me/events/week/sections', async function(req, res, next) {

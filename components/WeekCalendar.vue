@@ -1,11 +1,12 @@
 <template>
 
   <div>
-{{events}}
     <v-calendar
       ref='calendar'
       type='week'
       color='primary'
+      event-overlap-mode='stack'
+      :event-color='e=>e.color'
       :weekdays='[1, 2, 3, 4, 5]'
     :events='[...sgyevents]'
     >

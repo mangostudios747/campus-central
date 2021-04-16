@@ -74,7 +74,7 @@
       </v-sheet>
 
 
-      <v-textarea rows='3' v-model='response[focusedMessage[0].id]' clearable placeholder='Type a response . . . (this is real, things will send)' color='accent' filled>
+      <v-textarea rows='3' v-model='response[focusedMessage[0].id]' clearable placeholder='Type a response . . . ' color='accent' filled>
 
       </v-textarea>
       <v-row class='mb-5 mr-4'>
