@@ -2,6 +2,7 @@
 
   <div>
     <v-calendar
+
       ref='calendar'
       type='week'
       color='primary'

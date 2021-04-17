@@ -107,18 +107,19 @@ export default {
     customVariables: ['~/assets/variables.scss'],
     treeShake: true,
     theme: {
-      dark: true,
+      dark: false,
       options:{
         customProperties: true
       },
       themes: {
         dark: {
           primary: '#3066C7',
-          accent: '#cd786a',
+          accent: '#e0897b',
           accentDark:'#8F321E',
           secondary: '#0F3261',
           tertiary:'#04173B',
-         //background: '#0A295E',
+          blueLayer:'#071F45',
+          text: '#fff',
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
@@ -128,10 +129,12 @@ export default {
         },
         light: {
           primary: '#3066C7',
-          accent: '#e0897b',
-          accentDark:'#8F321E',
-          secondary: '#0F3261',
-          tertiary:'#04173B',
+          accent: '#A25247'||'#b7453b',
+          accentDark:'#e0897b',
+          secondary: '#dde2ee',
+          tertiary:'#ccd9ef',
+          blueLayer:'#c3d6f8',
+          text:'#04173B',
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,

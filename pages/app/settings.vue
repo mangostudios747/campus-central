@@ -1,7 +1,9 @@
 <template>
-<div>
+<v-container>
   <h1>Settings</h1>
-</div>
+
+  <v-switch v-model='$vuetify.theme.dark' label='Dark Mode'></v-switch>
+</v-container>
 </template>
 
 <script>

@@ -1,8 +1,8 @@
 <template>
 <div>
-  <v-container>
+  <div>
     <nuxt-child/>
-  </v-container>
+  </div>
 
 </div>
 </template>

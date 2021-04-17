@@ -1,7 +1,7 @@
 <template>
   <div style='height: 100%;'>
 
-    <v-navigation-drawer :color='"accent"' v-model='sidebar' app>
+    <v-navigation-drawer :dark='true' :color='"accent"' v-model='sidebar' app>
       <!-- -->
       <v-list v-if='$store.state.user'>
         <v-list-item class='px-2'>
@@ -116,9 +116,9 @@
 
       <nuxt-child />
 
-      <span style='display:none'>{{ JSON.stringify($store.state.user, null, 4) }}</span>
-      <!-- todo: fetch some meaningful data about the user -->
-      <!-- perhaps have the navbar be courses-to/do-messages -->
+      <!--<span style='display:none'>{{ JSON.stringify($store.state.user, null, 4) }}</span>-->
+
+
     </v-main>
   </div>
 </template>
@@ -159,7 +159,8 @@ export default {
       },
       {
         title:'Settings',
-        icon:'mdi-cog'
+        icon:'mdi-cog',
+        to: '/app/settings'
       }
     ]
   }),

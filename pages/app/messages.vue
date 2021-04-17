@@ -1,10 +1,8 @@
 <template>
   <div>
     <v-tabs
-      background-color='secondary'
-      color='#ffffffaa'
-      grow
-
+      :background-color='this.$vuetify.theme.currentTheme.secondary'
+      grow :color='this.$vuetify.theme.currentTheme.text'
     >
       <v-tab  to='/app/messages/inbox'>Inbox</v-tab>
       <v-tab to='/app/messages/sent'>Sent</v-tab>
@@ -20,6 +18,9 @@ export default {
     if(ctx.route.fullPath === '/app/messages'){
       ctx.redirect('/app/messages/inbox')
     }
+  },
+  mounted(){
+    console.log(this.$vuetify.theme)
   }
 }
 </script>

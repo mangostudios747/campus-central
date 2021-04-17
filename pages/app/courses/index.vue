@@ -1,5 +1,5 @@
 <template>
-<div >
+<v-container >
 
   <v-sheet class='pt-5' elevation='0' color='transparent' rounded='lg'>
     <v-row><h1  class='px-4 pb-2'>Courses </h1><v-spacer></v-spacer><v-btn v-if='false' class='mr-7' style='padding: 0 0 !important;' rounded color='accent' ><v-icon >mdi-reload</v-icon></v-btn></v-row>
@@ -18,7 +18,7 @@
       </v-list-item>
     </v-list>
   </v-sheet>
-</div>
+</v-container>
 </template>
 
 <script>

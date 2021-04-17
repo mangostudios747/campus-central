@@ -5,7 +5,7 @@
 
   <v-list
     style='overflow: scroll; max-height: 77vh'
-    color='tertiary'
+    color='transparent'
     class='ml-2 my-5'
     v-if='messages.length > 0'
     three-line
@@ -42,9 +42,9 @@
   </v-container>
     </v-col>
   <v-col>
-  <v-card style='max-height: 77vh; overflow: scroll' v-if='focusedMessage' elevation='0' color='#0F326144' class='my-5 mr-5 px-4'>
-    <v-sheet style='position: sticky;top: 0;z-index: 5' color='#071F45'>
-      <v-card-title style='color:#fff'>{{focusedMessage[0].subject}}</v-card-title>
+    <v-card style='max-height: 77vh; overflow: scroll' v-if='focusedMessage' elevation='0' color='blueLayer' class='my-5 mr-5 px-4'>
+      <v-sheet style='position: sticky;top: 0;z-index: 5' color='blueLayer'>
+        <v-card-title>{{focusedMessage[0].subject}}</v-card-title>
 
     </v-sheet>
     <v-sheet rounded color='transparent'
