@@ -86,19 +86,21 @@
       </v-app-bar-nav-icon>
       <v-app-bar-title v-if='false'>Campus Central</v-app-bar-title>
 
-      <v-progress-circular class=" elevation-0 mr-5" style="border-radius: 50%"
+        <v-progress-circular class=" elevation-0 mr-5" style="border-radius: 50%"
 
-                           :rotate="270"
-                           :size="30"
-                           :width="5"
-                           :value="$store.getters['hc/currentEvent'].percent"
+                             :rotate="270"
+                             :size="30"
+                             :width="5"
+                             :value="$store.getters['hc/currentEvent'].percent"
 
-                           :color="($store.state.hc.customizations[$store.getters['hc/currentEvent'].id]||{color:'blue-grey'}).color"
+                             :color="($store.state.hc.customizations[$store.getters['hc/currentEvent'].id]||{color:'blue-grey'}).color"
 
 
-      ></v-progress-circular>
-      <v-toolbar-title>{{Math.ceil($store.getters['hc/currentEvent'].remaining||$store.getters['hc/currentEvent'].elapsed)}} mins
-        {{ $store.getters['hc/currentEvent'].displayText }} {{ $store.getters['hc/currentEvent'].name }}</v-toolbar-title>
+        ></v-progress-circular>
+        <v-toolbar-title v-if="!$store.getters['hc/currentEvent'].isHoliday">{{Math.ceil($store.getters['hc/currentEvent'].remaining||$store.getters['hc/currentEvent'].elapsed)}} mins
+          {{ $store.getters['hc/currentEvent'].displayText }} {{ $store.getters['hc/currentEvent'].name }}</v-toolbar-title>
+        <v-toolbar-title v-else>No school today</v-toolbar-title>
+
 
       <v-spacer></v-spacer>
       <div v-if='$store.state.user'>

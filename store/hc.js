@@ -1066,10 +1066,12 @@ export const getters = {
 
     }
     return {
-      type: 'none',
-      name: 'the day',
-      isValid: false,
-      remaining: 'No School'
+      type:"none",
+      name:"today",
+      isHoliday:true,
+      isValid:false,
+      remaining: "No School",
+      percent: 0
     }
 
   },
