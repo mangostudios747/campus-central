@@ -28,7 +28,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(session({
-  secret: 'keyboard cat', // TODO: legit secret
+  secret: process.env.cookie_secret, // TODO: legit secret
   resave: false,
   store: new LowdbStore(sessionStoragedb, {
     ttl: 86400

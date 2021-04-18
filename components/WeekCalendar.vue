@@ -3,7 +3,7 @@
   <v-row class="fill-height">
     <v-col>
       <v-calendar
-        style='height: 100%'
+        style='height: 100vh'
         ref='calendar'
         type='month'
         color='primary'
