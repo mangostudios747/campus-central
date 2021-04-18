@@ -4,6 +4,7 @@ const router = express.Router();
 const passport = require('../passport')
 const usersRouter = require('./users');
 const sectionsRouter = require('./sections');
+const { userDatadb, usersdb } = require('../database');
 
 /* USES */
 router.use('/sections', sectionsRouter);
@@ -31,5 +32,9 @@ router.get('/sign-in',
 router.get('/thanks-sgy', passport.authenticate('schoology', {
     successRedirect: '/app', // frontend url
     failureRedirect: '/api/oops' }))
+
+router.get('/user-count', function(req, res, next){
+  res.send({userCount:Object.keys(userDatadb.getState()).length})
+})
 
 module.exports = router;
