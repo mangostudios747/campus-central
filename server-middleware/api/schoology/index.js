@@ -290,12 +290,12 @@ export async function fetchFileDetails(user, sectionid, documentid) {
 }
 
 export async function getUpdate(user, updateid){
-  return await getFrom(`/users/${user.profile.uid}/updates/${updateid}`, user.credentials)
+  return await getFrom(`/users/${user.profile.uid}/updates/${updateid}?with_attachments=true`, user.credentials)
 
 }
 
 export async function fetchRecentUpdates(user){
-  const updates =  await getFrom(`/recent`, user.credentials)
+  const updates =  await getFrom(`/recent?limit=200&with_attachments=true`, user.credentials)
     .then(e => e.update)
   for (let update of updates){
     update.author = await getProfileFor(user.credentials, update.uid)
@@ -305,7 +305,7 @@ export async function fetchRecentUpdates(user){
 }
 
 export async function fetchCourseUpdates(user, courseid){
-  const updates =  await getFrom(`/sections/${courseid}/updates`, user.credentials)
+  const updates =  await getFrom(`/sections/${courseid}/updates?limit=200&with_attachments=true`, user.credentials)
     .then(e => e.update)
   for (let update of updates){
     update.author = await getProfileFor(user.credentials, update.uid)

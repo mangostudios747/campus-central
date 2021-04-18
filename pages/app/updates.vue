@@ -17,8 +17,22 @@
       </v-list-item>
       <v-card-text v-linkified style='white-space: pre-wrap' v-html='update.body'>
       </v-card-text>
+      <div class='px-10' v-if='update.poll'>
+        <v-progress-linear
+          :key='option.id'
+          v-for='option in update.poll.options'
+          :color="option.selected?'accent darken-1':'primary'"
+          height="30"
+          rounded
+          :value="option.count*100/(Math.max(...update.poll.options.map(e=>e.count))+1)"
+          class='my-2'
+        >
+          <template v-slot:default>
+            <v-row class='px-6'><strong :style='{color: (option.selected&&false ? "#141414":"#eff3fc")}' > {{ option.title }}</strong><v-spacer/><strong>{{option.count}}</strong></v-row>
+          </template>
+        </v-progress-linear>
+      </div>
       <v-card-actions>
-
         <v-btn :text='!update.user_like_action'  color='accent'>
           <v-icon left>
             mdi-thumb-up
@@ -46,7 +60,6 @@ export default {
 
   async  asyncData({ $axios }) {
     const updates = await $axios.$get('/api/users/me/recent')
-
     return { updates }
   }
 }
