@@ -6,6 +6,9 @@ const usersdb = low(new FileSync(path.join(__dirname, '../db/users.json')))
 usersdb.defaults({}).write();
 // this just has userprofile data, which is passed to the frontend via middleware.
 
+const statsdb = low(new FileSync(path.join(__dirname, '../db/stats.json')))
+statsdb.defaults({userCount:{}}).write();
+
 const authdb = low(new FileSync(path.join(__dirname, '../db/auth.json')));
 authdb.defaults({}).write();
 // where we map each user id to a access and refresh token
@@ -21,5 +24,5 @@ module.exports = {
     usersdb,
     authdb,
     userDatadb,
-  sessionStoragedb
+  sessionStoragedb, statsdb
 }

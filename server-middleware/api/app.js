@@ -12,7 +12,13 @@ const uuid = require('node-uuid')
 
 const indexRouter = require('./routes/index')
 const apiRouter = require('./routes/api')
-const {sessionStoragedb} = require("./database");
+const {sessionStoragedb, statsdb, userDatadb} = require("./database");
+
+var cron = require('node-cron');
+
+cron.schedule('0 * * * *', () => {
+  statsdb.get('userCount').set(Date.now(), Object.keys(userDatadb.getState()).length).write()
+});
 
 
 const app = express()
