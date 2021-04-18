@@ -8,7 +8,10 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description',
+        name: 'description',
+        content: 'A clean and intuitive interface for Schoology, Campus Central is your new go-to app during class.',
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/icon.png' }

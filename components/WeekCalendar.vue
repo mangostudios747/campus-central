@@ -1,19 +1,22 @@
 <template>
 
-  <div>
-    <v-calendar
+  <v-row class="fill-height">
+    <v-col>
+      <v-calendar
+        style='height: 100%'
+        ref='calendar'
+        type='month'
+        color='primary'
+        event-overlap-mode='column'
+        :event-overlap-threshold='10'
+        :event-color='e=>e.color||"accentDark"'
+        :weekdays='[1, 2, 3, 4, 5]'
+        :events='[...sgyevents]'
+      >
+      </v-calendar>
+    </v-col>
 
-      ref='calendar'
-      type='week'
-      color='primary'
-      event-overlap-mode='stack'
-      :event-color='e=>e.color'
-      :weekdays='[1, 2, 3, 4, 5]'
-    :events='[...sgyevents]'
-    >
-
-    </v-calendar>
-  </div>
+  </v-row>
 
 </template>
 
@@ -24,7 +27,7 @@ export default {
     sgyevents:[]
   }),
   async mounted(){
-    this.sgyevents = await this.$axios.$get('/api/users/me/events/week/sections');
+    this.sgyevents = await this.$axios.$get('/api/users/me/events/week/');
    // this.$refs.calendar.scrollToTime('08:00')
   }
 }
