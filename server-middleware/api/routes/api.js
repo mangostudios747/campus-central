@@ -27,9 +27,9 @@ router.get('/oops', function(req, res, next) {
     res.end('oops lol')
 })
 
-/*router.get('/session', function(req, res, next) {
-  res.send({ session: req.session.cookie.passport }).end();
-}) // scary*/
+router.get('/session', function(req, res, next) {
+  res.send({ session: req.session }).end();
+}) // scary
 
 router.get('/sign-in',
     passport.authenticate('schoology'));

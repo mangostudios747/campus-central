@@ -29,7 +29,7 @@ app.set('view engine', 'pug');
 
 app.use(session({
   secret: process.env.cookie_secret, // TODO: legit secret
-  resave: false,
+  resave: true,
   store: new LowdbStore(sessionStoragedb, {
     ttl: 86400
   }),
