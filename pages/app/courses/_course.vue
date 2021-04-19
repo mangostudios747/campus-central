@@ -37,7 +37,7 @@
           <nuxt-child />
         </v-container>
       </v-col>
-      <v-col style='max-height: 88vh;' class='mx-4  mt-10'>
+      <v-col style='max-height: 88vh;overflow:scroll' class='mx-4  mt-10'>
         <v-card class=' py-2' color='blueLayer'>
           <v-card-title>Links</v-card-title>
           <v-list

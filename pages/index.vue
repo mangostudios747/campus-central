@@ -2,17 +2,25 @@
   <div>
   <v-row justify="center" class='mb-16 pb-9' align="center">
     <v-col cols="12" sm="8" md="12">
-      <div  class='text-center my-5'>
-        <img width='400' :src='$icon(512)'/>
-        <h1 class='display-4 mb-3'>Campus Central</h1>
-        <h1 class='display-2 grey--text'>All of your Schoology struggles, solved.</h1>
+      <div  class='d-sm-none d-block text-center my-5'>
+
+        <img  width='200' :src='$icon(512)'/>
+        <h1 class='display-4 mb-3' style='font-size: 3rem !important;'>Campus Central</h1>
+        <h1 class='display-2 ' style='color:#ffffff77;font-size: 2rem !important;'>All of your Schoology struggles, solved.</h1>
+      </div>
+      <div  class='d-sm-block d-none text-center my-5'>
+
+
+        <img  width='400' :src='$icon(512)'/>
+        <h1 class='display-4 mb-3' >Campus Central</h1>
+        <h1 class='display-2' style='color:#ffffff77'>All of your Schoology struggles, solved.</h1>
       </div>
 
     </v-col>
   </v-row>
     <div style='width: 100%;background-color: #c0c1cf'>
-      <v-row  class='py-16'>
-        <v-col cols='4' class='ml-16'>
+      <v-row   class='py-16'>
+        <v-col  class='ml-sm-16 mr-6 mr-sm-0 ml-9 col-sm-4' >
           <v-card elevation='6' color='tertiary'>
             <v-system-bar color='secondary' />
             <v-row>
@@ -95,8 +103,8 @@
 
           </v-card>
         </v-col>
-        <v-col cols='1'></v-col>
-        <v-col cols='5' class='ml-16 theme--light'>
+        <v-col class='col-sm-1 d-none  d-sm-flex'></v-col>
+        <v-col  class='ml-16 col-sm-5 theme--light'>
           <v-sheet color='transparent' light>
             <h1 class='display-2'>Easy Access</h1>
             <p class='headline mt-3'>
