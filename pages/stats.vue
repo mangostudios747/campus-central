@@ -1,7 +1,7 @@
 <template>
-<div>
+<div >
   <graph-line-dateblock
-    :width="600"
+    :width="1500"
     :height="400"
     :axis-min="Math.floor((Math.min(...values)-2)/5)*5"
     :axis-max="Math.ceil((Math.max(...values)+1)/5)*5"

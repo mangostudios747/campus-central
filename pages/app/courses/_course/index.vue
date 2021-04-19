@@ -3,13 +3,45 @@
   <h2 class='my-2'>Materials</h2>
   <v-row
   >
-    <v-col :cols='+!!objectType*5'>
-      <course-materials :courseid='courseid'></course-materials>
+    <v-col :cols='+!!objectType*6'>
+      <course-materials style='height: 40vh;overflow: scroll'  :courseid='courseid'></course-materials>
     </v-col>
     <v-col v-if='objectType' cols='6'>
       <v-card color='#0F326199'>
         <v-card-title v-html='focusedObject.title'></v-card-title>
         <v-card-text style='white-space: pre-wrap' v-html='focusedObject.body'></v-card-text>
+        <div v-if='focusedObject.attachments'>
+          <div class='px-10' v-if='focusedObject.attachments.links'>
+
+
+            <v-alert
+
+              v-for='link in focusedObject.attachments.links.link'
+              :key='link.id'
+
+              border='left'
+              text
+              color='accent'>
+
+              <h4><a style='color: var(--v-accent-base) !important;text-decoration: none' :href='link.url' >{{link.title}}</a></h4>
+              <p v-if='link.summary' v-html='link.summary'></p>
+            </v-alert>
+
+          </div>
+          <div class='px-10' v-if='focusedObject.attachments.files'>
+            <v-row>
+              <div class='py-3' :key='file.id' v-for='file of focusedObject.attachments.files.file'>
+                <v-card style='cursor: pointer' v-ripple class='mx-3' v-if='file.filemime.split("/")[0]==="image"'>
+
+                  <v-img  :src='`https://pausd.schoology.com/attachment/${file.id}/image/attachment_image_thumb`'></v-img>
+                </v-card>
+                <div v-else>
+                  {{file.filemime.split("/")[0]}}
+                </div>
+              </div>
+            </v-row>
+          </div>
+        </div>
       </v-card>
     </v-col>
   </v-row>

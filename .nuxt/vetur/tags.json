@@ -5,6 +5,9 @@
   "Logo": {
     "description": "Auto imported from components/Logo.vue"
   },
+  "Update": {
+    "description": "Auto imported from components/Update.vue"
+  },
   "VuetifyLogo": {
     "description": "Auto imported from components/VuetifyLogo.vue"
   },

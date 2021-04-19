@@ -90,4 +90,8 @@ router.get('/me/recent', async function(req, res, next) {
   res.send(await sgy.fetchRecentUpdates(req.user));
 });
 
+router.post('/like/:updateid', async function(req, res, next){
+  res.send(await sgy.like(req.user, req.params.updateid, req.body.desiredOutcome));
+})
+
 module.exports = router

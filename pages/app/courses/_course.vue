@@ -2,7 +2,7 @@
   <div>
 
     <v-row>
-      <v-col style='max-height: 88vh; overflow: scroll' :cols='9'>
+      <v-col style='max-height: calc(100vh - 92px); overflow: scroll' :cols='9'>
         <v-container class='mx-3'>
           <v-row class='mt-5 text-center align-center justify-center'>
             <v-avatar size='100' class='mr-4'>

@@ -50,9 +50,8 @@ export default {
   },
   async fetch(ctx) {
 
-    const user = ctx.req.user
-    this.user = user;
-    console.log(user)
+    this.user = ctx.req.user;
+    //console.log(user)
   },
 }
 </script>

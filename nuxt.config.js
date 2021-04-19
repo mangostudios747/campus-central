@@ -133,11 +133,11 @@ export default {
         },
         light: {
           primary: '#3066C7',
-          accent: '#A25247'||'#b7453b',
+          accent: '#b06056'||'#b7453b',
           accentDark:'#e0897b',
           secondary: '#dde2ee',
           tertiary:'#ccd9ef',
-          blueLayer:'#c3d6f8',
+          blueLayer:'#d6ddee'||'#c3d6f8',
           text:'#04173B',
           info: colors.teal.lighten1,
           warning: colors.amber.base,

@@ -214,7 +214,7 @@ export async function newMessage(user, datums) {
 }
 
 export async function getSectionFolder(user, sectionid, folderid = 0) {
-  return await getFrom(`/courses/${sectionid}/folder/${folderid}/`, user.credentials)
+  return await getFrom(`/courses/${sectionid}/folder/${folderid}?with_attachments=1`, user.credentials)
     .then(e => e['folder-item'] ? e['folder-item'].map(k => ({
       ...k,
       name: k.title,
@@ -317,5 +317,11 @@ export async function fetchCourseUpdates(user, courseid){
     //Object.assign(update, await getUpdate(user, update.id))
   }
   return updates
+}
+
+export async function like(user,  updateid, like_action) {
+  return await getFrom(`/like/${updateid}`, user.credentials, 'post', JSON.stringify({
+    like_action
+  }))
 }
 
