@@ -2,7 +2,7 @@
   <v-container>
 
     <div v-if='updates'>
-      <update :update='update' :key='update.id' v-for='update of updates'
+      <update @like='like' :update='update' :key='update.id' v-for='update of updates'
       >
       </update>
     </div>
@@ -24,6 +24,11 @@ export default {
     const updates = await $axios.$get('/api/sections/'+params.course+'/updates')
 
     return { updates }
+  },
+  methods: {
+    like(id, response){
+      Object.assign(this.updates.find(e=>e.id===id), response)
+    }
   }
 }
 </script>
