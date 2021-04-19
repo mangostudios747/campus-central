@@ -24,6 +24,7 @@ import nuxt_plugin_iconplugin_2d0720fa from 'nuxt_plugin_iconplugin_2d0720fa' //
 import nuxt_plugin_axios_2994c1e0 from 'nuxt_plugin_axios_2994c1e0' // Source: ./axios.js (mode: 'all')
 import nuxt_plugin_vuelinkify_2060a592 from 'nuxt_plugin_vuelinkify_2060a592' // Source: ../plugins/vue-linkify.js (mode: 'all')
 import nuxt_plugin_vuemoment_732aa8ba from 'nuxt_plugin_vuemoment_732aa8ba' // Source: ../plugins/vue-moment.js (mode: 'all')
+import nuxt_plugin_vuegraphclient_063d67a2 from 'nuxt_plugin_vuegraphclient_063d67a2' // Source: ../plugins/vue-graph.client.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -262,6 +263,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_vuemoment_732aa8ba === 'function') {
     await nuxt_plugin_vuemoment_732aa8ba(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_vuegraphclient_063d67a2 === 'function') {
+    await nuxt_plugin_vuegraphclient_063d67a2(app.context, inject)
   }
 
   // Lock enablePreview in context

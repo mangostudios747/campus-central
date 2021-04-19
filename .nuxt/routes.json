@@ -123,6 +123,13 @@
     "_name": "_42f37b06"
   },
   {
+    "name": "stats",
+    "path": "/stats",
+    "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/stats.vue",
+    "chunkName": "pages/stats",
+    "_name": "_9096116a"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/index.vue",

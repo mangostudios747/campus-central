@@ -237,7 +237,7 @@ export async function fetchWeekUserEvents(user) {
       if (!event.has_end) {
         event.end = event.start
       }
-      event.color = { event: 'grey', assignment: 'primary', discussion: 'accent' }[event.type]
+      event.color = { event: 'green darken-2', assignment: 'primary', discussion: 'accent' }[event.type]
       console.log(event.type)
       event.timed = !event.all_day
       event.name = event.title
@@ -247,9 +247,14 @@ export async function fetchWeekUserEvents(user) {
 }
 
 export async function fetchAllSectionEventsForWeek(user) {
-  const base = new Date
-  const monday = dateToString(getMonday(base))
-  const friday = dateToString(getNextDayOfWeek(base))
+
+  const start = new Date;
+  const end = new Date;
+  start.setDate(0);
+  end.setMonth((start.getMonth()+1)%12 )
+  end.setDate(0);
+  const monday = dateToString(start)
+  const friday = dateToString(end)
   // a list of section ids
   const sections = (await getSections(user))
     .map(a => a.id)
@@ -264,8 +269,8 @@ export async function fetchAllSectionEventsForWeek(user) {
       if (!event.has_end) {
         event.end = event.start
       }
-      event.color = { event: 'grey', assignment: 'primary', discussion: 'yellow', external_tool: 'accent' }[event.type]
-      console.log(event.type)
+      event.color = { event: 'grey', assignment: 'primary', discussion: 'yellow', external_tool: 'accent' }[event.type] || 'purple darken-1'
+      //console.log(event.type)
       event.timed = !event.all_day
       event.name = event.title
       event.links = undefined

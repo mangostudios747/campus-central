@@ -30,6 +30,7 @@
     "oauth": "^0.9.15",
     "passport": "^0.4.1",
     "passport-schoology-oauth": "^1.0.3",
+    "vue-graph": "^0.8.7",
     "vue-linkify": "https://github.com/yuichkun/vue-linkify.git",
     "vue-moment": "^4.1.0",
     "vuetify": "^2.4.9",

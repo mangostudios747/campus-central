@@ -1,12 +1,13 @@
 <template>
 
   <v-row class="fill-height">
-    <v-col>
+    <v-col  style='height: calc(100vh - 92px);padding-bottom: 0'>
       <v-calendar
-        style='height: 100vh'
+
         ref='calendar'
         type='month'
         color='primary'
+
         event-overlap-mode='column'
         :event-overlap-threshold='10'
         :event-color='e=>e.color||"accentDark"'
