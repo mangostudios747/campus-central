@@ -3,14 +3,15 @@
   <graph-line-dateblock
     :width="600"
     :height="400"
-    :axis-min="0"
-    :axis-max="100"
+    :axis-min="Math.floor((Math.min(...values)-2)/5)*5"
+    :axis-max="Math.ceil((Math.max(...values)+1)/5)*5"
     :axis-reverse="false"
     :axis-format="'HH:mm'"
-    :axis-interval="1000 * 60 * 60 * 8"
+    :axis-interval="1000 * 60 * 60"
+
     :labels="keys"
     :values="values">
-    <note :text="'Line Chart'"></note>
+    <note :text="'User Count'"></note>
   </graph-line-dateblock>
 </div>
 </template>

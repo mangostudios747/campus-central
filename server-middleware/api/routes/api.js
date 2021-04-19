@@ -43,7 +43,19 @@ router.get('/user-count', function(req, res, next){
 })
 
 router.get('/user-count/log', function(req, res, next){
-  const state = statsdb.getState().userCount;
+  const state = {
+    "userCount": {
+      "1618758000646": 27,
+      "1618761600334": 27,
+      "1618765200683": 27,
+      "1618768800137": 29,
+      "1618772400683": 29,
+      "1618776000273": 30,
+      "1618779600951": 30,
+      "1618783200937": 30,
+      "1618790400311": 30
+    }
+  }.userCount || statsdb.getState().userCount;
   const keys = Object.keys(state);
   const values = keys.map(key => state[key]);
   res.send({keys, values})
