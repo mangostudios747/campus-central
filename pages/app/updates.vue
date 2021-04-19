@@ -30,7 +30,12 @@ export default {
     like(id, response){
       Object.assign(this.updates.find(e=>e.id===id), response)
     }
-  }
+  },
+  head(){
+    return {
+      title:'Updates'
+    }
+  },
 }
 </script>
 

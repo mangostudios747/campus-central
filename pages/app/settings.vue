@@ -8,7 +8,12 @@
 
 <script>
 export default {
-  name: 'Settings'
+  name: 'Settings',
+  head(){
+    return {
+      title:'Settings'
+    }
+  },
 }
 </script>
 

@@ -19,15 +19,19 @@ let store = {};
   // Enforce store modules
   store.modules = store.modules || {}
 
+  resolveStoreModules(require('../store/cache.js'), 'cache.js')
   resolveStoreModules(require('../store/hc.js'), 'hc.js')
+  resolveStoreModules(require('../store/options.js'), 'options.js')
 
   // If the environment supports hot reloading...
 
   if (process.client && module.hot) {
     // Whenever any Vuex module is updated...
     module.hot.accept([
+      '../store/cache.js',
       '../store/hc.js',
       '../store/index.js',
+      '../store/options.js',
     ], () => {
       // Update `root.modules` with the latest definitions.
       updateModules()

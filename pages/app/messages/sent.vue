@@ -93,6 +93,11 @@ export default {
       sending:false
     }
   },
+  head(){
+    return {
+      title:'Sent'
+    }
+  },
   async fetch() {
     if (this.$store.state.messages.sent.length > 0){
       this.messages= this.$store.state.messages.sent

@@ -4,7 +4,7 @@
   <v-row
   >
     <v-col :cols='+!!objectType*6'>
-      <course-materials style='height: 40vh;overflow: scroll'  :courseid='courseid'></course-materials>
+      <course-materials   :courseid='courseid'></course-materials>
     </v-col>
     <v-col v-if='objectType' cols='6'>
       <v-card color='#0F326199'>

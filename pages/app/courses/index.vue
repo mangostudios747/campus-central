@@ -32,6 +32,11 @@ export default {
   /*data:()=>({
     sections: this.$store.state.courses
   })*/
+  head(){
+    return {
+      title:'Courses'
+    }
+  },
 
 }
 </script>

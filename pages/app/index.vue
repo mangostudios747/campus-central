@@ -66,7 +66,12 @@ export default {
   name: 'index',
   components: {
     CourseMaterials
-  }
+  },
+  head(){
+    return {
+      title:'Home'
+    }
+  },
 }
 </script>
 

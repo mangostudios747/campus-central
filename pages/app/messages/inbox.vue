@@ -103,6 +103,11 @@ export default {
       sending:false
     }
   },
+  head(){
+    return {
+      title:'Inbox'
+    }
+  },
   async fetch() {
     if (this.$store.state.messages.inbox.length > 0){
       this.messages= this.$store.state.messages.inbox

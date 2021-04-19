@@ -11,7 +11,12 @@ export default {
   name: 'todo',
   data:()=>({
     dialog:false
-  })
+  }),
+  head(){
+    return {
+      title:'Schedule'
+    }
+  },
 }
 </script>
 

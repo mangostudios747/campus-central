@@ -2,7 +2,7 @@
   <div>
 
     <v-row>
-      <v-col style='max-height: calc(100vh - 92px); overflow: scroll' :cols='9'>
+      <v-col style='' :cols='9'>
         <v-container class='mx-3'>
           <v-row class='mt-5 text-center align-center justify-center'>
             <v-avatar size='100' class='mr-4'>
@@ -15,8 +15,8 @@
           <v-row class='my-5 text-center align-center justify-center'>
             <h1 class='my-5'>{{ course.section_title }}</h1>
           </v-row>
-
-          <v-tabs background-color='transparent' grow color='text'>
+          <div style='position: sticky;top: 58px;z-index: 4'>
+          <v-tabs  background-color='background' grow color='text'>
             <v-tab
               exact
               :to='`/app/courses/${courseid}/`'
@@ -33,7 +33,7 @@
             </v-tab>
             <v-tab>Grades</v-tab>
           </v-tabs>
-
+          </div>
           <nuxt-child />
         </v-container>
       </v-col>
@@ -108,7 +108,13 @@ export default {
       ],
       notepad:`Notepad stuff coming soon too. This is just a preview.`
     }
-  })
+  }),
+  head(){
+    return {
+      title:this.course.course_title
+    }
+  }
+
 }
 </script>
 

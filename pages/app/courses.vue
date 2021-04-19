@@ -1,9 +1,6 @@
 <template>
 <div>
-  <div>
     <nuxt-child/>
-  </div>
-
 </div>
 </template>
 
