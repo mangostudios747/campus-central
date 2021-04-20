@@ -1,6 +1,6 @@
 <template>
   <div >
-  <v-row v-if="$store.getters['hc/currentEvent'].isValid" class='mt-10 px-4'>
+  <v-row v-if="$store.getters['hc/currentEvent'].meta" class='mt-10 px-4'>
     <v-col cols='4'>
       <v-card  elevation='3' color='#0F326144' class='text-center py-7'>
         <v-progress-circular class=' elevation-10 ' style='border-radius: 50%'

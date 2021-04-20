@@ -52,10 +52,32 @@
       <div class='px-10' v-if='update.attachments.files'>
         <v-row>
           <div class='py-3' :key='file.id' v-for='file of update.attachments.files.file'>
-            <v-card style='cursor: pointer' v-ripple class='mx-3' v-if='file.filemime.split("/")[0]==="image"'>
+            <v-dialog
+              transition="dialog-bottom-transition"
+              max-width="600"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-card v-bind='attrs' v-on='on' style='cursor: pointer' v-ripple class='mx-3' v-if='file.filemime.split("/")[0]==="image"'>
 
-              <v-img  :src='`https://pausd.schoology.com/attachment/${file.id}/image/attachment_image_thumb`'></v-img>
-            </v-card>
+                  <v-img  :src='`https://pausd.schoology.com/attachment/${file.id}/image/attachment_image_thumb`'></v-img>
+                </v-card>
+              </template>
+              <template v-slot:default="dialog">
+                <v-card color='secondary'>
+                  <v-card-actions class="justify-end">
+
+                    <v-btn
+                      text
+                      icon
+                      @click="dialog.value = false"
+                    ><v-icon>mdi-close</v-icon></v-btn>
+                  </v-card-actions>
+                  <v-img lazy-src='`https://pausd.schoology.com/attachment/${file.id}/image/attachment_image_thumb`' :src='`https://pausd.schoology.com/attachment/${file.id}/image/lightbox_preview`'></v-img>
+
+                </v-card>
+              </template>
+            </v-dialog>
+
           </div>
         </v-row>
       </div>
