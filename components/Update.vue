@@ -63,9 +63,11 @@
                 </v-card>
               </template>
               <template v-slot:default="dialog">
-                <v-card color='secondary' class='pa-1'>
+                <v-card  color='secondary' class='pa-1'>
                   <v-card-actions class="">
-{{file.title}}
+    <v-btn target='_blank' :href='`https://pausd.schoology.com/attachment/${file.id}/image/lightbox_preview`' icon>
+                    <v-icon>mdi-open-in-new</v-icon>
+                  </v-btn>{{file.title}}
                     <v-spacer></v-spacer>
                     <v-btn
                       text
@@ -73,7 +75,7 @@
                       @click="dialog.value = false"
                     ><v-icon>mdi-close</v-icon></v-btn>
                   </v-card-actions>
-                  <v-img   :lazy-src='`https://pausd.schoology.com/attachment/${file.id}/image/attachment_image_thumb`' :src='`https://pausd.schoology.com/attachment/${file.id}/image/lightbox_preview`'></v-img>
+                  <v-img   :lazy-src='`https://pausd.schoology.com/attachment/${file.id}/image/attachment_image_thumb`'  :src='`https://pausd.schoology.com/attachment/${file.id}/image/lightbox_preview`'></v-img>
 
                 </v-card>
               </template>
