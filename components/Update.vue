@@ -73,7 +73,7 @@
                       @click="dialog.value = false"
                     ><v-icon>mdi-close</v-icon></v-btn>
                   </v-card-actions>
-                  <v-img   lazy-src='`https://pausd.schoology.com/attachment/${file.id}/image/attachment_image_thumb`' :src='`https://pausd.schoology.com/attachment/${file.id}/image/lightbox_preview`'></v-img>
+                  <v-img   :lazy-src='`https://pausd.schoology.com/attachment/${file.id}/image/attachment_image_thumb`' :src='`https://pausd.schoology.com/attachment/${file.id}/image/lightbox_preview`'></v-img>
 
                 </v-card>
               </template>

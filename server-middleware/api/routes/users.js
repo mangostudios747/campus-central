@@ -94,4 +94,8 @@ router.post('/like/:updateid', async function(req, res, next){
   res.send(await sgy.like(req.user, req.params.updateid, req.body.desiredOutcome));
 })
 
+router.get('/me/sections/:sectionid/document/:documentid', async function (req, res, next){
+  res.send(await sgy.getDocument(req.user, req.params.sectionid, req.params.documentid))
+})
+
 module.exports = router

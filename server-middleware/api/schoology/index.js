@@ -325,3 +325,8 @@ export async function like(user,  updateid, like_action) {
   }))
 }
 
+export async function getDocument(user,  sectionid, documentid) {
+  return await getFrom(`sections/${sectionid}/documents/${documentid}?with_attachments=true`, user.credentials)
+    .then(e=>e)
+}
+

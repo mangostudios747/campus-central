@@ -4,7 +4,7 @@
   <v-row
   >
     <v-col :cols='+!!objectType*6'>
-      <course-materials :key='courseid'  :courseid='courseid'></course-materials>
+      <course-materials :key='courseid' :on-open='openItem' :courseid='courseid'></course-materials>
     </v-col>
     <v-col v-if='objectType' cols='6'>
       <v-card color='#0F326199'>
@@ -84,8 +84,13 @@ export default {
             this.objectType = item.type
             this.focusedObject = item
             //todo: show submissions as well
+
             break;
           case 'document':
+            const documentData = this.$axios.$get(`me/sections/${this.courseid}/document/${item.id}`)
+            Object.assign(item, documentData)
+            this.objectType = item.type
+            this.focusedObject = item
             switch (item.document_type){
               case "file":
                 url = 'course/'+this.course_id+'/materials/gp/'+item.id;
