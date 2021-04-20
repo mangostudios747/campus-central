@@ -238,7 +238,7 @@ export async function fetchWeekUserEvents(user) {
         event.end = event.start
       }
       event.color = { event: 'green darken-2', assignment: 'primary', discussion: 'accent' }[event.type]
-      console.log(event.type)
+      //console.log(event.type)
       event.timed = !event.all_day
       event.name = event.title
       event.links = undefined

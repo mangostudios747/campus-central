@@ -37,7 +37,10 @@ app.use(session({
     return uuid.v4();
   },
   saveUninitialized: true,
-  cookie: { secure: false }
+  cookie: {
+    secure: false,
+    //sameSite: 'none'
+  }
 }));
 app.use(logger('dev'));
 app.use(express.json());
@@ -62,7 +65,7 @@ app.use('/api', apiRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(
-    //createError(404)
+    createError(404)
   );
 });
 
