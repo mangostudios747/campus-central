@@ -42,38 +42,46 @@
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <!--<v-list-group
-          prepend-icon='mdi-inbox'
+        <v-list-group
+          prepend-icon='mdi-book-multiple'
           color='white'
-          group='/app/messages'
-
-
+          group='/app/courses/.*'
         >
           <template v-slot:activator>
 
               <v-list-item-content>
-                <v-list-item-title>Messages</v-list-item-title>
+                <v-list-item-title>Courses</v-list-item-title>
               </v-list-item-content>
 
           </template>
 
           <v-list-item
-            to='/app/messages/inbox'
+            class='pl-10'
+            :to='`/app/courses/${section.id}`'
+            v-for='section in $store.state.courses'
+            :key='section.id'
           >
-            <v-list-item-icon>
-              <v-icon >mdi-inbox-arrow-down</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Inbox</v-list-item-title>
+            <v-list-item-avatar size='25'>
+              <v-img :src='section.profile_url'></v-img>
+            </v-list-item-avatar>
+            <v-list-item-title>{{ section.course_title }}</v-list-item-title>
           </v-list-item>
-          <v-list-item
-            to='/app/messages/sent'
-          >
-            <v-list-item-icon>
-              <v-icon >mdi-inbox-arrow-up</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Sent</v-list-item-title>
-          </v-list-item>
-        </v-list-group>-->
+        </v-list-group>
+        <v-list-item
+          v-for='item in routes2'
+          :key='item.title'
+          link
+          :exact='!item.inexact'
+          :to='item.to'
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
 
     </v-navigation-drawer>
@@ -133,17 +141,19 @@ export default {
   data: () => ({
     //user: null
     sidebar: true,
-    routes: [{ title: 'Home', icon: 'mdi-home', to: '/app' },
+    routes: [
+      { title: 'Home', icon: 'mdi-home', to: '/app' },
       {
       title: 'Schedule',
       icon: 'mdi-calendar',
       to: '/app/schedule'
     },
-      { title: 'Courses',
+      /*{ title: 'Courses',
         icon: 'mdi-book-multiple',
         to: '/app/courses',
         inexact: true
-      },
+      }*/],
+    routes2:[
       {
         title: 'Updates',
         icon: 'mdi-inbox',

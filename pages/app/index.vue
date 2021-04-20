@@ -46,7 +46,7 @@
           </v-list-item-action>
         </v-list-item>
 
-        <course-materials v-if='$store.getters["hc/currentEvent"].meta.id'
+        <course-materials :key='$store.getters["hc/currentEvent"].meta.id' v-if='$store.getters["hc/currentEvent"].meta.id'
                           :courseid='$store.getters["hc/currentEvent"].meta.id'></course-materials>
       </v-card>
     </v-col>
