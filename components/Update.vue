@@ -63,16 +63,17 @@
                 </v-card>
               </template>
               <template v-slot:default="dialog">
-                <v-card color='secondary'>
-                  <v-card-actions class="justify-end">
-
+                <v-card color='secondary' class='pa-1'>
+                  <v-card-actions class="">
+{{file.title}}
+                    <v-spacer></v-spacer>
                     <v-btn
                       text
                       icon
                       @click="dialog.value = false"
                     ><v-icon>mdi-close</v-icon></v-btn>
                   </v-card-actions>
-                  <v-img lazy-src='`https://pausd.schoology.com/attachment/${file.id}/image/attachment_image_thumb`' :src='`https://pausd.schoology.com/attachment/${file.id}/image/lightbox_preview`'></v-img>
+                  <v-img   lazy-src='`https://pausd.schoology.com/attachment/${file.id}/image/attachment_image_thumb`' :src='`https://pausd.schoology.com/attachment/${file.id}/image/lightbox_preview`'></v-img>
 
                 </v-card>
               </template>
@@ -100,6 +101,9 @@ export default {
   name: 'Update',
   props:['update'],
   emits:['like'],
+  data:()=>({
+    imageLoaded: {  }
+  }),
   methods:{
     async like(id, desiredOutcome){
       // post to axios to get the new data
@@ -108,7 +112,9 @@ export default {
       } )
       // emit the new data
       this.$emit('like', id, response)
-
+    },
+    log(){
+      console.log(...arguments)
     }
   }
 }
