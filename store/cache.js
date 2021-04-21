@@ -1,22 +1,22 @@
-//Object.prototype.property = ()=>{}
+import { GetterTree, ActionTree, MutationTree } from 'vuex'
 
 export const state = () => ({
-  courses:[],
-  updates:[],
-  messages:{
-    inbox:[],
-    sent:[],
+  courses: [],
+  updates: [],
+  messages: {
+    inbox: [],
+    sent: []
   },
-  theSchedule:{},
+  theSchedule: {}
 })
 
 export const mutations = {
-  setValue(state, key, value){
-    state[key] = value;
+  setValue(state, key, value) {
+    state[key] = value
   },
-  async getValue(state, key, fn, force=false){
+  async getValue(state, key, fn, force = false) {
     if (!state[key] || force) {
-      state[key] = await fn();
+      state[key] = await fn()
     }
     return state[key]
   }
