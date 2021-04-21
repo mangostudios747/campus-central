@@ -27,7 +27,7 @@ export default {
     '~/plugins/vue-linkify.js',
     '~/plugins/vue-moment.js',
     '~/plugins/vue-graph.client.js',
-    '~plugins/lowdb.js'
+    //'~plugins/lowdb.js'
   ],
 
   serverMiddleware: [

@@ -1,3 +1,5 @@
-import $db from './lowdb-plugin'
-import Vue from 'vue';
-Vue.use($db);
+import low from 'lowdb'
+import LocalStorage from 'lowdb/adapters/LocalStorage'
+const adapter = new LocalStorage('cc_cache')
+let db;
+export default db = low(adapter)
