@@ -1523,7 +1523,7 @@
     rc9 "^1.2.0"
     std-env "^2.2.1"
 
-"@nuxt/types@^2.15.2", "@nuxt/types@^2.15.3":
+"@nuxt/types@^2.15.2", "@nuxt/types@^2.15.4":
   version "2.15.4"
   resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-2.15.4.tgz#7d385757eb4faa28bb03cddc5f677c5c6677ab42"
   integrity sha512-caDwN0mFIBd5E3y9Gtgb8nAfg+Uqz2QlLKW1qHwLP546A97lC3jIdGlRGoiEUblIxXjEOOBYJ/G5sUBWThXZLQ==
@@ -9436,7 +9436,7 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-request@^2.44.0, request@^2.87.0, request@^2.88.0:
+request@^2.44.0, request@^2.87.0, request@^2.88.0, request@^2.88.2:
   version "2.88.2"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.2.tgz#d73c918731cb5a87da047e207234146f664d12b3"
   integrity sha512-MsvtOrfG9ZcrOwAW+Qi+F6HbD0CWXEh9ou77uOb7FM2WPhwT7smM833PzanhJLsgXjN89Ir6V2PczXNnMpwKhw==

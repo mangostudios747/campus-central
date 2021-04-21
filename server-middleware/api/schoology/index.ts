@@ -1,11 +1,21 @@
 const oauth = require('./oauth')
 const { userDatadb } = require('../database');
-const sgyDomain = 'https://pausd.schoology.com';
-const apiBase = 'https://api.schoology.com/v1';
-const usersCache = {};
+const sgyDomain:string = 'https://pausd.schoology.com';
+const apiBase:string = 'https://api.schoology.com/v1';
+const usersCache:Record<string,any> = {};
 const updatesCache = {};
 
-function getNextDayOfWeek(date, dayOfWeek = 5) {
+interface UserCredentials {
+  token: string;
+  tokenSecret: string;
+}
+
+interface User {
+  profile: any;
+  credentials: UserCredentials;
+}
+
+function getNextDayOfWeek(date: Date, dayOfWeek = 5) {
   // Code to check that date and dayOfWeek are valid left as an exercise ;)
 
   const resultDate = new Date(date.getTime())
@@ -15,18 +25,18 @@ function getNextDayOfWeek(date, dayOfWeek = 5) {
   return resultDate
 }
 
-function getMonday(d) {
+function getMonday(d:Date) {
   d = new Date(d)
-  var day = d.getDay(),
+  const day = d.getDay(),
     diff = d.getDate() - day + (day === 0 ? -6 : 1) // adjust when day is sunday
   return new Date(d.setDate(diff))
 }
 
-function dateToString(date) {
-  return (([a, b, c]) => ([a, b, c - 1].join('-')))(date.toISOString().split('T')[0].split('-'))
+function dateToString(date:Date) : string  {
+  return (([a, b, c]:string[]) => ([a, b, +c - 1].join('-')))(date.toISOString().split('T')[0].split('-'))
 }
 
-function flattenArray(arr) {
+function flattenArray(arr: any[]) :any[] {
   const result = []
   for (let sub of arr) {
     result.push(...sub)
@@ -34,13 +44,13 @@ function flattenArray(arr) {
   return result
 }
 
-function toJson([data]) {
+function toJson([data]:any[]) {
   return JSON.parse(data)
 }
 
 // node-oauth only follows 301 and 302 HTTP statuses, but Schoology redirects
 // /users/me with a 303 status >_<
-function follow303(err) {
+function follow303(err:any) {
   if (err.statusCode === 303) {
     const [, request] = err.out
     //console.log(request.headers.location)
@@ -55,7 +65,7 @@ function follow303(err) {
         .catch(follow303)
         .then(toJson))
 }*/
-async function getFrom(path, creds, method = 'get', body = null) {
+async function getFrom(path:string, creds: UserCredentials, method:string = 'get', body:string|null = null) {
   if (method === 'get') {
     return await (oauth[method](`${apiBase}${!path.startsWith('/') ? '/' : ''}${path}`, creds.token, creds.tokenSecret)
       .catch(follow303)
@@ -71,35 +81,35 @@ async function getFrom(path, creds, method = 'get', body = null) {
   //.catch(k=>console.log(k.out[1].headers))
 }
 
-export async function getProfile(creds) {
+export async function getProfile(creds: UserCredentials) {
   const value = await getFrom('users/me', creds)
   usersCache[value.uid] = value
   return value
 }
 
-export async function getProfileFor(creds, uid) {
+export async function getProfileFor(creds:UserCredentials, uid:string) {
   if (usersCache[uid]) return usersCache[uid]
   const returnValue = await getFrom('users/' + uid, creds)
   usersCache[uid] = returnValue
   return returnValue
 }
 
-export async function fetchSections(user) {
+export async function fetchSections(user: User) {
   const apiResult = await getFrom(`/users/${user.profile.uid}/sections`, user.credentials)
-  return apiResult.section.sort((section1, section2) => {
+  return apiResult.section.sort((section1:any, section2:any) => {
     return (+section1.section_title.split(' ')[0] || Infinity) - (+section2.section_title.split(' ')[0] || Infinity)
   }) // an array of sections loll
 }
 
-export async function reloadSections(user) {
+export async function reloadSections(user: User) {
   // get the sections
-  const sections = await fetchSections(user)
+  const sections = await fetchSections(user);
   // put them in the database
   userDatadb.set(`${user.profile.uid}.sections`, sections).write()
   return sections
 }
 
-export async function getSections(user) {
+export async function getSections(user: User) {
   // we only need the uid hmm
   let sections = userDatadb.get(`${user.profile.uid}.sections`).value()
   if (!sections) {
@@ -109,12 +119,12 @@ export async function getSections(user) {
   return sections
 }
 
-export async function fetchAssignmentsForSection(sectionId, creds) {
+export async function fetchAssignmentsForSection(sectionId: string, creds: UserCredentials) {
   // get the assignments from a specific course!
   return (await getFrom(`/sections/${sectionId}/assignments`, creds)).assignment
 }
 
-export async function reloadAssignmentsForSection(user, sectionId) {
+export async function reloadAssignmentsForSection(user: User, sectionId: string) {
   const asg = await fetchAssignmentsForSection(sectionId, user.credentials)
   // put them in the database
 
@@ -125,25 +135,22 @@ export async function reloadAssignmentsForSection(user, sectionId) {
   return asg
 }
 
-export async function getAssignmentsForSection(user, sectionId) {
+export async function getAssignmentsForSection(user: User, sectionId: string) {
   // we only need the uid hmm
-  let data = null//userDatadb.get(`${user.profile.uid}.assignments.${sectionId}`).value();
-  if (!data) {
-    // we hath not loaded the data! ever!
-    data = await reloadAssignmentsForSection(user, sectionId)
-  }
-  return data
+  //let data = null//userDatadb.get(`${user.profile.uid}.assignments.${sectionId}`).value();
+   // we hath not loaded the data! ever!
+  return await reloadAssignmentsForSection(user, sectionId)
 }
 
-export async function getPendingAssignmentsForSection(user, sectionId) {
+export async function getPendingAssignmentsForSection(user: User, sectionId: string) {
   // we only need the uid hmm
   let data = await getAssignmentsForSection(user, sectionId)
-  return data.filter(assignment => {
+  return data.filter((assignment:any) => {
     return !!(assignment.available && !assignment.completed)
   })
 }
 
-export async function fetchMessagesInbox(user) {
+export async function fetchMessagesInbox(user: User) {
   const messages = (await getFrom('/messages/inbox', user.credentials)).message
   //console.log(messages);
   for (let index in messages) {
@@ -155,7 +162,7 @@ export async function fetchMessagesInbox(user) {
   return messages
 }
 
-export async function fetchMessagesSent(user, page = 1) {
+export async function fetchMessagesSent(user:User, page = 1) {
   const {
     message: messages,
     unreadCount
@@ -173,7 +180,7 @@ export async function fetchMessagesSent(user, page = 1) {
   return messages
 }
 
-export async function fetchInboxMessage(user, messageId) {
+export async function fetchInboxMessage(user:User, messageId:string) {
   const { message } = await getFrom(`/messages/inbox/${messageId}`, user.credentials)
   for (let index in message) {
     const { recipient_ids, author_id } = message[index]
@@ -187,7 +194,7 @@ export async function fetchInboxMessage(user, messageId) {
   return message
 }
 
-export async function fetchSentMessage(user, messageId) {
+export async function fetchSentMessage(user:User, messageId:string) {
   const { message } = await getFrom(`/messages/sent/${messageId}`, user.credentials)
   for (let index in message) {
     const { recipient_ids, author_id } = message[index]
@@ -201,43 +208,47 @@ export async function fetchSentMessage(user, messageId) {
   return message
 }
 
-export async function replyToMessage(user, messageId, datums) {
+interface Message {
+  recipient_ids:string, subject:string, message:string
+}
+
+export async function replyToMessage(user: User, messageId:string, datums:Message) {
   // datums should have {recipient_ids, subject, message}
   return await getFrom(`/messages/${messageId}`, user.credentials, 'post',
     JSON.stringify(datums))
   // the client should now reload the messages.
 }
 
-export async function newMessage(user, datums) {
+export async function newMessage(user:User, datums: Message) {
   return await getFrom(`/messages`, user.credentials, 'post',
     JSON.stringify(datums))
 }
 
-export async function getSectionFolder(user, sectionid, folderid = 0) {
+export async function getSectionFolder(user:User, sectionid:string, folderid:number = 0) {
   return await getFrom(`/courses/${sectionid}/folder/${folderid}?with_attachments=1`, user.credentials)
-    .then(e => e['folder-item'] ? e['folder-item'].map(k => ({
+    .then(e => e['folder-item'] ? e['folder-item'].map((k:any) => ({
       ...k,
       name: k.title,
       children: k.type === 'folder' ? [] : undefined
     })) : [])
 }
 
-export async function getSection(user, sectionid) {
+export async function getSection(user :User, sectionid:string) {
   return await getFrom(`/sections/${sectionid}/`, user.credentials)
 }
 
-export async function fetchWeekUserEvents(user) {
+export async function fetchWeekUserEvents(user:User) {
   const base = new Date
   const today = dateToString(base)
   const friday = dateToString(getNextDayOfWeek(base))
   return (await getFrom(`/users/${user.profile.uid}/events?start_date=${today}&end_date=${friday}`,
     user.credentials))
     .event
-    .map(event => {
+    .map((event: { has_end: any; end: any; start: any; color: any; type: 'event'|'assignment'|'discussion'; timed: boolean; all_day: any; name: any; title: any; links: undefined; }) => {
       if (!event.has_end) {
         event.end = event.start
       }
-      event.color = { event: 'green darken-2', assignment: 'primary', discussion: 'accent' }[event.type]
+      event.color = { event: 'green darken-2', assignment: 'primary', discussion: 'accent' }[event.type] || 'purple darken-1'
       //console.log(event.type)
       event.timed = !event.all_day
       event.name = event.title
@@ -246,29 +257,30 @@ export async function fetchWeekUserEvents(user) {
     })
 }
 
-export async function fetchAllSectionEventsForWeek(user) {
+export async function fetchAllSectionEventsForWeek(user:User) {
 
-  const start = new Date;
-  const end = new Date;
+  const start:Date = new Date;
+  const end:Date = new Date;
   start.setDate(0);
   end.setMonth((start.getMonth()+1)%12 )
   end.setDate(0);
-  const monday = dateToString(start)
-  const friday = dateToString(end)
+  const monday:string = dateToString(start)
+  const friday:string = dateToString(end)
   // a list of section ids
-  const sections = (await getSections(user))
-    .map(a => a.id)
-    .map(a => `/v1/sections/${a}/events?start_date=${monday}&end_date=${friday}`)
+  const sections:string[] = (await getSections(user))
+    .map((a:any) => a.id)
+    .map((a:any) => `/v1/sections/${a}/events?start_date=${monday}&end_date=${friday}`)
   //console.log(sections)
   return flattenArray((await getFrom(`/multiget`, user.credentials, 'post', JSON.stringify({
     request: sections
   })))
     .response
-    .map(a => a.body.event))
+    .map((a: { body: { event: any; }; }) => a.body.event))
     .map(event => {
       if (!event.has_end) {
         event.end = event.start
       }
+      // @ts-ignore
       event.color = { event: 'grey', assignment: 'primary', discussion: 'yellow', external_tool: 'accent' }[event.type] || 'purple darken-1'
       //console.log(event.type)
       event.timed = !event.all_day
@@ -279,27 +291,27 @@ export async function fetchAllSectionEventsForWeek(user) {
 
 }
 
-export async function fetchLinkDetails(user, sectionid, documentid) {
+export async function fetchLinkDetails(user:User, sectionid:string, documentid:string) {
   return await getFrom(`/sections/${sectionid}/documents/${documentid}`, user.credentials)
     .then(e => e.attachments.links.link[0])
 }
 
-export async function fetchExternalToolDetails(user, sectionid, documentid) {
+export async function fetchExternalToolDetails(user:User, sectionid:string, documentid:string) {
   return await getFrom(`/sections/${sectionid}/documents/${documentid}`, user.credentials)
     .then(e => e.attachments.external_tools.external_tool[0])
 }
 
-export async function fetchFileDetails(user, sectionid, documentid) {
+export async function fetchFileDetails(user:User, sectionid:string, documentid:string) {
   return await getFrom(`/sections/${sectionid}/documents/${documentid}`, user.credentials)
     .then(e => e.attachments.files.file[0])
 }
 
-export async function getUpdate(user, updateid){
+export async function getUpdate(user:User, updateid:string){
   return await getFrom(`/users/${user.profile.uid}/updates/${updateid}?with_attachments=true`, user.credentials)
 
 }
 
-export async function fetchRecentUpdates(user){
+export async function fetchRecentUpdates(user:User){
   const updates =  await getFrom(`/recent?limit=200&with_attachments=true`, user.credentials)
     .then(e => e.update)
   for (let update of updates){
@@ -309,7 +321,7 @@ export async function fetchRecentUpdates(user){
   return updates
 }
 
-export async function fetchCourseUpdates(user, courseid){
+export async function fetchCourseUpdates(user:User, courseid:string){
   const updates =  await getFrom(`/sections/${courseid}/updates?limit=200&with_attachments=true`, user.credentials)
     .then(e => e.update)
   for (let update of updates){
@@ -319,13 +331,13 @@ export async function fetchCourseUpdates(user, courseid){
   return updates
 }
 
-export async function like(user,  updateid, like_action) {
+export async function like(user :User,  updateid:string, like_action:boolean) {
   return await getFrom(`/like/${updateid}`, user.credentials, 'post', JSON.stringify({
     like_action
   }))
 }
 
-export async function getDocument(user,  sectionid, documentid) {
+export async function getDocument(user:User,  sectionid:string, documentid:string) {
   return await getFrom(`sections/${sectionid}/documents/${documentid}?with_attachments=true`, user.credentials)
     .then(e=>e)
 }

@@ -63,9 +63,9 @@
                 </v-card>
               </template>
               <template v-slot:default="dialog">
-                <v-card  color='secondary' class='pa-1'>
+                <v-card link target='_blank' :href='`https://pausd.schoology.com/attachment/${file.id}/image/lightbox_preview`' color='secondary' class='pa-1'>
                   <v-card-actions class="">
-    <v-btn target='_blank' :href='`https://pausd.schoology.com/attachment/${file.id}/image/lightbox_preview`' icon>
+    <v-btn  icon>
                     <v-icon>mdi-open-in-new</v-icon>
                   </v-btn>{{file.title}}
                     <v-spacer></v-spacer>
