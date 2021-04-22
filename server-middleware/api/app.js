@@ -37,7 +37,7 @@ app.use(session({
     return uuid.v4();
   },
   saveUninitialized: true,
-  cookie: {
+  cookie: { //
     secure: false,
     maxAge: 365*24*60*60*1000
   }
