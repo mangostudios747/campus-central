@@ -91,9 +91,10 @@
 
 <script>
 export default {
-  async asyncData({ params, $axios }) {
+  async asyncData({ params, $axios, store }) {
     const courseid = params.course // When calling /abc the slug will be "abc"
-    const course = await $axios.$get(`/api/users/me/sections/${courseid}`)
+    let course = store.getters.getCourse(courseid);
+    course = await $axios.$get(`/api/users/me/sections/${courseid}`)
 
     //const assignments  = await $axios.$get(`/api/users/me/sections/${courseid}/assignments/pending`)
     return { courseid, course }

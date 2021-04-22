@@ -58,7 +58,7 @@
           <v-list-item
             class='pl-10'
             :to='`/app/courses/${section.id}`'
-            v-for='section in $store.state.courses'
+            v-for='section in $store.state.cache.courses'
             :key='section.id'
           >
             <v-list-item-avatar size='25'>

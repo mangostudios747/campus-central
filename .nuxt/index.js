@@ -16,6 +16,7 @@ import { createStore } from './store.js'
 import nuxt_plugin_plugin_eeb6906c from 'nuxt_plugin_plugin_eeb6906c' // Source: ./components/plugin.js (mode: 'all')
 import nuxt_plugin_plugin_3e20b064 from 'nuxt_plugin_plugin_3e20b064' // Source: ./vuetify/plugin.js (mode: 'all')
 import nuxt_plugin_index_0376dca4 from 'nuxt_plugin_index_0376dca4' // Source: ./firebase/index.js (mode: 'all')
+import nuxt_plugin_nuxtvuexlocalstorage_aff1c512 from 'nuxt_plugin_nuxtvuexlocalstorage_aff1c512' // Source: ./nuxt-vuex-localstorage.js (mode: 'client')
 import nuxt_plugin_pluginclient_7bdce374 from 'nuxt_plugin_pluginclient_7bdce374' // Source: ./content/plugin.client.js (mode: 'client')
 import nuxt_plugin_pluginserver_27caffce from 'nuxt_plugin_pluginserver_27caffce' // Source: ./content/plugin.server.js (mode: 'server')
 import nuxt_plugin_workbox_cd878208 from 'nuxt_plugin_workbox_cd878208' // Source: ./workbox.js (mode: 'client')
@@ -231,6 +232,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_index_0376dca4 === 'function') {
     await nuxt_plugin_index_0376dca4(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_nuxtvuexlocalstorage_aff1c512 === 'function') {
+    await nuxt_plugin_nuxtvuexlocalstorage_aff1c512(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_pluginclient_7bdce374 === 'function') {

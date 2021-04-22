@@ -19,7 +19,7 @@ let store = {};
   // Enforce store modules
   store.modules = store.modules || {}
 
-  resolveStoreModules(require('../store/cache.ts'), 'cache.ts')
+  resolveStoreModules(require('../store/cache.js'), 'cache.js')
   resolveStoreModules(require('../store/hc.js'), 'hc.js')
   resolveStoreModules(require('../store/options.js'), 'options.js')
 
@@ -28,7 +28,7 @@ let store = {};
   if (process.client && module.hot) {
     // Whenever any Vuex module is updated...
     module.hot.accept([
-      '../store/cache.ts',
+      '../store/cache.js',
       '../store/hc.js',
       '../store/index.js',
       '../store/options.js',

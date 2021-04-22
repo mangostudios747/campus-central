@@ -55,6 +55,11 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    ['nuxt-vuex-localstorage', {
+      mode:'debug',
+      localStorage: ['cache'],  //  If not entered, “localStorage” is the default value
+      //sessionStorage: ['sfoo', 'sbar']  //  If not entered, “sessionStorage” is the default value
+    }],
     [
       '@nuxtjs/firebase',
       {

@@ -21,14 +21,27 @@ export const mutations = {
     state.messages.sent = messages
   },
   setCourses(state, courses){
-    state.courses = courses;
+    state.cache.courses = courses;
+  },
+  setCourseMaterials(state, {courseid, materials}){
+    console.log('hi')
+    state.cache.courseMaterials[courseid] = materials;
+  },
+  setCourseUpdates(state, {courseid, updates}){
+    state.cache.courseUpdates[courseid] = updates;
   }
-
 }
 
 export const actions = {
   setCourses({commit, dispatch}, courses){
     commit('setCourses', courses);
     dispatch('hc/customize', courses)
+  }
+}
+
+
+export const getters = {
+  getCourse: (state) => (courseid) => {
+    return state.cache.courses.find(e=>e.id===courseid)
   }
 }
