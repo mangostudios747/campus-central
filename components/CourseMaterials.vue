@@ -1,7 +1,13 @@
 <template>
   <div
   >
-    <v-text-field prepend-icon='mdi-magnify' color='accent'  v-model='searchText'></v-text-field>
+    <v-text-field prepend-icon='mdi-magnify' color='accent'  v-model='searchText'>
+      <template v-slot:append>
+        <v-btn  color='accent' @click='fetchData(true)' icon>
+          <v-icon>mdi-reload</v-icon>
+        </v-btn>
+      </template>
+    </v-text-field>
     <v-treeview
       color='white'
       v-if='folderContents'
@@ -76,13 +82,13 @@ export default {
     deepClone(object){
       return JSON.parse(JSON.stringify(object))
     },
-    async fetchData() {
+    async fetchData(force=false) {
       const { $axios, $store } = this
       //console.log(this.courseid)
       // can just query the courses
       const course =  $store.getters.getCourse(this.courseid); //await $axios.$get(`/api/users/me/sections/${this.courseid}`)
       const existing = this.$store.state.cache.courseMaterials[this.courseid];
-      if (existing) this.folderContents = this.deepClone(existing);
+      if (existing && !force) this.folderContents = this.deepClone(existing);
       else {
         //console.log(this.$store.state.cache.courseMaterials[this.courseid]);
         this.$store.commit('setCourseMaterials', {
