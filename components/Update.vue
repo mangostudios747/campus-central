@@ -1,5 +1,5 @@
 <template>
-  <v-card class='my-3 py-2' elevation='0' color='blueLayer'
+  <v-card outlined class='my-3 py-2' elevation='1' color='rgba(256,256,256,0.24)' rounded style='border: 0px solid #ffffff22 !important;'
   >
 
     <v-list-item two-line>

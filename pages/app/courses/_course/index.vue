@@ -1,18 +1,17 @@
 <template>
 <div>
-  <h2 class='my-2'>Materials</h2>
-  <v-row
+  <v-row class='mt-3'
   >
-    <v-col :cols='+!!objectType*6'>
+    <v-col :cols='+!!objectType*4'>
       <course-materials :key='courseid' :on-open='openItem' :courseid='courseid'></course-materials>
     </v-col>
-    <v-col v-if='objectType' cols='6'>
-      <v-card style='position: sticky;top: 20%' color='blueLayer'>
+    <v-col v-if='objectType' cols='8'>
+      <v-card color='#04173B' rounded style='border: 1px solid #ffffff22 !important;position: sticky;top: 17%' >
         <v-card-title v-html='focusedObject.title'></v-card-title>
         <v-card-text style='white-space: pre-wrap' v-html='focusedObject.body'></v-card-text>
 
         <div class='pb-4' v-if='focusedObject.attachments'>
-          {{focusedObject.attachments}}
+
           <div class='px-10' v-if='focusedObject.attachments.links'>
             <v-alert
               v-for='link in focusedObject.attachments.links.link'

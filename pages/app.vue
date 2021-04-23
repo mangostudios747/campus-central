@@ -1,22 +1,40 @@
 <template>
   <div style='height: 100%;'>
 
-    <v-navigation-drawer :mini-variant='mini' :dark='true' :color='"accent"' v-model='sidebar' app>
+    <v-navigation-drawer :mini-variant='mini'  :color='"#ffffff00"'  app>
       <!-- -->
-      <v-list v-if='$store.state.user'>
-        <v-list-item class='px-2'>
-          <v-list-item-avatar>
-            <v-img :src='$store.state.user.picture_url'></v-img>
-          </v-list-item-avatar>
+
+      <v-list   v-if='$store.state.user'>
+        <v-list-item v-if='mini' class='pl-2'>
+          <v-btn
+            icon @click.stop="mini = !mini"
+          >
+            <v-icon>mdi-chevron-right</v-icon>
+          </v-btn>
         </v-list-item>
 
-        <v-list-item>
+
+        <v-list-item v-show='false'>
           <v-list-item-content>
             <v-list-item-title class='title'>
               {{ $store.state.user.name_display }}
             </v-list-item-title>
             <v-list-item-subtitle>{{ $store.state.user.primary_email }}</v-list-item-subtitle>
           </v-list-item-content>
+        </v-list-item>
+        <v-list-item class="px-2">
+          <v-list-item-avatar>
+            <v-img :src='$store.state.user.picture_url'></v-img>
+          </v-list-item-avatar>
+
+          <v-list-item-title> {{ $store.state.user.name_display }}</v-list-item-title>
+
+          <v-btn
+            icon
+            @click.stop="mini = !mini"
+          >
+            <v-icon>mdi-chevron-left</v-icon>
+          </v-btn>
         </v-list-item>
 
       </v-list>
@@ -86,15 +104,10 @@
 
     </v-navigation-drawer>
 
-    <v-app-bar color='secondary' elevation='0' flat app>
-      <v-app-bar-nav-icon @click='sidebar=!sidebar'>
-        <template v-slot>
-          <v-icon>mdi-{{ sidebar ? 'chevron-left' : 'menu' }}</v-icon>
-        </template>
-      </v-app-bar-nav-icon>
+    <v-app-bar color='background' elevation='0' flat app>
       <v-app-bar-title v-if='false'>Campus Central</v-app-bar-title>
 
-        <v-progress-circular class=" elevation-0 mr-5" style="border-radius: 50%"
+        <v-progress-circular class=" elevation-0 ml-3 mr-5" style="border-radius: 50%"
 
                              :rotate="270"
                              :size="30"
@@ -111,7 +124,7 @@
 
 
       <v-spacer></v-spacer>
-      <div v-if='$store.state.user'>
+      <div v-if='$store.state.user&& false'>
         <span>{{ $store.state.user.name_display }}</span>
         <v-avatar class='ml-3' size='40'>
           <img

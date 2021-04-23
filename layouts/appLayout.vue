@@ -3,9 +3,9 @@
   <nuxt/>
 
     <v-footer
-      fixed
+fixed
       app
-      color='secondary'
+color='background'
     >
       <span>&copy; {{ new Date().getFullYear() }} Saumya Singhal</span>
     </v-footer>
