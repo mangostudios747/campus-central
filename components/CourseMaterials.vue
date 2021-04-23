@@ -1,7 +1,7 @@
 <template>
   <div
   >
-    <v-text-field prepend-icon='mdi-magnify' color='accent'  v-model='searchText'>
+    <v-text-field prepend-inner-icon='mdi-magnify' color='accent' class='mx-4'  v-model='searchText'>
       <template v-slot:append>
         <v-btn  color='accent' @click='fetchData(true)' icon>
           <v-icon>mdi-reload</v-icon>
@@ -18,6 +18,7 @@
       :search='searchText'
       :active='active'
       activatable
+
       @update:active='openItem'
     >
       <template v-slot:prepend='{ item, open }'>
