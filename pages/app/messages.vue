@@ -1,8 +1,9 @@
 <template>
   <div>
     <v-tabs
-      :background-color='this.$vuetify.theme.currentTheme.secondary'
+      :background-color='this.$vuetify.theme.currentTheme.background'
       grow :color='this.$vuetify.theme.currentTheme.text'
+
     >
       <v-tab  to='/app/messages/inbox'>Inbox</v-tab>
       <v-tab to='/app/messages/sent'>Sent</v-tab>

@@ -38,7 +38,7 @@
         </v-container>
       </v-col>
       <v-col style='max-height: 88vh;overflow:hidden' v-if='true' class='mr-3  mt-10'>
-        <v-card class=' py-2' color='#04173B' rounded style='border: 1px solid #ffffff22 !important'>
+        <v-card class=' py-2' color='background' rounded style='border: 1px solid #ffffff22 !important'>
           <v-card-title>Links</v-card-title>
           <v-list
             color='transparent'
