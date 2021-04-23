@@ -1,7 +1,6 @@
 <template>
   <v-card outlined class='my-3 py-2' elevation='1' color='rgba(256,256,256,0.08)' rounded style='border: 0px solid #ffffff22 !important;'
   >
-
     <v-list-item two-line>
       <v-list-item-avatar>
         <v-img

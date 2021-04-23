@@ -12,10 +12,18 @@
             </v-avatar>
 
           </v-row>
-          <v-row class='my-5 text-center align-center justify-center'>
+          <v-row class='mt-5 text-center align-center justify-center'>
             <h1 class='my-5'>{{ course.section_title }}</h1>
           </v-row>
-          <div style='position: sticky;top: 58px;z-index: 4'>
+          <v-row class='text-center my-3 align-center justify-center'>
+            <v-alert v-if='false'
+            text  color='accent'
+            icon='mdi-bullhorn'
+            >
+announcement haha
+            </v-alert>
+          </v-row>
+          <div style='position: sticky;top: 63px;z-index: 4'>
             <v-tabs :key='courseid' background-color='background' grow color='text'>
               <v-tab
                 exact
