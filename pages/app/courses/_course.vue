@@ -16,7 +16,7 @@
             <h1 class='my-5'>{{ course.section_title }}</h1>
           </v-row>
           <div style='position: sticky;top: 58px;z-index: 4'>
-          <v-tabs  background-color='background' grow color='text'>
+          <v-tabs :key='courseid'  background-color='background' grow color='text'>
             <v-tab
               exact
               :to='`/app/courses/${courseid}/`'

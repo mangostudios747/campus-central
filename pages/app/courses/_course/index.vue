@@ -6,7 +6,7 @@
       <course-materials :key='courseid' :on-open='openItem' :courseid='courseid'></course-materials>
     </v-col>
     <v-col v-if='objectType' cols='8'>
-      <v-card color='#04173B' rounded style='border: 1px solid #ffffff22 !important;position: sticky;top: 17%' >
+      <v-card color='background' rounded style='border: 1px solid #ffffff22 !important;position: sticky;top: 17%' >
         <v-card-title v-html='focusedObject.title'></v-card-title>
         <v-card-text style='white-space: pre-wrap' v-html='focusedObject.body'></v-card-text>
 

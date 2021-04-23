@@ -9,7 +9,7 @@
       </template>
     </v-text-field>
     <v-treeview
-      color='white'
+      color='text'
       v-if='folderContents'
       :items='folderContents'
       :load-children='fetchChildren'

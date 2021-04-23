@@ -148,7 +148,7 @@ export default {
           blueLayer: '#d6ddee' || '#c3d6f8',
           text: '#04173B',
           cardBackground: '#fff',
-          background: '#eff1f5',
+          background: '#f4f5f8',
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
