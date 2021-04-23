@@ -16,23 +16,23 @@
             <h1 class='my-5'>{{ course.section_title }}</h1>
           </v-row>
           <div style='position: sticky;top: 58px;z-index: 4'>
-          <v-tabs :key='courseid'  background-color='background' grow color='text'>
-            <v-tab
-              exact
-              :to='`/app/courses/${courseid}/`'
-            >Home
-            </v-tab>
-            <v-tab
-              exact
-              :to='`/app/courses/${courseid}/todo`'
-            >Todo
-            </v-tab>
-            <v-tab
-              :to='`/app/courses/${courseid}/updates`'
-            >Updates
-            </v-tab>
-            <v-tab>Grades</v-tab>
-          </v-tabs>
+            <v-tabs :key='courseid' background-color='background' grow color='text'>
+              <v-tab
+                exact
+                :to='`/app/courses/${courseid}/`'
+              >Home
+              </v-tab>
+              <v-tab
+                exact
+                :to='`/app/courses/${courseid}/todo`'
+              >Todo
+              </v-tab>
+              <v-tab
+                :to='`/app/courses/${courseid}/updates`'
+              >Updates
+              </v-tab>
+              <v-tab>Grades</v-tab>
+            </v-tabs>
           </div>
           <nuxt-child />
         </v-container>
@@ -42,30 +42,90 @@
           <v-card-title>Links</v-card-title>
           <v-list
             color='transparent'
-          dense
+            dense
           >
             <v-list-item
-              :href='link.to'
+
+
               :key='index'
-              target='_blank'
+              dense
               v-for='(link, index) of notes.links'
-              link >
-              <v-list-item-content>
-                <span  class=' text-decoration-underline'>{{link.name}}</span>
+              >
+              <v-list-item-content >
+                <v-btn  text color='accent'  :href='link.to' target='_blank'><span class='text-decoration-underline'>{{ link.name }}</span></v-btn>
               </v-list-item-content>
               <v-list-item-action>
-                <v-btn color='accent' @click.prevent='()=>{}' icon >
-                  <v-icon>
-                    mdi-pencil
-                  </v-icon>
-                </v-btn>
+                <v-menu offset-x offset-y>
+                  <template v-slot:activator='{ on, attrs }'>
+                    <v-btn v-bind="attrs"
+                           v-on="on" color='accent'  icon>
+                      <v-icon>
+                        mdi-cog
+                      </v-icon>
+                    </v-btn>
+                  </template>
+                  <v-list dense>
+                    <v-list-item>
+                      Edit
+                    </v-list-item>
+                    <v-list-item>
+                      Delete
+                    </v-list-item>
+                  </v-list>
+                </v-menu>
               </v-list-item-action>
             </v-list-item>
           </v-list>
           <v-card-actions class='mx-3'>
-            <v-btn outlined text color='accent' >
-              <v-icon left>mdi-plus</v-icon>
-              new</v-btn>
+            <v-dialog
+              v-model='dialog.newLink'
+              persistent
+              max-width='500'
+            >
+              <template v-slot:activator='{ on, attrs }'>
+                <v-btn
+                  outlined text
+                  color='accent'
+                  v-bind='attrs'
+                  v-on='on'
+                >
+                  <v-icon left>mdi-plus</v-icon>
+                  new
+                </v-btn>
+              </template>
+              <v-card
+                class='background'
+              >
+                <v-card-title class='headline'>
+                  New Link
+                </v-card-title>
+                <v-card-text>
+                  <v-text-field color='accent' :value='newLink.name || newLink.to' v-model='newLink.name'
+                                label='Title'></v-text-field>
+                  <v-text-field color='accent' v-model='newLink.to' autofocus label='Link'></v-text-field>
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn
+                    color='text'
+                    outlined
+                    text
+                    @click='dialog.newLink = false; newLink={};'
+                  >
+                    Cancel
+                  </v-btn>
+                  <v-btn
+                    color='accent'
+                    outlined text
+                    @click='dialog.newLink = false;notes.links.push(newLink);newLink={};'
+                  >
+                    Add
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+
           </v-card-actions>
 
           <v-card-title>Notes</v-card-title>
@@ -93,26 +153,34 @@
 export default {
   async asyncData({ params, $axios, store }) {
     const courseid = params.course // When calling /abc the slug will be "abc"
-    let course = store.getters.getCourse(courseid);
+    let course = store.getters.getCourse(courseid)
     course = await $axios.$get(`/api/users/me/sections/${courseid}`)
 
     //const assignments  = await $axios.$get(`/api/users/me/sections/${courseid}/assignments/pending`)
     return { courseid, course }
   },
-  data:()=>({
-    notes:{
-      links:[
+  data: () => ({
+    newLink: {
+      to: '',
+      name: ''
+    },
+    dialog: {
+      newLink: false
+
+    },
+    notes: {
+      links: [
         {
-          to:'https://google.com/',
-          name:'Coming Soon!'
+          to: 'https://google.com/',
+          name: 'Coming Soon!'
         }
       ],
-      notepad:`Notepad stuff coming soon too. This is just a preview.`
+      notepad: `Notepad stuff coming soon too. This is just a preview.`
     }
   }),
-  head(){
+  head() {
     return {
-      title:this.course.course_title
+      title: this.course.course_title
     }
   }
 

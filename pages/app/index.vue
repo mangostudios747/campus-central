@@ -23,7 +23,7 @@
       </v-card>
 
     </v-col>
-    <v-col >
+    <v-col :cols='objectType? 4: 8'>
       <v-card v-if=" $store.getters['hc/currentEvent'].meta" class='py-3' elevation='0' color='background' style='border: 1px solid #ffffff22 !important'>
         <v-list-item class='ml-3 '>
           <v-list-item-avatar>
@@ -46,9 +46,12 @@
           </v-list-item-action>
         </v-list-item>
 
-        <course-materials :key='$store.getters["hc/currentEvent"].meta.id' v-if='$store.getters["hc/currentEvent"].meta.id'
+        <course-materials :on-open='openItem' :key='$store.getters["hc/currentEvent"].meta.id' v-if='$store.getters["hc/currentEvent"].meta.id'
                           :courseid='$store.getters["hc/currentEvent"].meta.id'></course-materials>
       </v-card>
+    </v-col>
+    <v-col v-if='objectType' cols='8'>
+        <material-viewer :focused-object='focusedObject' :object-type='objectType'/>
     </v-col>
   </v-row>
     <v-row v-else>
@@ -67,11 +70,69 @@ export default {
   components: {
     CourseMaterials
   },
+  data:()=>({
+    objectType:null,
+    focusedObject:{
+      title:"Assignment title",
+      body:"dfklaejrghwtgfnjeafreorgherarhrfnklsdfdewajtoqhrhgueirbghfbvadkjnjdknj\n" +
+        "efjri[ofhr[ioghrirlfdmsklanfgjeawfjksdngfjbtreo"
+    }
+  }),
   head(){
     return {
       title:'Home'
     }
   },
+  methods: {
+    async openItem(item) {
+      let url;
+      switch (item.type) {
+
+        case 'page':
+          //url = 'page/'+item.id;
+          const pageData = await this.$axios.$get(`/api/users/me/sections/${this.courseid}/page/${item.id}`)
+          this.objectType = item.type
+          this.focusedObject = item
+          break;
+        case 'assessment':
+          url = 'assignment/'+item.id+'/assessment'
+          break;
+        case 'assignment':
+          //url = 'assignment/'+item.id+'/info';
+          this.objectType = item.type
+          this.focusedObject = item
+          //todo: show submissions as well
+
+          break;
+        case 'document':
+          const documentData = await this.$axios.$get(`/api/users/me/sections/${this.courseid}/document/${item.id}`)
+          item = Object.assign(item, documentData)
+          console.log(documentData)
+          this.objectType = item.type
+          this.focusedObject = item
+          switch (item.document_type){
+            case "file":
+              url = 'course/'+this.course_id+'/materials/gp/'+item.id;
+              break;
+            case "external_tool":
+              url = `external_tool/${item.attachments.external_tools.external_tool[0].id}/launch`;
+              break;
+            case "embed":
+              break;
+            case "link":
+              break;
+            default:
+              console.log(item)
+              url = 'course/'+this.course_id+'/materials/link/view/'+item.id;
+              break;
+          }
+
+          break;
+      }
+      if (url) window.open('https://pausd.schoology.com/'+url, '_blank');
+      this.active=  [];
+    }
+  }
 }
 </script>
 

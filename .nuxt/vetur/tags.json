@@ -5,6 +5,9 @@
   "Logo": {
     "description": "Auto imported from components/Logo.vue"
   },
+  "MaterialViewer": {
+    "description": "Auto imported from components/MaterialViewer.vue"
+  },
   "Update": {
     "description": "Auto imported from components/Update.vue"
   },
