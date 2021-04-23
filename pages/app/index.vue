@@ -1,7 +1,7 @@
 <template>
   <div >
   <v-row v-if="$store.getters['hc/currentEvent'].isValid" class='mt-10 px-4'>
-    <v-col cols='4'>
+    <v-col v-if='false' cols='4'>
       <v-card  elevation='0' color='background' style='border: 1px solid #ffffff22 !important' class='text-center py-7'>
         <v-progress-circular class=' elevation-10 ' style='border-radius: 50%'
                              :rotate='270'
@@ -23,7 +23,7 @@
       </v-card>
 
     </v-col>
-    <v-col>
+    <v-col >
       <v-card v-if=" $store.getters['hc/currentEvent'].meta" class='py-3' elevation='0' color='background' style='border: 1px solid #ffffff22 !important'>
         <v-list-item class='ml-3 '>
           <v-list-item-avatar>

@@ -2,7 +2,7 @@
 <v-container>
   <h1>Settings</h1>
 
-  <v-switch v-model='$vuetify.theme.dark' label='Dark Mode'></v-switch>
+  <v-switch color='accent' v-model='$vuetify.theme.dark' label='Dark Mode'></v-switch>
 </v-container>
 </template>
 

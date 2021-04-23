@@ -1,7 +1,7 @@
 <template>
 <div>
   <h2 class='my-2'>Todo</h2>
-  <v-list rounded v-if='assignments.length > 0' color='secondary'>
+  <v-list rounded v-if='assignments.length > 0' color='background' style='border: 1px solid #ffffff22 !important' elevation='0'>
     <v-list-item v-for='asg in assignments' :key='asg.id'>
       <v-list-item-content>
         <v-list-item-title>{{ asg.title }}</v-list-item-title>
@@ -14,7 +14,7 @@
       </v-list-item-action>
     </v-list-item>
   </v-list>
-  <v-card  rounded='lg'  color='secondary' class='text-center' v-else>
+  <v-card  rounded='lg'  color='background' style='border: 1px solid #ffffff22 !important' elevation='0' class='text-center' v-else>
     <v-container>
       <h2 class=''>Nothing to do! :-)</h2>
     </v-container>
