@@ -1,7 +1,7 @@
 <template>
   <div style='height: 100%;'>
 
-    <v-navigation-drawer :mini-variant='mini'  :color='"#ffffff00"'  app>
+    <v-navigation-drawer :mini-variant='mini' color='transparent'  app>
       <!-- -->
 
       <v-list   v-if='$store.state.user'>
@@ -49,6 +49,7 @@
           v-for='item in routes'
           :key='item.title'
           link
+
           :exact='!item.inexact'
           :to='item.to'
         >
@@ -62,7 +63,7 @@
         </v-list-item>
         <v-list-group
           prepend-icon='mdi-book-multiple'
-          color='white'
+          color='text'
           group='/app/courses/.*'
         >
           <template v-slot:activator>
