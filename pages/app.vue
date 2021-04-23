@@ -1,7 +1,7 @@
 <template>
   <div style='height: 100%;'>
 
-    <v-navigation-drawer :dark='true' :color='"accent"' v-model='sidebar' app>
+    <v-navigation-drawer :mini-variant='mini' :dark='true' :color='"accent"' v-model='sidebar' app>
       <!-- -->
       <v-list v-if='$store.state.user'>
         <v-list-item class='px-2'>
@@ -56,7 +56,7 @@
           </template>
 
           <v-list-item
-            class='pl-10'
+            :class='mini?"":"pl-10"'
             :to='`/app/courses/${section.id}`'
             v-for='section in $store.state.cache.courses'
             :key='section.id'
@@ -140,6 +140,7 @@ export default {
   layout: 'appLayout',
   data: () => ({
     //user: null
+    mini:false,
     sidebar: true,
     routes: [
       { title: 'Home', icon: 'mdi-home', to: '/app' },
@@ -167,7 +168,8 @@ export default {
       },
       {
         title:'Grades',
-        icon:'mdi-book-open-variant'
+        icon:'mdi-book-open-variant',
+        to:'/app/grades',
       },
       {
         title:'Settings',

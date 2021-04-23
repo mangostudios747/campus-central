@@ -98,4 +98,8 @@ router.get('/me/sections/:sectionid/document/:documentid', async function (req, 
   res.send(await sgy.getDocument(req.user, req.params.sectionid, req.params.documentid))
 })
 
+router.get('/me/sections/:sectionid/page/:pageid', async function (req, res, next){
+  res.send(await sgy.getPage(req.user, req.params.sectionid, req.params.pageid))
+})
+
 module.exports = router

@@ -348,8 +348,14 @@ export async function like(user: User, updateid: string, like_action: boolean) {
   }))
 }
 
+// this is for all documents lol
+
 export async function getDocument(user: User, sectionid: string, documentid: string) {
-  return await getFrom(`sections/${sectionid}/documents/${documentid}?with_attachments=true`, user.credentials)
-    .then(e => e)
+  return await getFrom(`sections/${sectionid}/documents/${documentid}`, user.credentials)
+   // .then(e => e)
 }
 
+export async function getPage(user: User, sectionid: string, pageid: string) {
+  return await getFrom(`sections/${sectionid}/pages/${pageid}`, user.credentials)
+  // .then(e => e)
+}

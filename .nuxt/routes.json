@@ -56,6 +56,13 @@
         "_name": "_5508cff6"
       },
       {
+        "name": "app-grades",
+        "path": "grades",
+        "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/grades.vue",
+        "chunkName": "pages/app/grades",
+        "_name": "_cf6424a4"
+      },
+      {
         "path": "messages",
         "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/messages.vue",
         "chunkName": "pages/app/messages",

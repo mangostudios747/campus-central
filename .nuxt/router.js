@@ -12,6 +12,7 @@ const _98f0c2be = () => interopDefault(import('../pages/app/courses/_course.vue'
 const _2370e864 = () => interopDefault(import('../pages/app/courses/_course/index.vue' /* webpackChunkName: "pages/app/courses/_course/index" */))
 const _b63bcab8 = () => interopDefault(import('../pages/app/courses/_course/todo.vue' /* webpackChunkName: "pages/app/courses/_course/todo" */))
 const _4ed36448 = () => interopDefault(import('../pages/app/courses/_course/updates.vue' /* webpackChunkName: "pages/app/courses/_course/updates" */))
+const _cf6424a4 = () => interopDefault(import('../pages/app/grades.vue' /* webpackChunkName: "pages/app/grades" */))
 const _7b834cfe = () => interopDefault(import('../pages/app/messages.vue' /* webpackChunkName: "pages/app/messages" */))
 const _77159d01 = () => interopDefault(import('../pages/app/messages/index.vue' /* webpackChunkName: "pages/app/messages/index" */))
 const _1e599cb5 = () => interopDefault(import('../pages/app/messages/inbox.vue' /* webpackChunkName: "pages/app/messages/inbox" */))
@@ -66,6 +67,10 @@ export const routerOptions = {
           name: "app-courses-course-updates"
         }]
       }]
+    }, {
+      path: "grades",
+      component: _cf6424a4,
+      name: "app-grades"
     }, {
       path: "messages",
       component: _7b834cfe,
