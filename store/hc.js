@@ -19,6 +19,12 @@ Date.prototype.addMinutes = function(hrs) {
   return date
 }
 
+const periodStates = {
+  PAST:-1,
+  PRESENT:0,
+  FUTURE:1
+}
+
 export const state = () => ({
   theSchedule: {
     'holidays': {
@@ -893,36 +899,136 @@ export const state = () => ({
           ]
         }
       ],
-      null
+      [
+        {
+          'name': 'Period 1',
+          'start': [
+            10,
+            0
+          ],
+          'end': [
+            10,
+            30
+          ]
+        },
+        {
+          'name': 'Period 2',
+          'start': [
+            10,
+            40
+          ],
+          'end': [
+            11,
+            10
+          ]
+        },
+        {
+          'name': 'Period 3',
+          'start': [
+            11,
+            20
+          ],
+          'end': [
+            11,
+            50
+          ]
+        },
+        {
+          'name': 'Period 4',
+          'start': [
+            12,
+            0
+          ],
+          'end': [
+            12,
+            35
+          ]
+        },
+        {
+          'name': 'Lunch',
+          'start': [
+            12,
+            35
+          ],
+          'end': [
+            13,
+            5
+          ]
+        },
+        {
+          'name': 'Period 5',
+          'start': [
+            13,
+            15
+          ],
+          'end': [
+            13,
+            45
+          ]
+        },
+        {
+          'name': 'Period 6',
+          'start': [
+            13,
+            55
+          ],
+          'end': [
+            14,
+            25
+          ]
+        },
+        {
+          'name': 'Period 7',
+          'start': [
+            14,
+            35
+          ],
+          'end': [
+            15,
+            5
+          ]
+        },
+        {
+          'name': 'Period 8',
+          'start': [
+            15,
+            45
+          ],
+          'end': [
+            16,
+            15
+          ]
+        }
+      ],
     ]
   },
   customizations: {
     'Period 1': {
-      color: colors.deepOrange.base
+      color: colors.lime.darken2
     },
     'Period 2': {
-      color: colors.yellow.darken2
+      color: colors.lightGreen.base
     },
     'Period 3': {
       color: colors.green.base
     },
     'Period 4': {
-      color: colors.blue.base
+      color: colors.teal.base
     },
     'Period 5': {
-      color: colors.teal.lighten1
+      color: colors.lightBlue.base
     },
     'Period 6': {
-      color: colors.indigo.base
+      color: colors.blue.darken1
     },
     'Period 7': {
-      color: colors.deepPurple.base
+      color: colors.indigo.darken2
     },
     'Period 8': {
-      color: colors.brown.lighten1
+      color: colors.deepPurple.darken1
     },
     'Lunch': {
-      color: colors.blueGrey.base
+      color: colors.cyan.base
     },
     'Other': {
       color: colors.blueGrey.base
@@ -996,20 +1102,39 @@ export const getters = {
       //console.log("default");
       //if (mainView) this.holidayReason = null;
       return (sched.defaults[dob.getDay()] || []).map(function(event) {
+        const start = new Date(dob.getFullYear(), dob.getMonth(), dob.getDate(), event.start[0], event.start[1]);
+        const end = new Date(dob.getFullYear(), dob.getMonth(), dob.getDate(), event.end[0], event.end[1]);
+        let progress;
+        let status;
+        const now = (new Date)//.addDays(2);
+        if (now < start) {
+          progress = 0;
+          status = periodStates.FUTURE
+        }
+        else if (now > end) {
+          progress = 100
+          status = periodStates.PAST
+        }
+        else {
+          progress = (now-start)*100/(end-start);
+          status = periodStates.PRESENT
+        }
         return {
           name: (state.customizations[event.name] || { name: undefined }).name || event.name,
           meta: (state.customizations[event.name] || { meta: {} }).meta,
           id: event.name,
-          start: new Date(dob.getFullYear(), dob.getMonth(), dob.getDate(), event.start[0], event.start[1]),
-          end: new Date(dob.getFullYear(), dob.getMonth(), dob.getDate(), event.end[0], event.end[1]),
+          start,
+          end,
+          status,
           timed: true,
+          progress,
           color: (state.customizations[event.name] || { color: 'blue-grey' }).color
         }
       })//regular schedule for this day of the week
     }
   },
   currentEvent: (state, getters) => {
-    const now = state.now
+    const now = state.now//.addDays(2)
     const sched = getters.scheduleForDate(now)
     for (let index in sched) {
       const event = sched[index]

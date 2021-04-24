@@ -12,3 +12,4 @@ You can directly use them in pages and other components without the need to impo
 - `<Update>` | `<update>` (components/Update.vue)
 - `<VuetifyLogo>` | `<vuetify-logo>` (components/VuetifyLogo.vue)
 - `<WeekCalendar>` | `<week-calendar>` (components/WeekCalendar.vue)
+- `<BreakpointDetection>` | `<breakpoint-detection>` (components/breakpointDetection.vue)

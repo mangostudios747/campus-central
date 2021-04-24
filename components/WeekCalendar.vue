@@ -6,12 +6,12 @@
 
         ref='calendar'
         type='month'
-        color='primary'
+        color='accent'
 
         event-overlap-mode='column'
         :event-overlap-threshold='10'
         :event-color='e=>e.color||"accentDark"'
-        :weekdays='[1, 2, 3, 4, 5]'
+        :weekdays='[0,1, 2, 3, 4, 5,6]'
         :events='[...sgyevents]'
       >
       </v-calendar>

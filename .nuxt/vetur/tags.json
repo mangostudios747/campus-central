@@ -16,5 +16,8 @@
   },
   "WeekCalendar": {
     "description": "Auto imported from components/WeekCalendar.vue"
+  },
+  "BreakpointDetection": {
+    "description": "Auto imported from components/breakpointDetection.vue"
   }
 }

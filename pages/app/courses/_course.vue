@@ -4,7 +4,7 @@
     <v-row>
       <v-col style='' :cols='9'>
         <v-container class='mx-3'>
-          <v-row class='mt-5 text-center align-center justify-center'>
+          <v-row :key='courseid' class='mt-5 text-center align-center justify-center'>
             <v-avatar size='100' class='mr-4'>
               <v-img
                 :src='course.profile_url'
@@ -45,8 +45,8 @@ announcement haha
           <nuxt-child />
         </v-container>
       </v-col>
-      <v-col style='max-height: 88vh;overflow:hidden' v-if='true' class='mr-3  mt-10'>
-        <v-card class=' py-2' color='background' rounded elevation='0' style='border: 1px solid #ffffff22 !important'>
+      <v-col style='max-height: 88vh;overflow:hidden' v-if='notes' class='mr-3  mt-10'>
+        <v-card :key='courseid' class=' py-2' color='background' rounded elevation='0' style='border: 1px solid #ffffff22 !important'>
           <v-card-title>Links</v-card-title>
           <v-list
             color='transparent'
@@ -127,7 +127,7 @@ announcement haha
                   <v-btn
                     color='accent'
                     outlined text
-                    @click='dialog.newLink = false;notes.links.push(newLink);newLink={};'
+                    @click='dialog.newLink = false;notes.links.push(newLink);newLink={};updateNotes()'
                   >
                     Add
                   </v-btn>
@@ -164,9 +164,26 @@ export default {
     const courseid = params.course // When calling /abc the slug will be "abc"
     let course = store.getters.getCourse(courseid)
     course = await $axios.$get(`/api/users/me/sections/${courseid}`)
-
+    const allNotes = store.state['cache/courseNotes']
+    console.log(allNotes)
+    let notes;
+    if (!allNotes) notes = {notepad:'', links:[]};
+    else notes = allNotes[courseid] || {notepad:'', links:[]};
     //const assignments  = await $axios.$get(`/api/users/me/sections/${courseid}/assignments/pending`)
-    return { courseid, course }
+    return { courseid, course, notes }
+  },
+  watch:{
+    notes(){
+        this.updateNotes()
+    },
+  },
+  methods:{
+    updateNotes(){
+      this.$store.commit('setCourseNotes', {
+        courseid: this.courseid, notes: this.notes
+      })
+
+    }
   },
   data: () => ({
     newLink: {
@@ -177,7 +194,7 @@ export default {
       newLink: false
 
     },
-    notes: {
+    /*notes: {
       links: [
         {
           to: 'https://google.com/',
@@ -185,7 +202,7 @@ export default {
         }
       ],
       notepad: `Notepad stuff coming soon too. This is just a preview.`
-    }
+    }*/
   }),
   head() {
     return {

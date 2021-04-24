@@ -1,7 +1,7 @@
 <template>
   <div style='height: 100%;'>
 
-    <v-navigation-drawer :mini-variant='mini' color='transparent'  app>
+    <v-navigation-drawer :mini-variant='mini'  class='sidenav blurred-box' v-model='sidebar' app>
       <!-- -->
 
       <v-list   v-if='$store.state.user'>
@@ -108,6 +108,7 @@
     <v-app-bar color='background' elevation='0' flat app>
       <v-app-bar-title v-if='false'>Campus Central</v-app-bar-title>
 
+      <v-app-bar-nav-icon  @click='sidebar=!sidebar'></v-app-bar-nav-icon>
         <v-progress-circular class=" elevation-0 ml-3 mr-5" style="border-radius: 50%"
 
                              :rotate="270"
@@ -125,6 +126,7 @@
 
 
       <v-spacer></v-spacer>
+      <breakpoint-detection></breakpoint-detection>
       <div v-if='$store.state.user&& false'>
         <span>{{ $store.state.user.name_display }}</span>
         <v-avatar class='ml-3' size='40'>
@@ -228,6 +230,31 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang='scss'>
+/*.sidenav:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 3000px rgba(19, 33, 62, 0.8);
+  filter: blur(30px);
+  background: inherit;
+  }*/
+@media (max-width: 1263px) {
+  .sidenav {
+    background-color: rgba(26, 33, 49, .50) !important;
+    backdrop-filter: blur(25px);// saturate(150%);
+  }
+
+}
+@media (min-width: 1264px) {
+  .sidenav {
+    background-color: transparent !important;
+  }
+
+}
+
 
 </style>

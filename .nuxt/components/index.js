@@ -4,6 +4,7 @@ export { default as MaterialViewer } from '../../components/MaterialViewer.vue'
 export { default as Update } from '../../components/Update.vue'
 export { default as VuetifyLogo } from '../../components/VuetifyLogo.vue'
 export { default as WeekCalendar } from '../../components/WeekCalendar.vue'
+export { default as BreakpointDetection } from '../../components/breakpointDetection.vue'
 
 export const LazyCourseMaterials = import('../../components/CourseMaterials.vue' /* webpackChunkName: "components/course-materials" */).then(c => wrapFunctional(c.default || c))
 export const LazyLogo = import('../../components/Logo.vue' /* webpackChunkName: "components/logo" */).then(c => wrapFunctional(c.default || c))
@@ -11,6 +12,7 @@ export const LazyMaterialViewer = import('../../components/MaterialViewer.vue' /
 export const LazyUpdate = import('../../components/Update.vue' /* webpackChunkName: "components/update" */).then(c => wrapFunctional(c.default || c))
 export const LazyVuetifyLogo = import('../../components/VuetifyLogo.vue' /* webpackChunkName: "components/vuetify-logo" */).then(c => wrapFunctional(c.default || c))
 export const LazyWeekCalendar = import('../../components/WeekCalendar.vue' /* webpackChunkName: "components/week-calendar" */).then(c => wrapFunctional(c.default || c))
+export const LazyBreakpointDetection = import('../../components/breakpointDetection.vue' /* webpackChunkName: "components/breakpoint-detection" */).then(c => wrapFunctional(c.default || c))
 
 // nuxt/nuxt.js#8607
 export function wrapFunctional(options) {

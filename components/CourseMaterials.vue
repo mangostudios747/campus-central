@@ -92,7 +92,7 @@ export default {
       if (existing && !force) this.folderContents = this.deepClone(existing);
       else {
         //console.log(this.$store.state.cache.courseMaterials[this.courseid]);
-        this.$store.commit('setCourseMaterials', {
+        this.$store.commit('cache/setCourseMaterials', {
           materials: (await $axios.$get('/api/sections/' + this.courseid + '/folder/0')),
           courseid: this.courseid
         })
@@ -126,7 +126,7 @@ export default {
       folderContents.forEach(function(item) {
         vapp.items[item.id] = item
       })
-      this.$store.commit('setCourseMaterials', {
+      this.$store.commit('cache/setCourseMaterials', {
         materials: this.deepClone(this.folderContents),
         courseid: this.courseid
       })
