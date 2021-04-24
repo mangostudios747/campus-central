@@ -10,7 +10,8 @@ color='background'
       <span>&copy; {{ new Date().getFullYear() }} Saumya Singhal</span>
       <v-spacer>
       </v-spacer>
-      <v-btn href='https://github.com/saumyasinghal747/campus-central' icon><v-icon>mdi-github</v-icon></v-btn>
+      <v-btn class='discord' href='https://discord.gg/JT36cSWFnS' target='_blank' icon><v-icon>mdi-discord</v-icon></v-btn>
+      <v-btn href='https://github.com/saumyasinghal747/campus-central' target='_blank' icon><v-icon>mdi-github</v-icon></v-btn>
     </v-footer>
   </v-app>
 </template>
@@ -28,5 +29,7 @@ export default {
 </script>
 
 <style scoped>
-
+.discord:hover {
+  color: #7289DA
+}
 </style>

@@ -76,7 +76,7 @@ announcement haha
                     <v-list-item>
                       Edit
                     </v-list-item>
-                    <v-list-item>
+                    <v-list-item color='red' @click='notes.links.splice(index,1)'>
                       Delete
                     </v-list-item>
                   </v-list>
