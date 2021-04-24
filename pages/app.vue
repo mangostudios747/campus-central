@@ -126,7 +126,7 @@
 
 
       <v-spacer></v-spacer>
-      <breakpoint-detection></breakpoint-detection>
+
       <div v-if='$store.state.user&& false'>
         <span>{{ $store.state.user.name_display }}</span>
         <v-avatar class='ml-3' size='40'>
@@ -245,7 +245,7 @@ export default {
 @media (max-width: 1263px) {
   .sidenav {
     background-color: rgba(26, 33, 49, .50) !important;
-    backdrop-filter: blur(25px);// saturate(150%);
+    backdrop-filter: blur(20px);// saturate(150%);
   }
 
 }
