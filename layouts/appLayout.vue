@@ -4,6 +4,7 @@
 
     <v-footer
 fixed
+style='border-top: 1px solid #ffffff22 !important'
       app
 color='background'
     >
@@ -11,7 +12,7 @@ color='background'
       <v-spacer>
       </v-spacer>
       <v-btn class='discord' href='https://discord.gg/JT36cSWFnS' target='_blank' icon><v-icon>mdi-discord</v-icon></v-btn>
-      <v-btn href='https://github.com/saumyasinghal747/campus-central' target='_blank' icon><v-icon>mdi-github</v-icon></v-btn>
+      <v-btn  href='https://github.com/saumyasinghal747/campus-central' target='_blank' icon><v-icon>mdi-github</v-icon></v-btn>
     </v-footer>
   </v-app>
 </template>

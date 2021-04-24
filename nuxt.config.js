@@ -125,6 +125,7 @@ export default {
         dark: {
           primary: '#3066C7',
           accent: '#e0897b',
+          anchor:'#e0897b',
           accentDark: '#8F321E',
           secondary: '#0F3261',
           tertiary: '#04173B',
@@ -143,6 +144,7 @@ export default {
           primary: '#3066C7',
           accent: '#b06056' || '#b7453b',
           accentDark: '#e0897b',
+          anchor: '#e0897b',
           secondary: '#dde2ee',
           tertiary: '#ccd9ef',
           blueLayer: '#d6ddee' || '#c3d6f8',

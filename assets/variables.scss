@@ -3,7 +3,18 @@
 // The variables you want to modify
 // $font-size-root: 20px;
 $material-dark: (
-  'background': #13203e //#08193b
+  'background': #13203e, //#08193b
+  'anchor':#e0897b,
+  'calendar': (
+    'background-color': #13203e,
+    'outside-background-color': #23314C,
+    'weeknumber-background-color': #13203e,
+    'line-color': rgba(255,255,255,0.08),
+    /*'interval-color': map-get($grey, 'lighten-3'),
+    'interval-line-color': map-get($grey, 'darken-2'),
+    'text-color': map-get($shades, 'white'),
+    'past-color': rgba(map-get($shades, 'white'), .50)*/
+  ),
 );
 
 $material-light: (

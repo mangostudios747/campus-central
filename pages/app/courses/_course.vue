@@ -58,14 +58,15 @@ announcement haha
               :key='index'
               dense
               v-for='(link, index) of notes.links'
+
               >
               <v-list-item-content >
-                <v-btn  text color='accent'  :href='link.to' target='_blank'><span class='text-decoration-underline'>{{ link.name }}</span></v-btn>
+                <v-btn  color='#ffffff22' elevation='0' link large :href='link.to' target='_blank'><span >{{ link.name }}</span></v-btn>
               </v-list-item-content>
               <v-list-item-action>
                 <v-menu offset-x offset-y>
                   <template v-slot:activator='{ on, attrs }'>
-                    <v-btn v-bind="attrs"
+                    <v-btn left v-bind="attrs"
                            v-on="on" color='accent'  icon>
                       <v-icon>
                         mdi-cog
@@ -84,7 +85,7 @@ announcement haha
               </v-list-item-action>
             </v-list-item>
           </v-list>
-          <v-card-actions class='mx-3'>
+          <v-card-actions class='mx-2'>
             <v-dialog
               v-model='dialog.newLink'
               persistent
