@@ -1,6 +1,6 @@
 <template>
-  <div style='height: 100%'>
-    <v-row>
+  <div >
+    <v-row v-if='schedule.length > 0'>
       <v-col class='mx-16'>
         <v-progress-linear elevation='0'  :value='period.progress' height='60' class='mr-16 my-3' :color='period.color+"bb"' :key='period.hcname'  rounded style='border: 0px solid #ffffff22 !important;' v-for='period in schedule'>
           <v-row class='text-center px-8'>
@@ -19,7 +19,15 @@
         </v-progress-linear>
       </v-col>
     </v-row>
+  <v-row class='mx-16 my-5 text-center' v-else>
+    <v-col class='mx-auto text-center'>
+      <v-icon  size='300'>mdi-sofa-single</v-icon>
+      <h1>No School Today</h1>
+    </v-col>
 
+
+
+  </v-row>
   </div>
 
 

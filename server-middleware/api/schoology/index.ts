@@ -342,20 +342,35 @@ export async function fetchCourseUpdates(user: User, courseid: string) {
   return updates
 }
 
+
+// like an update - ACTION
 export async function like(user: User, updateid: string, like_action: boolean) {
   return await getFrom(`/like/${updateid}`, user.credentials, 'post', JSON.stringify({
     like_action
   }))
 }
 
-// this is for all documents lol
-
+// works for documents, links, etc
 export async function getDocument(user: User, sectionid: string, documentid: string) {
   return await getFrom(`sections/${sectionid}/documents/${documentid}`, user.credentials)
-   // .then(e => e)
 }
 
+// the raw stuff
 export async function getPage(user: User, sectionid: string, pageid: string) {
   return await getFrom(`sections/${sectionid}/pages/${pageid}`, user.credentials)
-  // .then(e => e)
+}
+
+async function getSectionGrades(user: User, sectionid:string) {
+
+  return await getFrom(`/users/${user.profile.uid}/grades?section_id=${sectionid}`, user.credentials)
+    .then(e=>e.section)
+}
+
+export async function getAllGrades(user: User) {
+  const sectionids = (await getSections(user)).map((section: { id: string }) => section.id)
+  const grades: Record<string, any> = {};
+  for (const sectionid of sectionids) {
+    grades[sectionid] = (await getSectionGrades(user, sectionid))[0];
+  }
+  return grades
 }

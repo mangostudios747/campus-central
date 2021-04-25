@@ -123,11 +123,8 @@
         <v-toolbar-title v-if="!$store.getters['hc/currentEvent'].isHoliday">{{Math.ceil($store.getters['hc/currentEvent'].remaining||$store.getters['hc/currentEvent'].elapsed)}} mins
           {{ $store.getters['hc/currentEvent'].displayText }} {{ $store.getters['hc/currentEvent'].name }}</v-toolbar-title>
         <v-toolbar-title v-else>No school today</v-toolbar-title>
-
-
       <v-spacer></v-spacer>
-
-      <div v-if='$store.state.user&& false'>
+      <div v-if='$store.state.user && false'>
         <span>{{ $store.state.user.name_display }}</span>
         <v-avatar class='ml-3' size='40'>
           <img
@@ -141,9 +138,6 @@
     <v-main style='height: 100%;'>
 
       <nuxt-child />
-
-      <!--<span style='display:none'>{{ JSON.stringify($store.state.user, null, 4) }}</span>-->
-
 
     </v-main>
   </div>

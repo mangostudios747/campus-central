@@ -2,8 +2,9 @@
   <div
   >
     <v-text-field prepend-inner-icon='mdi-magnify' color='accent' class='mx-4'  v-model='searchText'>
-      <template v-slot:append>
-        <v-btn  color='accent' @click='fetchData(true)' icon>
+
+      <template v-slot:append-outer>
+        <v-btn color='accent' @click='fetchData(true)' icon>
           <v-icon>mdi-reload</v-icon>
         </v-btn>
       </template>

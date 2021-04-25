@@ -111,7 +111,10 @@ export default {
   },
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
-
+  loading: {
+    color: '#e0897b',
+    height: '5px'
+  },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],

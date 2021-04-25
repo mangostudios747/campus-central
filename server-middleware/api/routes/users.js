@@ -102,4 +102,7 @@ router.get('/me/sections/:sectionid/page/:pageid', async function (req, res, nex
   res.send(await sgy.getPage(req.user, req.params.sectionid, req.params.pageid))
 })
 
+router.get('/me/grades', async function (req, res, next){
+  res.send(await sgy.getAllGrades(req.user));
+})
 module.exports = router

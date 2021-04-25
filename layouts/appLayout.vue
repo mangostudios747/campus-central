@@ -11,6 +11,7 @@ color='background'
       <span>&copy; {{ new Date().getFullYear() }} Saumya Singhal</span>
       <v-spacer>
       </v-spacer>
+      <v-btn class='gmail' href='mailto:realsaumya@gmail.com' target='_blank' icon><v-icon>mdi-gmail</v-icon></v-btn>
       <v-btn class='discord' href='https://discord.gg/JT36cSWFnS' target='_blank' icon><v-icon>mdi-discord</v-icon></v-btn>
       <v-btn  href='https://github.com/saumyasinghal747/campus-central' target='_blank' icon><v-icon>mdi-github</v-icon></v-btn>
     </v-footer>
@@ -30,7 +31,10 @@ export default {
 </script>
 
 <style scoped>
+.gmail:hover {
+  color: rgb(234, 66, 52) !important;
+}
 .discord:hover {
-  color: #7289DA
+  color: #7289DA !important
 }
 </style>

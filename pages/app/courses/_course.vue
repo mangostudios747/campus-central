@@ -142,10 +142,10 @@ announcement haha
             color='accent'
             auto-grow
             filled
-            class='mx-3'
+            class='mx-4'
             v-model='notes.notepad'
             rows='4' />
-          <v-card-actions class='mx-3'>
+          <v-card-actions class='mx-2'>
             <v-btn outlined text color='accent'>
               <v-icon left>mdi-check</v-icon>
               save

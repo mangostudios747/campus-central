@@ -159,11 +159,11 @@ export default {
   top: 0px;
   left: 0px;
   right: 0px;
-  height: 2px;
+  height: 5px;
   width: 0%;
   opacity: 1;
   transition: width 0.1s, opacity 0.4s;
-  background-color: black;
+  background-color: #e0897b;
   z-index: 999999;
 }
 
