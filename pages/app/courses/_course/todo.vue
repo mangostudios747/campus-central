@@ -2,7 +2,7 @@
 <div>
   <h2 class='my-2'>Todo</h2>
   <v-list rounded v-if='assignments.length > 0' color='background' style='border: 1px solid #ffffff22 !important' elevation='0'>
-    <v-list-item v-for='asg in assignments' :key='asg.id'>
+    <v-list-item v-for='(asg, key) of assignments' :key='key'>
       <v-list-item-content>
         <v-list-item-title>{{ asg.title }}</v-list-item-title>
         <v-list-item-subtitle>{{ asg.completion_status }}</v-list-item-subtitle>

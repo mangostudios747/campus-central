@@ -65,8 +65,7 @@
             <v-chip class='text-center justify-center'
                     label
                     small
-                    text-color='rgb(26, 33, 49)'
-
+                    text-color='coveredBG'
                     color='accent'
             ><span class='font-weight-bold'>NEW</span>
             </v-chip>
@@ -115,8 +114,7 @@
             <v-chip class='text-center justify-center'
                     label
                     small
-                    text-color='rgb(26, 33, 49)'
-
+                    text-color='coveredBG'
                     color='accent'
             ><span class='font-weight-bold'>NEW</span>
             </v-chip>
@@ -147,6 +145,7 @@
       </v-toolbar-title>
       <v-toolbar-title v-else>No school today</v-toolbar-title>
       <v-spacer></v-spacer>
+      <breakpoint-detection v-if='dev' />
       <div v-if='$store.state.user && false'>
         <span>{{ $store.state.user.name_display }}</span>
         <v-avatar class='ml-3' size='40'>
@@ -239,6 +238,11 @@ export default {
     }
     console.log(this.$store.getters['hc/scheduleForDate'](this.$store.state.hc.now))
 
+  },
+  computed:{
+    dev(){
+      return process.env.NODE_ENV !== 'production'
+    }
   }
   /*async asyncData(ctx) {
 
@@ -250,20 +254,9 @@ export default {
 </script>
 
 <style lang='scss'>
-/*.sidenav:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  box-shadow: inset 0 0 3000px rgba(19, 33, 62, 0.8);
-  filter: blur(30px);
-  background: inherit;
-  }*/
 @media (max-width: 1263px) {
   .sidenav {
-    background-color: rgba(26, 33, 49, .50) !important;
+    background-color: rgba(var(--v-coveredBG-base), .50) !important;
     backdrop-filter: blur(20px); // saturate(150%);
   }
 

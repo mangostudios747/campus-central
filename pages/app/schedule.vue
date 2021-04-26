@@ -2,7 +2,7 @@
   <div >
     <v-row v-if='schedule.length > 0'>
       <v-col class='mx-16'>
-        <v-progress-linear elevation='0'  :value='period.progress' height='60' class='mr-16 my-3' :color='period.color+"bb"' :key='`${period.hcname}`'  rounded style='border: 0px solid #ffffff22 !important;' v-for='period in schedule'>
+        <v-progress-linear elevation='0'  :value='period.progress' height='3.5rem' class='mr-16 my-3' :color='period.color+"bb"' :key='period.hcname'  rounded  v-for='period in schedule'>
           <v-row class='text-center px-8'>
             <div style='align-self: center;text-align: left'>
               <span>{{ period.status===periodStates.FUTURE?'Starting':'Started' }} {{period.start | moment('from','now')}}</span><br/>
@@ -64,8 +64,6 @@ export default {
 }
 </script>
 
-<style scoped>
-iframe {
-  border: none;
-}
+<style >
+
 </style>

@@ -1,8 +1,11 @@
 <template>
   <div class='ma-5'>
-    <v-expansion-panels v-if='grades'>
+    <v-alert text icon='mdi-information' type='accent'>
+      <strong>Note:</strong> This feature of Campus Central is still under construction, so you may experience ugly or unordered data.
+    </v-alert>
+    <v-expansion-panels v-if='$store.state.grades'>
     <v-expansion-panel
-      v-for="(section, sectionid) of grades"
+      v-for="(section, sectionid) of $store.state.grades"
       :key="sectionid"
     >
       <v-expansion-panel-header style='border:none;'>
@@ -17,12 +20,14 @@
 
       </v-expansion-panel-header>
       <v-expansion-panel-content >
-        <v-card :key='period.period_id' v-for='period in section.period'>
-          <v-list>
+        <v-card color='transparent' elevation='0' :key='period.period_id' v-for='period in section.period'>
+          <v-card-title>{{ period.period_title }}</v-card-title>
+          <v-list color='transparent'>
             <v-list-item
             v-for='asg in period.assignment'
+            :key='asg.assignment_id'
             >
-              a thing will go here
+              {{asg.grade}} / {{asg.max_points}} -> {{asg.comment}}
             </v-list-item>
           </v-list>
         </v-card>
@@ -51,9 +56,12 @@ const GRADE_COLORS = {
 }
 export default {
   name: 'grades',
-  async asyncData({ route, $axios }){
-    const grades = await $axios.$get('/api/users/me/grades')
-    return {grades}
+  async asyncData({ route, $axios, store }){
+    if (!store.state.grades) {
+      const grades = await $axios.$get('/api/users/me/grades')
+      store.commit('setGrades', grades)
+    }
+    //return {grades}
   },
   methods: {
     getGradeColor(grade){

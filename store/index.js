@@ -5,7 +5,8 @@ export const state = () => ({
   messages:{
     sent:[], inbox:[]
   },
-  courses:null // will store
+  courses:null, // will store
+  grades: null
 })
 
 export const mutations = {
@@ -20,6 +21,9 @@ export const mutations = {
   setMessagesSent(state, messages) {
     state.messages.sent = messages
   },
+  setGrades(state, grades) {
+    state.grades = grades;
+  }
 }
 
 export const actions = {
