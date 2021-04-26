@@ -1,13 +1,13 @@
 <template>
   <div style='height: 100%;'>
 
-    <v-navigation-drawer :mini-variant='mini'  class='sidenav blurred-box' v-model='sidebar' app>
+    <v-navigation-drawer :mini-variant='mini' class='sidenav blurred-box' v-model='sidebar' app>
       <!-- -->
 
-      <v-list   v-if='$store.state.user'>
+      <v-list v-if='$store.state.user'>
         <v-list-item v-if='mini' class='pl-2'>
           <v-btn
-            icon @click.stop="mini = !mini"
+            icon @click.stop='mini = !mini'
           >
             <v-icon>mdi-chevron-right</v-icon>
           </v-btn>
@@ -22,7 +22,7 @@
             <v-list-item-subtitle>{{ $store.state.user.primary_email }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item class="px-2">
+        <v-list-item class='px-2'>
           <v-list-item-avatar>
             <v-img :src='$store.state.user.picture_url'></v-img>
           </v-list-item-avatar>
@@ -31,7 +31,7 @@
 
           <v-btn
             icon
-            @click.stop="mini = !mini"
+            @click.stop='mini = !mini'
           >
             <v-icon>mdi-chevron-left</v-icon>
           </v-btn>
@@ -58,7 +58,18 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title><span>{{ item.title }}</span></v-list-item-title>
+
+          </v-list-item-content>
+          <v-list-item-content v-if='item.new' class='text-right' style='flex: none'>
+            <v-chip class='text-center justify-center'
+                    label
+                    small
+                    text-color='rgb(26, 33, 49)'
+
+                    color='accent'
+            ><span class='font-weight-bold'>NEW</span>
+            </v-chip>
           </v-list-item-content>
         </v-list-item>
         <v-list-group
@@ -68,9 +79,9 @@
         >
           <template v-slot:activator>
 
-              <v-list-item-content>
-                <v-list-item-title>Courses</v-list-item-title>
-              </v-list-item-content>
+            <v-list-item-content>
+              <v-list-item-title>Courses</v-list-item-title>
+            </v-list-item-content>
 
           </template>
 
@@ -100,6 +111,16 @@
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
+          <v-list-item-content v-if='item.new' class='text-right' style='flex: none'>
+            <v-chip class='text-center justify-center'
+                    label
+                    small
+                    text-color='rgb(26, 33, 49)'
+
+                    color='accent'
+            ><span class='font-weight-bold'>NEW</span>
+            </v-chip>
+          </v-list-item-content>
         </v-list-item>
       </v-list>
 
@@ -108,21 +129,23 @@
     <v-app-bar color='background' elevation='0' flat app>
       <v-app-bar-title v-if='false'>Campus Central</v-app-bar-title>
 
-      <v-app-bar-nav-icon  @click='sidebar=!sidebar'></v-app-bar-nav-icon>
-        <v-progress-circular class=" elevation-0 ml-3 mr-5" style="border-radius: 50%"
+      <v-app-bar-nav-icon @click='sidebar=!sidebar'></v-app-bar-nav-icon>
+      <v-progress-circular class=' elevation-0 ml-3 mr-5' style='border-radius: 50%'
 
-                             :rotate="270"
-                             :size="30"
-                             :width="5"
-                             :value="$store.getters['hc/currentEvent'].percent"
+                           :rotate='270'
+                           :size='30'
+                           :width='5'
+                           :value="$store.getters['hc/currentEvent'].percent"
 
-                             :color="($store.state.hc.customizations[$store.getters['hc/currentEvent'].id]||{color:'blue-grey'}).color"
+                           :color="($store.state.hc.customizations[$store.getters['hc/currentEvent'].id]||{color:'blue-grey'}).color"
 
 
-        ></v-progress-circular>
-        <v-toolbar-title v-if="!$store.getters['hc/currentEvent'].isHoliday">{{Math.ceil($store.getters['hc/currentEvent'].remaining||$store.getters['hc/currentEvent'].elapsed)}} mins
-          {{ $store.getters['hc/currentEvent'].displayText }} {{ $store.getters['hc/currentEvent'].name }}</v-toolbar-title>
-        <v-toolbar-title v-else>No school today</v-toolbar-title>
+      ></v-progress-circular>
+      <v-toolbar-title v-if="!$store.getters['hc/currentEvent'].isHoliday">
+        {{ Math.ceil($store.getters['hc/currentEvent'].remaining || $store.getters['hc/currentEvent'].elapsed) }} mins
+        {{ $store.getters['hc/currentEvent'].displayText }} {{ $store.getters['hc/currentEvent'].name }}
+      </v-toolbar-title>
+      <v-toolbar-title v-else>No school today</v-toolbar-title>
       <v-spacer></v-spacer>
       <div v-if='$store.state.user && false'>
         <span>{{ $store.state.user.name_display }}</span>
@@ -150,21 +173,22 @@ export default {
   layout: 'appLayout',
   data: () => ({
     //user: null
-    mini:false,
+    mini: false,
     sidebar: true,
     routes: [
       { title: 'Home', icon: 'mdi-home', to: '/app' },
       {
-      title: 'Schedule',
-      icon: 'mdi-calendar',
-      to: '/app/schedule'
-    },
+        title: 'Schedule',
+        icon: 'mdi-calendar',
+        new: true,
+        to: '/app/schedule'
+      }
       /*{ title: 'Courses',
         icon: 'mdi-book-multiple',
         to: '/app/courses',
         inexact: true
       }*/],
-    routes2:[
+    routes2: [
       {
         title: 'Updates',
         icon: 'mdi-inbox',
@@ -177,13 +201,14 @@ export default {
         inexact: true
       },
       {
-        title:'Grades',
-        icon:'mdi-book-open-variant',
-        to:'/app/grades',
+        title: 'Grades',
+        icon: 'mdi-book-open-variant',
+        new: true,
+        to: '/app/grades'
       },
       {
-        title:'Settings',
-        icon:'mdi-cog',
+        title: 'Settings',
+        icon: 'mdi-cog',
         to: '/app/settings'
       }
     ]
@@ -201,13 +226,13 @@ export default {
   },
 
   async mounted() {
-    const vapp = this;
-    setInterval(()=>{
+    const vapp = this
+    setInterval(() => {
       vapp.$store.commit('hc/resetTime')
-    }, 1000);
+    }, 1000)
     // fetch the courses once!
     try {
-      await this.$store.dispatch('setCourses', await this.$axios.$get('/api/users/me/sections'));
+      await this.$store.dispatch('setCourses', await this.$axios.$get('/api/users/me/sections'))
       //await this.$store.dispatch('hc/bindSchedule')
     } catch (e) {
       console.error(e)
@@ -239,10 +264,11 @@ export default {
 @media (max-width: 1263px) {
   .sidenav {
     background-color: rgba(26, 33, 49, .50) !important;
-    backdrop-filter: blur(20px);// saturate(150%);
+    backdrop-filter: blur(20px); // saturate(150%);
   }
 
 }
+
 @media (min-width: 1264px) {
   .sidenav {
     background-color: transparent !important;
