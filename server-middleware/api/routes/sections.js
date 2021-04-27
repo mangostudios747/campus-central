@@ -24,4 +24,9 @@ router.get('/:sectionid/updates', async function(req, res, next) {
   res.send( await sgy.fetchCourseUpdates(req.user, sectionid));
 })
 
+router.get('/:sectionid/announcement', async function(req, res, next) {
+  const { sectionid } = req.params
+  res.send( await sgy.getSectionAnnouncement(req.user, sectionid));
+})
+
 module.exports = router

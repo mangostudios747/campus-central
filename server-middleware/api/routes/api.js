@@ -33,6 +33,10 @@ router.get('/session', function(req, res, next) {
 
 router.get('/sign-in',
     passport.authenticate('schoology'));
+router.get('/sign-out', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 router.get('/thanks-sgy', passport.authenticate('schoology', {
     successRedirect: '/app', // frontend url

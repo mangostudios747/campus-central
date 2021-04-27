@@ -44,6 +44,7 @@
       <v-list
         dense
         nav
+
       >
         <v-list-item
           v-for='item in routes'
@@ -114,14 +115,28 @@
             <v-chip class='text-center justify-center'
                     label
                     small
+                    draggable
                     text-color='coveredBG'
                     color='accent'
             ><span class='font-weight-bold'>NEW</span>
             </v-chip>
           </v-list-item-content>
         </v-list-item>
-      </v-list>
 
+      </v-list>
+      <v-spacer class='pt-16' style='flex-direction: column !important;' />
+      <v-list v-if='false' nav dense style='bottom: 0;position: fixed;width: 100%'>
+
+        <v-list-item color='red'  class='v-list-item--active' href='/api/sign-out'>
+          <v-list-item-icon>
+            <v-icon>mdi-logout</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+
+            <v-list-item-title>Sign out</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
     </v-navigation-drawer>
 
     <v-app-bar color='background' elevation='0' flat app>
@@ -239,8 +254,8 @@ export default {
     console.log(this.$store.getters['hc/scheduleForDate'](this.$store.state.hc.now))
 
   },
-  computed:{
-    dev(){
+  computed: {
+    dev() {
       return process.env.NODE_ENV !== 'production'
     }
   }
@@ -266,7 +281,6 @@ export default {
   .sidenav {
     background-color: transparent !important;
   }
-
 }
 
 

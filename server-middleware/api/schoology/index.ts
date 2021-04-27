@@ -374,3 +374,8 @@ export async function getAllGrades(user: User) {
   }
   return grades
 }
+
+export async function getSectionAnnouncement(user: User, sectionid: string) {
+  return await getFrom(`sections/${sectionid}/updates`, user.credentials)
+    .then(e=>e.update.sort((a:any, b:any) => b.last_updated - a.last_updated)[0])
+}

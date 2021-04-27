@@ -5,6 +5,7 @@
       <v-col style='' :cols='9'>
         <v-container class='mx-3'>
           <v-row :key='courseid' class='mt-5 text-center align-center justify-center'>
+
             <v-avatar size='100' class='mr-4'>
               <v-img
                 :src='course.profile_url'
@@ -16,11 +17,12 @@
             <h1 class='my-5'>{{ course.section_title }}</h1>
           </v-row>
           <v-row class='text-center my-3 align-center justify-center'>
-            <v-alert v-if='false'
-            text  color='accent'
-            icon='mdi-bullhorn'
+            <v-alert v-if='announcement'
+                     text color='accent'
+                     icon='mdi-bullhorn'
+
             >
-announcement haha
+              <div style='white-space: pre-wrap;text-align: left' v-linkified v-html='announcement.body'></div>
             </v-alert>
           </v-row>
           <div style='position: sticky;top: 63px;z-index: 4'>
@@ -46,7 +48,8 @@ announcement haha
         </v-container>
       </v-col>
       <v-col style='max-height: 88vh;overflow:hidden' v-if='notes' class='mr-3  mt-10'>
-        <v-card :key='courseid' class=' py-2' color='background' rounded elevation='0' style='border: 1px solid #ffffff22 !important'>
+        <v-card :key='courseid' class=' py-2' color='background' rounded elevation='0'
+                style='border: 1px solid #ffffff22 !important'>
           <v-card-title>Links</v-card-title>
           <v-list
             color='transparent'
@@ -59,15 +62,16 @@ announcement haha
               dense
               v-for='(link, index) of notes.links'
 
-              >
-              <v-list-item-content >
-                <v-btn  color='#ffffff22' elevation='0' link large :href='link.to' target='_blank'><span >{{ link.name }}</span></v-btn>
+            >
+              <v-list-item-content>
+                <v-btn color='#ffffff22' elevation='0' link large :href='link.to' target='_blank'><span>{{ link.name
+                  }}</span></v-btn>
               </v-list-item-content>
               <v-list-item-action>
                 <v-menu offset-x offset-y>
                   <template v-slot:activator='{ on, attrs }'>
-                    <v-btn left v-bind="attrs"
-                           v-on="on" color='accent'  icon>
+                    <v-btn left v-bind='attrs'
+                           v-on='on' color='accent' icon>
                       <v-icon>
                         mdi-cog
                       </v-icon>
@@ -164,21 +168,22 @@ export default {
     const courseid = params.course // When calling /abc the slug will be "abc"
     let course = store.getters.getCourse(courseid)
     course = await $axios.$get(`/api/users/me/sections/${courseid}`)
+    const announcement = await $axios.$get(`/api/sections/${courseid}/announcement`)
     const allNotes = store.state['cache/courseNotes']
-    console.log(allNotes)
-    let notes;
-    if (!allNotes) notes = {notepad:'', links:[]};
-    else notes = allNotes[courseid] || {notepad:'', links:[]};
+    //console.log(allNotes)
+    let notes
+    if (!allNotes) notes = { notepad: '', links: [] }
+    else notes = allNotes[courseid] || { notepad: '', links: [] }
     //const assignments  = await $axios.$get(`/api/users/me/sections/${courseid}/assignments/pending`)
-    return { courseid, course, notes }
+    return { courseid, course, notes, announcement }
   },
-  watch:{
-    notes(){
-        this.updateNotes()
-    },
+  watch: {
+    notes() {
+      this.updateNotes()
+    }
   },
-  methods:{
-    updateNotes(){
+  methods: {
+    updateNotes() {
       this.$store.commit('setCourseNotes', {
         courseid: this.courseid, notes: this.notes
       })
@@ -193,7 +198,7 @@ export default {
     dialog: {
       newLink: false
 
-    },
+    }
     /*notes: {
       links: [
         {
