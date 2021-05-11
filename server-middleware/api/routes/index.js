@@ -6,7 +6,7 @@ router.get('*', function(req, res, next) {
   if (req.user) {
     next()
   } else {
-    res.redirect('/api/sign-in')
+    res.redirect('/cc/api/sign-in')
   }
 })
 

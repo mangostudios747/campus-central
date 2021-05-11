@@ -58,7 +58,7 @@ export default {
   name: 'grades',
   async asyncData({ route, $axios, store }){
     if (!store.state.grades) {
-      const grades = await $axios.$get('/api/users/me/grades')
+      const grades = await $axios.$get('/cc/api/users/me/grades')
       store.commit('setGrades', grades)
     }
     //return {grades}

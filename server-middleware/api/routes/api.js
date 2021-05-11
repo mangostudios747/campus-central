@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/auth', function(req, res, next){
   if (req.user) res.redirect('/app');
-  else res.redirect('/api/sign-in'); // used by the homepage
+  else res.redirect('/cc/api/sign-in'); // used by the homepage
 })
 
 router.get('/oops', function(req, res, next) {
@@ -40,7 +40,7 @@ router.get('/sign-out', function(req, res){
 
 router.get('/thanks-sgy', passport.authenticate('schoology', {
     successRedirect: '/app', // frontend url
-    failureRedirect: '/api/oops' }))
+    failureRedirect: '/cc/api/oops' }))
 
 router.get('/user-count', function(req, res, next){
   res.send({userCount:Object.keys(userDatadb.getState()).length})

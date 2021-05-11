@@ -25,7 +25,7 @@
 export default {
   name: 'index',
   /*async asyncData({ $axios }) {
-    const sections = await $axios.$get('/api/users/me/sections');
+    const sections = await $axios.$get('/cc/api/users/me/sections');
     //console.log(sections)
     return {sections}
   },*/

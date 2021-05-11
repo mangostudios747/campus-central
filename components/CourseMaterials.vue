@@ -88,13 +88,13 @@ export default {
       const { $axios, $store } = this
       //console.log(this.courseid)
       // can just query the courses
-      const course =  $store.getters.getCourse(this.courseid); //await $axios.$get(`/api/users/me/sections/${this.courseid}`)
+      const course =  $store.getters.getCourse(this.courseid); //await $axios.$get(`/cc/api/users/me/sections/${this.courseid}`)
       const existing = this.$store.state.cache.courseMaterials[this.courseid];
       if (existing && !force) this.folderContents = this.deepClone(existing);
       else {
         //console.log(this.$store.state.cache.courseMaterials[this.courseid]);
         this.$store.commit('cache/setCourseMaterials', {
-          materials: (await $axios.$get('/api/sections/' + this.courseid + '/folder/0')),
+          materials: (await $axios.$get('/cc/api/sections/' + this.courseid + '/folder/0')),
           courseid: this.courseid
         })
         this.folderContents = this.deepClone(this.$store.state.cache.courseMaterials[this.courseid]||[])
@@ -121,7 +121,7 @@ export default {
       this.course_id = (+course.parent_id != 0) ? course.parent_id : course.id
     },
     async fetchChildren(item) {
-      const folderContents = await this.$axios.$get('/api/sections/' + this.courseid + '/folder/' + item.id)
+      const folderContents = await this.$axios.$get('/cc/api/sections/' + this.courseid + '/folder/' + item.id)
       item.children = folderContents
       const vapp = this;
       folderContents.forEach(function(item) {

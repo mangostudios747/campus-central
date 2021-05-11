@@ -28,7 +28,7 @@ export default {
     sgyevents:[]
   }),
   async mounted(){
-    this.sgyevents = await this.$axios.$get('/api/users/me/events/week/');
+    this.sgyevents = await this.$axios.$get('/cc/api/users/me/events/week/');
    // this.$refs.calendar.scrollToTime('08:00')
   }
 }

@@ -20,7 +20,7 @@
 export default {
   name: 'stats',
   async asyncData({ $axios }) {
-    const datums =  await $axios.$get('/api/user-count/log')
+    const datums =  await $axios.$get('/cc/api/user-count/log')
     datums.keys = datums.keys.map(a=>new Date(+a))
     return datums
   }

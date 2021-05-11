@@ -28,9 +28,9 @@ export default {
   name: 'todo',
   async asyncData({ params, $axios }) {
     const courseid = params.course // When calling /abc the slug will be "abc"
-    //const course  = await $axios.$get(`/api/users/me/sections/${courseid}`)
+    //const course  = await $axios.$get(`/cc/api/users/me/sections/${courseid}`)
 
-    const assignments  = await $axios.$get(`/api/users/me/sections/${courseid}/assignments/pending`)
+    const assignments  = await $axios.$get(`/cc/api/users/me/sections/${courseid}/assignments/pending`)
     return { courseid, assignments }
   }
 }

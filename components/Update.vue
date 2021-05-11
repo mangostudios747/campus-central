@@ -108,7 +108,7 @@ export default {
   methods:{
     async like(id, desiredOutcome){
       // post to axios to get the new data
-      const response = await this.$axios.$post('/api/users/like/'+id, {
+      const response = await this.$axios.$post('/cc/api/users/like/'+id, {
         desiredOutcome
       } )
       // emit the new data

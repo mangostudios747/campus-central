@@ -119,7 +119,7 @@
           <v-container class='text-center'>
             <v-sheet color='transparent' light>
               <h1 class='display-3 mb-8'>Break Free of Hassles</h1>
-              <v-btn rounded color='accent' href='/api/auth' x-large>
+              <v-btn rounded color='accent' href='/cc/api/auth' x-large>
                 Enter Campus
               </v-btn>
             </v-sheet>

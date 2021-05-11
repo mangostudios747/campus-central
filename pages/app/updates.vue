@@ -23,7 +23,7 @@ export default {
   name: 'updates',
 
   async  asyncData({ $axios }) {
-    const updates = await $axios.$get('/api/users/me/recent')
+    const updates = await $axios.$get('/cc/api/users/me/recent')
     return { updates }
   },
   methods: {

@@ -85,12 +85,14 @@ export default {
   },
   methods: {
     async openItem(item) {
+      this.courseid = this.$store.getters["hc/currentEvent"].meta.id
+      this.course_id = this.$store.getters["hc/currentEvent"].meta.id
       let url;
       switch (item.type) {
 
         case 'page':
           //url = 'page/'+item.id;
-          const pageData = await this.$axios.$get(`/api/users/me/sections/${this.courseid}/page/${item.id}`)
+          const pageData = await this.$axios.$get(`/cc/api/users/me/sections/${this.courseid}/page/${item.id}`)
           this.objectType = item.type
           this.focusedObject = item
           break;
@@ -105,7 +107,7 @@ export default {
 
           break;
         case 'document':
-          const documentData = await this.$axios.$get(`/api/users/me/sections/${this.courseid}/document/${item.id}`)
+          const documentData = await this.$axios.$get(`/cc/api/users/me/sections/${this.courseid}/document/${item.id}`)
           item = Object.assign(item, documentData)
           console.log(documentData)
           this.objectType = item.type

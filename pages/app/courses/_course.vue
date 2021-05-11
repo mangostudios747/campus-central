@@ -4,8 +4,9 @@
     <v-row>
       <v-col style='' :cols='9'>
         <v-container class='mx-3'>
-          <v-row :key='courseid' class='mt-5 text-center align-center justify-center'>
-
+          <v-row :key='courseid'>
+          <v-col>
+          <v-row :key='courseid' class='mt-5 ml-8 justify-left'>
             <v-avatar size='100' class='mr-4'>
               <v-img
                 :src='course.profile_url'
@@ -13,18 +14,19 @@
             </v-avatar>
 
           </v-row>
-          <v-row class='mt-5 text-center align-center justify-center'>
+          <v-row class='mt-5 ml-8 justify-left'>
             <h1 class='my-5'>{{ course.section_title }}</h1>
           </v-row>
-          <v-row class='text-center my-3 align-center justify-center'>
-            <v-alert v-if='announcement'
+          </v-col>
+          <v-col cols='7'>
+            <v-alert dismissible v-if='announcement'
                      text color='accent'
                      icon='mdi-bullhorn'
 
             >
               <div style='white-space: pre-wrap;text-align: left' v-linkified v-html='announcement.body'></div>
             </v-alert>
-          </v-row>
+          </v-col></v-row>
           <div style='position: sticky;top: 63px;z-index: 4'>
             <v-tabs :key='courseid' background-color='background' grow color='text'>
               <v-tab
@@ -167,14 +169,14 @@ export default {
   async asyncData({ params, $axios, store }) {
     const courseid = params.course // When calling /abc the slug will be "abc"
     let course = store.getters.getCourse(courseid)
-    course = await $axios.$get(`/api/users/me/sections/${courseid}`)
-    const announcement = await $axios.$get(`/api/sections/${courseid}/announcement`)
+    course = await $axios.$get(`/cc/api/users/me/sections/${courseid}`)
+    const announcement = await $axios.$get(`/cc/api/sections/${courseid}/announcement`)
     const allNotes = store.state['cache/courseNotes']
     //console.log(allNotes)
     let notes
     if (!allNotes) notes = { notepad: '', links: [] }
     else notes = allNotes[courseid] || { notepad: '', links: [] }
-    //const assignments  = await $axios.$get(`/api/users/me/sections/${courseid}/assignments/pending`)
+    //const assignments  = await $axios.$get(`/cc/api/users/me/sections/${courseid}/assignments/pending`)
     return { courseid, course, notes, announcement }
   },
   watch: {

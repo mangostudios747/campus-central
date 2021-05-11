@@ -28,7 +28,7 @@ export default {
   }),
   async asyncData({ params, $axios }) {
     const courseid = params.course;
-    const course  = await $axios.$get(`/api/users/me/sections/${courseid}`)
+    const course  = await $axios.$get(`/cc/api/users/me/sections/${courseid}`)
     const course_id = (+course.parent_id != 0)? course.parent_id : course.id
     return {courseid, course_id}
   },
@@ -39,7 +39,7 @@ export default {
 
           case 'page':
             //url = 'page/'+item.id;
-            const pageData = await this.$axios.$get(`/api/users/me/sections/${this.courseid}/page/${item.id}`)
+            const pageData = await this.$axios.$get(`/cc/api/users/me/sections/${this.courseid}/page/${item.id}`)
             this.objectType = item.type
             this.focusedObject = item
             break;
@@ -54,7 +54,7 @@ export default {
 
             break;
           case 'document':
-            const documentData = await this.$axios.$get(`/api/users/me/sections/${this.courseid}/document/${item.id}`)
+            const documentData = await this.$axios.$get(`/cc/api/users/me/sections/${this.courseid}/document/${item.id}`)
             item = Object.assign(item, documentData)
             console.log(documentData)
             this.objectType = item.type

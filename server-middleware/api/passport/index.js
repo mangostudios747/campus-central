@@ -14,7 +14,7 @@ const sgyDomain = 'https://pausd.schoology.com'
 passport.use('schoology',new SchoologyStrategy({
         consumerKey: key,
         consumerSecret: secret,
-        callbackURL: `${HOSTING_DOMAIN}/api/thanks-sgy`,
+        callbackURL: `${HOSTING_DOMAIN}/cc/api/thanks-sgy`,
         sgyDomain
     },
     async function(token, tokenSecret, profile, done) {

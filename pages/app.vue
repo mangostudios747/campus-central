@@ -127,7 +127,7 @@
       <v-spacer class='pt-16' style='flex-direction: column !important;' />
       <v-list v-if='false' nav dense style='bottom: 0;position: fixed;width: 100%'>
 
-        <v-list-item color='red'  class='v-list-item--active' href='/api/sign-out'>
+        <v-list-item color='red'  class='v-list-item--active' href='/cc/api/sign-out'>
           <v-list-item-icon>
             <v-icon>mdi-logout</v-icon>
           </v-list-item-icon>
@@ -246,7 +246,7 @@ export default {
     }, 1000)
     // fetch the courses once!
     try {
-      await this.$store.dispatch('setCourses', await this.$axios.$get('/api/users/me/sections'))
+      await this.$store.dispatch('setCourses', await this.$axios.$get('/cc/api/users/me/sections'))
       //await this.$store.dispatch('hc/bindSchedule')
     } catch (e) {
       console.error(e)

@@ -103,7 +103,7 @@ export default {
       this.messages= this.$store.state.messages.sent
     }
     else {
-      const messages = await this.$axios.$get('/api/users/me/messages/sent');
+      const messages = await this.$axios.$get('/cc/api/users/me/messages/sent');
       this.$store.commit('setMessagesSent', messages)
       this.messages = messages
     }
@@ -111,7 +111,7 @@ export default {
   fetchOnServer: false,
   methods:{
     async fetchMessage(id){
-      return await this.$axios.$get('/api/users/me/messages/sent/'+id);
+      return await this.$axios.$get('/cc/api/users/me/messages/sent/'+id);
     },
     async focusMessage(id){
       this.focusedMessage= await this.fetchMessage(id)
@@ -119,7 +119,7 @@ export default {
     async sendReply(){
       if (!this.response[this.focusedMessage[0].id]) return;
       this.sending = true;
-      await this.$axios.$post('/api/users/me/messages/'+this.focusedMessage[0].id, {
+      await this.$axios.$post('/cc/api/users/me/messages/'+this.focusedMessage[0].id, {
         subject: this.focusedMessage[0].subject,
         message: this.response[this.focusedMessage[0].id],
         recipient_ids: this.focusedMessage[0].recipient_ids

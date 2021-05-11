@@ -21,7 +21,7 @@
 export default {
   name: 'updates',
   async  asyncData({ $axios, params }) {
-    const updates = await $axios.$get('/api/sections/'+params.course+'/updates')
+    const updates = await $axios.$get('/cc/api/sections/'+params.course+'/updates')
 
     return { updates }
   },
