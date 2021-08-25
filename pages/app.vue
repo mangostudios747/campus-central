@@ -247,7 +247,8 @@ export default {
     // fetch the courses once!
     try {
       await this.$store.dispatch('setCourses', await this.$axios.$get('/cc/api/users/me/sections'))
-      //await this.$store.dispatch('hc/bindSchedule')
+      // this usually raises an error?
+      await this.$store.dispatch('hc/bindSchedule')
     } catch (e) {
       console.error(e)
     }
