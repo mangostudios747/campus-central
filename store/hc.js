@@ -201,8 +201,14 @@ export const state = () => ({
     'Lunch': {
       color: colors.cyan.base
     },
+    'Brunch': {
+      color: colors.amber.base
+    },
     'Other': {
       color: colors.blueGrey.base
+    },
+    'SELF': {
+      color: colors.red.base
     }
   },
   now: new Date()
@@ -241,7 +247,7 @@ export const actions = {
         state.customizations['Period ' + key].meta.course_home = `https://pausd.schoology.com/course/${id}/materials`
       }
       else if (key==='SELF'){
-        state.customizations[key] = {};
+        //state.customizations[key] = {};
         state.customizations[key].meta = {};
         state.customizations[key].meta.id = id
         state.customizations[key].name = course_title
@@ -292,7 +298,7 @@ export const getters = {
           status = periodStates.PRESENT
         }
         return {
-          name: (state.customizations[event.name] || { name: undefined }).name || event.name,
+          name: (state.customizations[event.name] || state.customizations['Other']).name || event.name,
           meta: (state.customizations[event.name] || { meta: {} }).meta,
           id: event.name,
           start,
@@ -300,7 +306,7 @@ export const getters = {
           status,
           timed: true,
           progress,
-          color: (state.customizations[event.name] || { color: 'blue-grey' }).color
+          color: (state.customizations[event.name] || state.customizations['Other']).color
         }
       })//regular schedule for this day of the week
     }

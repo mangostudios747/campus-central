@@ -6,6 +6,10 @@ import NuxtError from '../layouts/error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
+import '../node_modules/@nuxtjs/tailwindcss/dist/runtime/tailwind.css'
+
+import '../assets/tailwind.css'
+
 import '../node_modules/prismjs/themes/prism.css'
 
 import _2af7e516 from '../layouts/appLayout.vue'
