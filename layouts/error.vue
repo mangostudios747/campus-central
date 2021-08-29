@@ -9,6 +9,7 @@
     <NuxtLink to="/">
       Home page
     </NuxtLink>
+    <div>Trying to log in? <a href='/cc/api/auth'>Click here</a></div>
   </v-app>
 </template>
 
