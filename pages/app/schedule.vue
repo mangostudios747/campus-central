@@ -18,13 +18,13 @@
           elevation="0"
           :value="period.progress"
           height="none"
-          class="mr-16 rounded-sm h-32 md:h-14 my-3 py-2"
+          class="mr-16 rounded-sm h-32 md:h-16 my-3"
           :color="period.color + 'bb'"
           :key="period.hcname"
           rounded
           v-for="period in schedule"
         >
-          <v-row class="text-center big-screen px-8">
+          <div class="text-center flex flex-row big-screen px-8">
             <div style="align-self: center; text-align: left">
               <span
                 >{{
@@ -48,7 +48,7 @@
                 >at {{ period.end | moment('h:mm A') }}</span
               >
             </div>
-          </v-row>
+          </div>
           <div class="text-center flex flex-row small-screen px-3">
             <v-col
               ><div class="flex flex-row"
