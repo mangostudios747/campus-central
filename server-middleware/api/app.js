@@ -4,7 +4,8 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const session = require('express-session')
-const LowdbStore = require('lowdb-session-store')(session);
+//const LowdbStore = require('lowdb-session-store')(session);
+const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware')
 const passport = require('passport');
 const uuid = require('node-uuid')
@@ -12,12 +13,12 @@ const uuid = require('node-uuid')
 
 const indexRouter = require('./routes/index')
 const apiRouter = require('./routes/api')
-const {sessionStoragedb, statsdb, userDatadb} = require("./database");
+const {statsdb, userDatadb} = require("./database");
 
 var cron = require('node-cron');
 
 cron.schedule('0 * * * *', () => {
-  statsdb.get('userCount').set(Date.now(), Object.keys(userDatadb.getState()).length).write()
+  statsdb.get('userCount').set(Date.now(), Object.keys(userDatadb.getState()).length).write() // todo: fix
 });
 
 
@@ -27,16 +28,21 @@ const app = express()
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+
+const store = MongoStore.create({
+  mongoUrl: 'mongodb+srv://server-backend:v0Sf6yGaVd9nivzh@campus-central.a55er.mongodb.net/campuscentral',
+});
+
+
+
 app.use(session({
   secret: process.env.cookie_secret, // TODO: legit secret
-  resave: true,
-  store: new LowdbStore(sessionStoragedb, {
-    ttl: 86400
-  }),
+  resave: false,
+  store,
   genid: function () {
     return uuid.v4();
   },
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: { //
     secure: false,
     maxAge: 365*24*60*60*1000
