@@ -4,7 +4,7 @@ const passport = require('passport')
 
 const {usersdb, authdb} = require("../database");
 const {getProfile} = require('../schoology')
-const { key, secret } = { key: process.env.schoology_key, secret: process.env.schoology_secret}
+const { key, secret } = { key: process.env.schoology_key, secret: process.env.schoology_secret }
 
 /* CONSTANTS */
 const HOSTING_DOMAIN = process.env.RHOST || 'http://localhost:3000';
@@ -35,6 +35,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(uid, done) {
+    console.log(uid);
     const u = usersdb.get(uid).value();
     const c = authdb.get(uid).value();
     done(null, {credentials:c, profile:u});
