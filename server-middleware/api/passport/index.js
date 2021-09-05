@@ -2,7 +2,12 @@
 const passport = require('passport')
     , SchoologyStrategy = require('passport-schoology-oauth').SchoologyStrategy;
 
-const {usersdb, authdb} = require("../database");
+const {mdb} = require("../database");
+let usersmdb, authmdb;
+mdb.then(c=> {
+  usersmdb = c.collection('users');
+  authmdb = c.collection('auth');
+})
 const {getProfile} = require('../schoology')
 const { key, secret } = { key: process.env.schoology_key, secret: process.env.schoology_secret }
 
@@ -23,8 +28,9 @@ passport.use('schoology',new SchoologyStrategy({
         // we need to fetch the user profile now
         getProfile({token, tokenSecret}).then(function(userProfile) {
           //console.log(userProfile.name_display)
-            usersdb.set(userProfile.uid, userProfile).write()
-            authdb.set(userProfile.uid, {token, tokenSecret}).write()
+            userProfile._id = userProfile.id;
+            usersmdb.updateOne({_id: userProfile.id }, { $set: userProfile }, {upsert: true})
+            authmdb.updateOne({_id: userProfile.id }, { $set: {token, tokenSecret} }, {upsert: true})
             done(null, {profile:userProfile, credentials:{token, tokenSecret}})
         })
 
@@ -35,10 +41,12 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(uid, done) {
-    console.log(uid);
-    const u = usersdb.get(uid).value();
-    const c = authdb.get(uid).value();
-    done(null, {credentials:c, profile:u});
+  usersmdb.findOne({uid:uid}).then((u)=>{
+      authmdb.findOne({_id:+uid}).then((c)=>{
+        done(null, {credentials:c, profile:u});
+      });
+
+    });
 });
 
 module.exports = passport

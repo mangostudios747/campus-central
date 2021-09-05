@@ -4,12 +4,11 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const session = require('express-session')
-//const LowdbStore = require('lowdb-session-store')(session);
 const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware')
 const passport = require('passport');
 const uuid = require('node-uuid')
-
+const MONGO_URL = process.env.MONGO_URL;
 
 const indexRouter = require('./routes/index')
 const apiRouter = require('./routes/api')
@@ -30,7 +29,7 @@ app.set('view engine', 'pug');
 
 
 const store = MongoStore.create({
-  mongoUrl: 'mongodb+srv://server-backend:v0Sf6yGaVd9nivzh@campus-central.a55er.mongodb.net/campuscentral',
+  mongoUrl: MONGO_URL,
 });
 
 

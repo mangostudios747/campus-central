@@ -21,10 +21,10 @@ const sessionStoragedb = low(new FileSync(path.join(__dirname, '../db/sessionSto
 
 
 const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://server-backend:v0Sf6yGaVd9nivzh@campus-central.a55er.mongodb.net/campuscentral?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-let usersmdb, authmdb, userDatamdb, sessionStoragemdb, statsmdb;
-client.connect(err => {
+const uri = process.env.MONGO_URL;
+const mdb = MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }).then((c)=>c.db("campuscentral"));
+//let usersmdb, authmdb, userDatamdb, sessionStoragemdb, statsmdb;
+/*client.connect(err => {
   const mdb = client.db("campuscentral");
    usersmdb = mdb.collection("users");
    authmdb = mdb.collection("auth");
@@ -33,15 +33,12 @@ client.connect(err => {
    statsmdb = mdb.collection("stats");
   // perform actions on the collection object
   client.close();
-});
+});*/
 
 module.exports = {
     usersdb,
     authdb,
     userDatadb,
   sessionStoragedb, statsdb,
-  usersmdb,
-  authmdb,
-  userDatamdb,
-sessionStoragemdb, statsmdb
+  mdb
 }
