@@ -161,6 +161,7 @@
       <v-toolbar-title v-else>No school today</v-toolbar-title>
       <v-spacer></v-spacer>
       <breakpoint-detection v-if='dev' />
+      <v-btn href='/cc/api/sign-out' icon><v-icon>mdi-exit-to-app</v-icon></v-btn>
       <div v-if='$store.state.user && false'>
         <span>{{ $store.state.user.name_display }}</span>
         <v-avatar class='ml-3' size='40'>

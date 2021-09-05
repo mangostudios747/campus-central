@@ -4,20 +4,28 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const session = require('express-session')
-const LowdbStore = require('lowdb-session-store')(session);
+const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware')
 const passport = require('passport');
 const uuid = require('node-uuid')
-
+const MONGO_URL = process.env.MONGO_URL;
 
 const indexRouter = require('./routes/index')
 const apiRouter = require('./routes/api')
-const {sessionStoragedb, statsdb, userDatadb} = require("./database");
-
+const {mdb} = require("./database");
+let usersmdb, statsmdb;
+mdb.then(c=> {
+  usersmdb = c.collection('users');
+  statsmdb = c.collection('stats');
+})
 var cron = require('node-cron');
 
-cron.schedule('0 * * * *', () => {
-  statsdb.get('userCount').set(Date.now(), Object.keys(userDatadb.getState()).length).write()
+cron.schedule('0 * * * *', async function(){
+  const userCount = await usersmdb.countDocuments();
+  await statsmdb.insertOne({
+    _id: new Date(),
+    userCount
+  })
 });
 
 
@@ -27,16 +35,21 @@ const app = express()
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+
+const store = MongoStore.create({
+  mongoUrl: MONGO_URL,
+});
+
+
+
 app.use(session({
   secret: process.env.cookie_secret, // TODO: legit secret
-  resave: true,
-  store: new LowdbStore(sessionStoragedb, {
-    ttl: 86400
-  }),
+  resave: false,
+  store,
   genid: function () {
     return uuid.v4();
   },
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: { //
     secure: false,
     maxAge: 365*24*60*60*1000

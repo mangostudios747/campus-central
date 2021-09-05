@@ -1,5 +1,10 @@
+
 const oauth = require('./oauth')
-const { userDatadb } = require('../database')
+const { mdb } = require('../database')
+let userDatamdb:any; // todo: get access to types
+mdb.then((c:any)=>{
+  userDatamdb = c.collection('userData');
+})
 const sgyDomain: string = 'https://pausd.schoology.com'
 const apiBase: string = 'https://api.schoology.com/v1'
 const usersCache: Record<string, any> = {}
@@ -105,13 +110,20 @@ export async function reloadSections(user: User) {
   // get the sections
   const sections = await fetchSections(user)
   // put them in the database
-  userDatadb.set(`${user.profile.uid}.sections`, sections).write()
+  //userDatadb.set(`${user.profile.uid}.sections`, sections).write()
+  await userDatamdb.updateOne({_id:+user.profile.uid}, {
+  $set:{
+    sections
+  },
+}, {upsert:true})
   return sections
 }
 
 export async function getSections(user: User) {
   // we only need the uid hmm
-  let sections = userDatadb.get(`${user.profile.uid}.sections`).value()
+  let { sections } = (await userDatamdb.findOne(
+    {_id:+user.profile.uid}
+  ))||{};
   if (!sections) {
     // we hath not loaded the sections! ever!
     sections = await reloadSections(user)
@@ -125,14 +137,13 @@ export async function fetchAssignmentsForSection(sectionId: string, creds: UserC
 }
 
 export async function reloadAssignmentsForSection(user: User, sectionId: string) {
-  const asg = await fetchAssignmentsForSection(sectionId, user.credentials)
   // put them in the database
 
   /*for (let index in asg) {
     userDatadb.set(`${user.profile.uid}.assignments.${sectionId}.${index}`, asg[index]).write();
   }*/
 
-  return asg
+  return await fetchAssignmentsForSection(sectionId, user.credentials)
 }
 
 export async function getAssignmentsForSection(user: User, sectionId: string) {

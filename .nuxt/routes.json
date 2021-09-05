@@ -1,146 +1,146 @@
 [
   {
     "path": "/app",
-    "component": "/workspace/campus-central/pages/app.vue",
+    "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app.vue",
     "chunkName": "pages/app",
     "children": [
       {
         "name": "app",
         "path": "",
-        "component": "/workspace/campus-central/pages/app/index.vue",
+        "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/index.vue",
         "chunkName": "pages/app/index",
-        "_name": "_e4981ac8"
+        "_name": "_99382ce0"
       },
       {
         "path": "courses",
-        "component": "/workspace/campus-central/pages/app/courses.vue",
+        "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/courses.vue",
         "chunkName": "pages/app/courses",
         "children": [
           {
             "name": "app-courses",
             "path": "",
-            "component": "/workspace/campus-central/pages/app/courses/index.vue",
+            "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/courses/index.vue",
             "chunkName": "pages/app/courses/index",
-            "_name": "_67674305"
+            "_name": "_fc09f40e"
           },
           {
             "path": ":course",
-            "component": "/workspace/campus-central/pages/app/courses/_course.vue",
+            "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/courses/_course.vue",
             "chunkName": "pages/app/courses/_course",
             "children": [
               {
                 "name": "app-courses-course",
                 "path": "",
-                "component": "/workspace/campus-central/pages/app/courses/_course/index.vue",
+                "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/courses/_course/index.vue",
                 "chunkName": "pages/app/courses/_course/index",
-                "_name": "_1e855970"
+                "_name": "_2370e864"
               },
               {
                 "name": "app-courses-course-todo",
                 "path": "todo",
-                "component": "/workspace/campus-central/pages/app/courses/_course/todo.vue",
+                "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/courses/_course/todo.vue",
                 "chunkName": "pages/app/courses/_course/todo",
-                "_name": "_d7954fd0"
+                "_name": "_b63bcab8"
               },
               {
                 "name": "app-courses-course-updates",
                 "path": "updates",
-                "component": "/workspace/campus-central/pages/app/courses/_course/updates.vue",
+                "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/courses/_course/updates.vue",
                 "chunkName": "pages/app/courses/_course/updates",
-                "_name": "_6052abe8"
+                "_name": "_4ed36448"
               }
             ],
-            "_name": "_224e6ea6"
+            "_name": "_98f0c2be"
           }
         ],
-        "_name": "_490a73fc"
+        "_name": "_5508cff6"
       },
       {
         "name": "app-grades",
         "path": "grades",
-        "component": "/workspace/campus-central/pages/app/grades.vue",
+        "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/grades.vue",
         "chunkName": "pages/app/grades",
-        "_name": "_07ff0622"
+        "_name": "_cf6424a4"
       },
       {
         "path": "messages",
-        "component": "/workspace/campus-central/pages/app/messages.vue",
+        "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/messages.vue",
         "chunkName": "pages/app/messages",
         "children": [
           {
             "name": "app-messages",
             "path": "",
-            "component": "/workspace/campus-central/pages/app/messages/index.vue",
+            "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/messages/index.vue",
             "chunkName": "pages/app/messages/index",
-            "_name": "_3f310175"
+            "_name": "_77159d01"
           },
           {
             "name": "app-messages-inbox",
             "path": "inbox",
-            "component": "/workspace/campus-central/pages/app/messages/inbox.vue",
+            "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/messages/inbox.vue",
             "chunkName": "pages/app/messages/inbox",
-            "_name": "_3315fdae"
+            "_name": "_1e599cb5"
           },
           {
             "name": "app-messages-sent",
             "path": "sent",
-            "component": "/workspace/campus-central/pages/app/messages/sent.vue",
+            "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/messages/sent.vue",
             "chunkName": "pages/app/messages/sent",
-            "_name": "_acccec76"
+            "_name": "_77a5668e"
           }
         ],
-        "_name": "_795fcf1c"
+        "_name": "_7b834cfe"
       },
       {
         "name": "app-profile",
         "path": "profile",
-        "component": "/workspace/campus-central/pages/app/profile.vue",
+        "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/profile.vue",
         "chunkName": "pages/app/profile",
-        "_name": "_2c0c691a"
+        "_name": "_6387d567"
       },
       {
         "name": "app-schedule",
         "path": "schedule",
-        "component": "/workspace/campus-central/pages/app/schedule.vue",
+        "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/schedule.vue",
         "chunkName": "pages/app/schedule",
-        "_name": "_54320c3d"
+        "_name": "_0c6540c9"
       },
       {
         "name": "app-settings",
         "path": "settings",
-        "component": "/workspace/campus-central/pages/app/settings.vue",
+        "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/settings.vue",
         "chunkName": "pages/app/settings",
-        "_name": "_2ec68fc9"
+        "_name": "_320c7756"
       },
       {
         "name": "app-updates",
         "path": "updates",
-        "component": "/workspace/campus-central/pages/app/updates.vue",
+        "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/updates.vue",
         "chunkName": "pages/app/updates",
-        "_name": "_8380abd8"
+        "_name": "_37cdb408"
       }
     ],
-    "_name": "_b2e69a4e"
+    "_name": "_1d241e66"
   },
   {
     "name": "inspire",
     "path": "/inspire",
-    "component": "/workspace/campus-central/pages/inspire.vue",
+    "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/inspire.vue",
     "chunkName": "pages/inspire",
-    "_name": "_30eb51dc"
+    "_name": "_42f37b06"
   },
   {
     "name": "stats",
     "path": "/stats",
-    "component": "/workspace/campus-central/pages/stats.vue",
+    "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/stats.vue",
     "chunkName": "pages/stats",
-    "_name": "_bfa93352"
+    "_name": "_9096116a"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/workspace/campus-central/pages/index.vue",
+    "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_28cf0dec"
+    "_name": "_032209fe"
   }
 ]
