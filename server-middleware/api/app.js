@@ -12,12 +12,20 @@ const MONGO_URL = process.env.MONGO_URL;
 
 const indexRouter = require('./routes/index')
 const apiRouter = require('./routes/api')
-const {statsdb, userDatadb} = require("./database");
-
+const {mdb} = require("./database");
+let usersmdb, statsmdb;
+mdb.then(c=> {
+  usersmdb = c.collection('users');
+  statsmdb = c.collection('stats');
+})
 var cron = require('node-cron');
 
-cron.schedule('0 * * * *', () => {
-  statsdb.get('userCount').set(Date.now(), Object.keys(userDatadb.getState()).length).write() // todo: fix
+cron.schedule('0 * * * *', async function(){
+  const userCount = await usersmdb.countDocuments();
+  await statsmdb.insertOne({
+    _id: new Date(),
+    userCount
+  })
 });
 
 

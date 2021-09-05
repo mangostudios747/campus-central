@@ -5,8 +5,12 @@ const passport = require('../passport')
 const usersRouter = require('./users');
 const sectionsRouter = require('./sections');
 
-const { userDatadb, statsdb } = require('../database');
-
+const { mdb } = require('../database');
+let usersmdb, statsmdb;
+mdb.then(c=> {
+  usersmdb = c.collection('users');
+  statsmdb = c.collection('stats');
+})
 /* USES */
 router.use('/sections', sectionsRouter);
 router.use('/users', usersRouter) // so we can have /api/users
@@ -42,14 +46,14 @@ router.get('/thanks-sgy', passport.authenticate('schoology', {
     successRedirect: '/app', // frontend url
     failureRedirect: '/cc/api/oops' }))
 
-router.get('/user-count', function(req, res, next){
-  res.send({userCount:Object.keys(userDatadb.getState()).length})
+router.get('/user-count', async function(req, res, next){
+  res.send({userCount: (await usersmdb.countDocuments()) })
 })
 
-router.get('/user-count/log', function(req, res, next){
-  const state = statsdb.getState().userCount;
-  const keys = Object.keys(state);
-  const values = keys.map(key => state[key]);
+router.get('/user-count/log', async function(req, res, next){
+  const state = await statsmdb.find().toArray();
+  const keys = state.map(e=>e._id)
+  const values = state.map(e=>e.userCount)
   res.send({keys, values})
 })
 
