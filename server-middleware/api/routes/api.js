@@ -4,6 +4,7 @@ const router = express.Router();
 const passport = require('../passport')
 const usersRouter = require('./users');
 const sectionsRouter = require('./sections');
+const prefRouter = require('./preferences')
 
 const { mdb } = require('../database');
 let usersmdb, statsmdb;
@@ -14,7 +15,7 @@ mdb.then(c=> {
 /* USES */
 router.use('/sections', sectionsRouter);
 router.use('/users', usersRouter) // so we can have /api/users
-
+router.use('/preferences', prefRouter);
 
 /* ROUTES */
 router.get('/', function(req, res, next) {

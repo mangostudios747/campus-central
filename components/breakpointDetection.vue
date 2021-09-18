@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class='text-xs'>
   <span class='d-sm-none'>xs</span>
   <span class='d-none d-sm-inline d-md-none'>sm</span>
   <span class='d-none d-md-inline d-lg-none'>md</span>

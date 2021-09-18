@@ -28,8 +28,8 @@ export default {
   plugins: [
     '~/plugins/vue-linkify.js',
     '~/plugins/vue-moment.js',
-    '~/plugins/vue-graph.client.js',
-    '~plugins/pdf.client.js'
+    '~/plugins/vue-graph.client.js'//,
+    ///'~plugins/pdf.client.js'
   ],
 
   serverMiddleware: [

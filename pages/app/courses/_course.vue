@@ -1,32 +1,33 @@
 <template>
   <div>
 
-    <v-row>
-      <v-col style='' :cols='9'>
+    <div class='flex flex-col sm:flex-row'>
+      <div class='flex flex-row sm:flex-col'>
         <v-container class='mx-3'>
           <v-row :key='courseid'>
-          <v-col>
-          <v-row :key='courseid' class='mt-5 ml-8 justify-left'>
-            <v-avatar size='100' class='mr-4'>
-              <v-img
-                :src='course.profile_url'
-              ></v-img>
-            </v-avatar>
+            <div class='flex flex-row sm:flex-col '>
+              <div  :key='courseid' class='mt-5 sm:ml-8 ml-4 flex flex-col sm:flex-row justify-center sm:justify-left'>
+                <v-avatar height='none' min-width='none' min-height='none' width='none' class='mr-4 h-10 w-10  sm:h-20 sm:w-20 md:h-24 md:w-24 '>
+                  <v-img
+                    :src='course.profile_url'
+                  ></v-img>
+                </v-avatar>
 
-          </v-row>
-          <v-row class='mt-5 ml-8 justify-left'>
-            <h1 class='my-5'>{{ course.section_title }}</h1>
-          </v-row>
-          </v-col>
-          <v-col cols='7'>
-            <v-alert dismissible v-if='announcement'
-                     text color='accent'
-                     icon='mdi-bullhorn'
+              </div>
+              <v-row class='mt-5 ml-0 sm:ml-8 justify-left'>
+                <span class='my-5 sm:text-4xl text-2xl font-bold '>{{ course.section_title }}</span>
+              </v-row>
+            </div>
+            <v-col cols='7'>
+              <v-alert dismissible v-if='announcement'
+                       text color='accent'
+                       icon='mdi-bullhorn'
 
-            >
-              <div style='white-space: pre-wrap;text-align: left' v-linkified v-html='announcement.body'></div>
-            </v-alert>
-          </v-col></v-row>
+              >
+                <div style='white-space: pre-wrap;text-align: left' v-linkified v-html='announcement.body'></div>
+              </v-alert>
+            </v-col>
+          </v-row>
           <div style='position: sticky;top: 63px;z-index: 4'>
             <v-tabs :key='courseid' background-color='background' grow color='text'>
               <v-tab
@@ -48,8 +49,8 @@
           </div>
           <nuxt-child />
         </v-container>
-      </v-col>
-      <v-col style='max-height: 88vh;overflow:hidden' v-if='notes' class='mr-3  mt-10'>
+      </div>
+      <div  style='max-height: 88vh;overflow:hidden' v-if='notes' class='mr-3 flex flex-row sm:flex-col mt-10'>
         <v-card :key='courseid' class=' py-2' color='background' rounded elevation='0'
                 style='border: 1px solid #ffffff22 !important'>
           <v-card-title>Links</v-card-title>
@@ -158,8 +159,8 @@
             </v-btn>
           </v-card-actions>
         </v-card>
-      </v-col>
-    </v-row>
+      </div>
+    </div>
 
   </div>
 </template>

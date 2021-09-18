@@ -1,6 +1,6 @@
 <template>
   <div class='ma-5'>
-    <v-alert text icon='mdi-information' type='accent'>
+    <v-alert text icon='mdi-information' color='accent'>
       <strong>Note:</strong> This feature of Campus Central is still under construction, so you may experience ugly or unordered data.
     </v-alert>
     <v-expansion-panels v-if='$store.state.grades'>

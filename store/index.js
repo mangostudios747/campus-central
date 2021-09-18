@@ -6,7 +6,11 @@ export const state = () => ({
     sent:[], inbox:[]
   },
   courses:null, // will store
-  grades: null
+  grades: null,
+  settings:{
+    theme:'dark',
+
+  }
 })
 
 export const mutations = {

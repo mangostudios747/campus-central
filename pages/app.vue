@@ -41,10 +41,12 @@
 
       <v-divider></v-divider>
 
+
+
       <v-list
         dense
         nav
-
+        v-if='$store.state.user'
       >
         <v-list-item
           v-for='item in routes'
@@ -124,6 +126,33 @@
         </v-list-item>
 
       </v-list>
+      <v-list dense nav v-else>
+        <v-list-item
+          v-for='item in basicRoutes'
+          :key='item.title'
+          link
+          :exact='!item.inexact'
+          :to='item.to'
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title><span>{{ item.title }}</span></v-list-item-title>
+
+          </v-list-item-content>
+          <v-list-item-content v-if='item.new' class='text-right' style='flex: none'>
+            <v-chip class='text-center justify-center'
+                    label
+                    small
+                    text-color='coveredBG'
+                    color='accent'
+            ><span class='font-weight-bold'>NEW</span>
+            </v-chip>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
       <v-spacer class='pt-16' style='flex-direction: column !important;' />
       <v-list v-if='false' nav dense style='bottom: 0;position: fixed;width: 100%'>
 
@@ -159,19 +188,28 @@
         {{ $store.getters['hc/currentEvent'].displayText }} {{ $store.getters['hc/currentEvent'].name }}
       </v-toolbar-title>
       <v-toolbar-title v-else>No school today</v-toolbar-title>
-      <v-spacer></v-spacer>
+      <div class='block flex flex-grow'></div>
       <breakpoint-detection v-if='dev' />
-      <v-btn href='/cc/api/sign-out' icon><v-icon>mdi-exit-to-app</v-icon></v-btn>
-      <div v-if='$store.state.user && false'>
-        <span>{{ $store.state.user.name_display }}</span>
-        <v-avatar class='ml-3' size='40'>
-          <img
-            :src='$store.state.user.picture_url'
-            :alt='$store.state.user.name_display'
-          >
-          <!-- todo: make this a profile dropdown -->
-        </v-avatar>
-      </div>
+
+      <v-menu offset-y offset-x v-if='$store.state.user'>
+        <template v-slot:activator="{ on }">
+          <v-btn v-on='on' icon>
+            <v-avatar  size='40'>
+              <img
+                :src='$store.state.user.picture_url'
+                :alt='$store.state.user.name_display'
+              >
+              <!-- todo: make this a profile dropdown -->
+            </v-avatar>
+          </v-btn>
+
+        </template>
+        <v-list color='primary'>
+          <v-list-item>
+            <v-btn href='/cc/api/sign-out' icon><v-icon>mdi-exit-to-app</v-icon></v-btn>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-app-bar>
     <v-main style='height: 100%;'>
 
@@ -187,22 +225,23 @@ export default {
   middleware: 'storeUser',
   layout: 'appLayout',
   data: () => ({
-    //user: null
     mini: false,
     sidebar: true,
+    basicRoutes:[
+      {
+        title: 'Schedule',
+        icon: 'mdi-calendar',
+        to: '/app/schedule'
+      }
+    ],
     routes: [
       { title: 'Home', icon: 'mdi-home', to: '/app' },
       {
         title: 'Schedule',
         icon: 'mdi-calendar',
-        new: true,
         to: '/app/schedule'
       }
-      /*{ title: 'Courses',
-        icon: 'mdi-book-multiple',
-        to: '/app/courses',
-        inexact: true
-      }*/],
+      ],
     routes2: [
       {
         title: 'Updates',
@@ -224,6 +263,7 @@ export default {
       {
         title: 'Settings',
         icon: 'mdi-cog',
+        new: true,
         to: '/app/settings'
       }
     ]
@@ -246,27 +286,39 @@ export default {
       vapp.$store.commit('hc/resetTime')
     }, 1000)
     // fetch the courses once!
-    try {
-      await this.$store.dispatch('setCourses', await this.$axios.$get('/cc/api/users/me/sections'))
-      // this usually raises an error?
-      await this.$store.dispatch('hc/bindSchedule')
-    } catch (e) {
-      console.error(e)
+    if (this.user) {
+      try {
+        await this.$store.dispatch('setCourses', await this.$axios.$get('/cc/api/users/me/sections'))
+        await this.$store.commit('hc/loadCustomizations', await this.$axios.$get('/cc/api/preferences/classes'))
+        // this usually raises an error?
+        await this.$store.dispatch('hc/bindSchedule')
+
+      } catch (e) {
+        console.error(e)
+      }
     }
-    console.log(this.$store.getters['hc/scheduleForDate'](this.$store.state.hc.now))
+    else {
+
+      let k = JSON.parse(localStorage.customizations || '{}');
+      if (k.classes){
+        await this.$store.commit('hc/setCustomizations', k.classes)
+      }
+    }
+
+    //console.log(this.$store.getters['hc/scheduleForDate'](this.$store.state.hc.now))
 
   },
   computed: {
     dev() {
       return process.env.NODE_ENV !== 'production'
     }
-  }
-  /*async asyncData(ctx) {
+  },
+  async asyncData(ctx) {
 
     const user = ctx.req.user
     return {user}
   },
-  fetchOnServer: true*/
+  //fetchOnServer: true
 }
 </script>
 
@@ -276,7 +328,6 @@ export default {
     background-color: rgba(var(--v-coveredBG-base), .50) !important;
     backdrop-filter: blur(20px); // saturate(150%);
   }
-
 }
 
 @media (min-width: 1264px) {

@@ -54,7 +54,7 @@
               ><div class="flex flex-row"
                 ><span class="font-semibold text-xl">{{ period.name }}</span></div
               >
-              <div class="flex flex-row"><span 
+              <div class="flex flex-row"><span
                 ><span :style="`color: var(--text)`">{{
                   period.start | moment('h:mm A')
                 }}</span> - <span :style="`color: var(--text)`">{{
@@ -64,7 +64,7 @@
               <div class="flex flex-row">
                 <span v-if="period.status === periodStates.FUTURE" style="color: var(--text);">
                   Starting {{period.start | moment('from', 'now')}}
-                  </span> 
+                  </span>
                   <span v-else
                 >{{ period.status === periodStates.PAST ? 'Ended' : 'Ending' }}
                 {{ period.end | moment('from', 'now') }}</span
@@ -79,7 +79,11 @@
       <v-col class="mx-auto text-center">
         <v-icon class="big-screen" size="300">mdi-sofa-single</v-icon>
         <v-icon class="small-screen" size="200">mdi-sofa-single</v-icon>
-        <h1>No School Today</h1>
+        <h1 >{{schedule.reason || "No School Today"}}</h1>
+        <div class='pt-4 ' v-if='fact'>
+          <p class='text-xl'>{{fact.text}}</p>
+          <a target='_blank' :href='fact.source_url'>- {{fact.source}}</a>
+        </div>
       </v-col>
     </v-row>
   </div>
@@ -96,17 +100,20 @@ export default {
       FUTURE: 1,
     },
     schedule: [],
+    fact:null
   }),
   head() {
     return {
       title: 'Schedule',
     }
   },
-  mounted() {
+  async mounted() {
     const v = this
     setInterval(() => {
       v.schedule = v.$store.getters['hc/scheduleForDate'](v.focusedDate)
-    }, 10)
+    }, 10);
+    this.fact = await this.$axios.$get('https://uselessfacts.jsph.pl/today.json?language=en');
+
   },
   computed: {
     /*schedule(){

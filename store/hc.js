@@ -1,6 +1,152 @@
 import colors from 'vuetify/es5/util/colors'
 import {  firebaseAction } from 'vuexfire'
 
+
+const theSchedule = {
+  "defaults" : [ null, [ {
+    "end" : [ 9, 45 ],
+    "name" : "Period 1",
+    "start" : [ 9, 0 ]
+  }, {
+    "end" : [ 10, 40 ],
+    "name" : "Period 2",
+    "start" : [ 9, 55 ]
+  }, {
+    "end" : [ 10, 45 ],
+    "name" : "Brunch",
+    "start" : [ 10, 40 ]
+  }, {
+    "end" : [ 11, 40 ],
+    "name" : "Period 3",
+    "start" : [ 10, 55 ]
+  }, {
+    "end" : [ 12, 35 ],
+    "name" : "Period 4",
+    "start" : [ 11, 50 ]
+  }, {
+    "end" : [ 13, 5 ],
+    "name" : "Lunch",
+    "start" : [ 12, 35 ]
+  }, {
+    "end" : [ 14, 0 ],
+    "name" : "Period 5",
+    "start" : [ 13, 15 ]
+  }, {
+    "end" : [ 14, 55 ],
+    "name" : "Period 6",
+    "start" : [ 14, 10 ]
+  }, {
+    "end" : [ 15, 50 ],
+    "name" : "Period 7",
+    "start" : [ 15, 5 ]
+  }, {
+    "end" : [ 16, 45 ],
+    "name" : "Period 8",
+    "start" : [ 16, 0 ]
+  } ], [ {
+    "end" : [ 10, 35 ],
+    "name" : "Period 1",
+    "start" : [ 9, 0 ]
+  }, {
+    "end" : [ 10, 40 ],
+    "name" : "Brunch",
+    "start" : [ 10, 35 ]
+  }, {
+    "end" : [ 12, 20 ],
+    "name" : "Period 2",
+    "start" : [ 10, 50 ]
+  }, {
+    "end" : [ 12, 50 ],
+    "name" : "Lunch",
+    "start" : [ 12, 20 ]
+  }, {
+    "end" : [ 14, 30 ],
+    "name" : "Period 3",
+    "start" : [ 13, 0 ]
+  }, {
+    "end" : [ 16, 10 ],
+    "name" : "Period 4",
+    "start" : [ 14, 40 ]
+  } ], [ {
+    "end" : [ 10, 35 ],
+    "name" : "Period 5",
+    "start" : [ 9, 0 ]
+  }, {
+    "end" : [ 10, 40 ],
+    "name" : "Brunch",
+    "start" : [ 10, 35 ]
+  }, {
+    "end" : [ 12, 20 ],
+    "name" : "Period 6",
+    "start" : [ 10, 50 ]
+  }, {
+    "end" : [ 12, 50 ],
+    "name" : "Lunch",
+    "start" : [ 12, 20 ]
+  }, {
+    "end" : [ 14, 30 ],
+    "name" : "Period 7",
+    "start" : [ 13, 0 ]
+  }, {
+    "end" : [ 16, 30 ],
+    "name" : "PRIME",
+    "start" : [ 14, 40 ]
+  } ], [ {
+    "end" : [ 10, 35 ],
+    "name" : "Period 1",
+    "start" : [ 9, 0 ]
+  }, {
+    "end" : [ 10, 40 ],
+    "name" : "Brunch",
+    "start" : [ 10, 35 ]
+  }, {
+    "end" : [ 12, 20 ],
+    "name" : "Period 2",
+    "start" : [ 10, 50 ]
+  }, {
+    "end" : [ 12, 50 ],
+    "name" : "Lunch",
+    "start" : [ 12, 20 ]
+  }, {
+    "end" : [ 14, 30 ],
+    "name" : "Period 3",
+    "start" : [ 13, 0 ]
+  }, {
+    "end" : [ 16, 10 ],
+    "name" : "Period 4",
+    "start" : [ 14, 40 ]
+  } ], [ {
+    "end" : [ 10, 35 ],
+    "name" : "Period 5",
+    "start" : [ 9, 0 ]
+  }, {
+    "end" : [ 10, 40 ],
+    "name" : "Brunch",
+    "start" : [ 10, 35 ]
+  }, {
+    "end" : [ 12, 20 ],
+    "name" : "Period 6",
+    "start" : [ 10, 50 ]
+  }, {
+    "end" : [ 12, 50 ],
+    "name" : "Lunch",
+    "start" : [ 12, 20 ]
+  }, {
+    "end" : [ 13, 50 ],
+    "name" : "SELF",
+    "start" : [ 13, 0 ]
+  }, {
+    "end" : [ 15, 30 ],
+    "name" : "Period 7",
+    "start" : [ 14, 0 ]
+  } ] ],
+  "holidays" : {
+
+  },
+  "overrides" : {
+  }
+}
+
 Date.prototype.addDays = function(days) {
   var date = new Date(this.valueOf())
   date.setDate(date.getDate() + days)
@@ -26,154 +172,9 @@ const periodStates = {
 }
 
 export const state = () => ({
-  theSchedule: {
-    "defaults" : [ null, [ {
-      "end" : [ 9, 45 ],
-      "name" : "Period 1",
-      "start" : [ 9, 0 ]
-    }, {
-      "end" : [ 10, 40 ],
-      "name" : "Period 2",
-      "start" : [ 9, 55 ]
-    }, {
-      "end" : [ 10, 45 ],
-      "name" : "Brunch",
-      "start" : [ 10, 40 ]
-    }, {
-      "end" : [ 11, 40 ],
-      "name" : "Period 3",
-      "start" : [ 10, 55 ]
-    }, {
-      "end" : [ 12, 35 ],
-      "name" : "Period 4",
-      "start" : [ 11, 50 ]
-    }, {
-      "end" : [ 13, 5 ],
-      "name" : "Lunch",
-      "start" : [ 12, 35 ]
-    }, {
-      "end" : [ 14, 0 ],
-      "name" : "Period 5",
-      "start" : [ 13, 15 ]
-    }, {
-      "end" : [ 14, 55 ],
-      "name" : "Period 6",
-      "start" : [ 14, 10 ]
-    }, {
-      "end" : [ 15, 50 ],
-      "name" : "Period 7",
-      "start" : [ 15, 5 ]
-    }, {
-      "end" : [ 16, 45 ],
-      "name" : "Period 8",
-      "start" : [ 16, 0 ]
-    } ], [ {
-      "end" : [ 10, 35 ],
-      "name" : "Period 1",
-      "start" : [ 9, 0 ]
-    }, {
-      "end" : [ 10, 40 ],
-      "name" : "Brunch",
-      "start" : [ 10, 35 ]
-    }, {
-      "end" : [ 12, 20 ],
-      "name" : "Period 2",
-      "start" : [ 10, 50 ]
-    }, {
-      "end" : [ 12, 50 ],
-      "name" : "Lunch",
-      "start" : [ 12, 20 ]
-    }, {
-      "end" : [ 14, 30 ],
-      "name" : "Period 3",
-      "start" : [ 13, 0 ]
-    }, {
-      "end" : [ 16, 10 ],
-      "name" : "Period 4",
-      "start" : [ 14, 40 ]
-    } ], [ {
-      "end" : [ 10, 35 ],
-      "name" : "Period 5",
-      "start" : [ 9, 0 ]
-    }, {
-      "end" : [ 10, 40 ],
-      "name" : "Brunch",
-      "start" : [ 10, 35 ]
-    }, {
-      "end" : [ 12, 20 ],
-      "name" : "Period 6",
-      "start" : [ 10, 50 ]
-    }, {
-      "end" : [ 12, 50 ],
-      "name" : "Lunch",
-      "start" : [ 12, 20 ]
-    }, {
-      "end" : [ 14, 30 ],
-      "name" : "Period 7",
-      "start" : [ 13, 0 ]
-    }, {
-      "end" : [ 16, 30 ],
-      "name" : "PRIME",
-      "start" : [ 14, 40 ]
-    } ], [ {
-      "end" : [ 10, 35 ],
-      "name" : "Period 1",
-      "start" : [ 9, 0 ]
-    }, {
-      "end" : [ 10, 40 ],
-      "name" : "Brunch",
-      "start" : [ 10, 35 ]
-    }, {
-      "end" : [ 12, 20 ],
-      "name" : "Period 2",
-      "start" : [ 10, 50 ]
-    }, {
-      "end" : [ 12, 50 ],
-      "name" : "Lunch",
-      "start" : [ 12, 20 ]
-    }, {
-      "end" : [ 14, 30 ],
-      "name" : "Period 3",
-      "start" : [ 13, 0 ]
-    }, {
-      "end" : [ 16, 10 ],
-      "name" : "Period 4",
-      "start" : [ 14, 40 ]
-    } ], [ {
-      "end" : [ 10, 35 ],
-      "name" : "Period 5",
-      "start" : [ 9, 0 ]
-    }, {
-      "end" : [ 10, 40 ],
-      "name" : "Brunch",
-      "start" : [ 10, 35 ]
-    }, {
-      "end" : [ 12, 20 ],
-      "name" : "Period 6",
-      "start" : [ 10, 50 ]
-    }, {
-      "end" : [ 12, 50 ],
-      "name" : "Lunch",
-      "start" : [ 12, 20 ]
-    }, {
-      "end" : [ 13, 50 ],
-      "name" : "SELF",
-      "start" : [ 13, 0 ]
-    }, {
-      "end" : [ 15, 30 ],
-      "name" : "Period 7",
-      "start" : [ 14, 0 ]
-    } ] ],
-    "holidays" : {
-      
-    },
-    "overrides" : {
-    
-     
-    }
-  }
+  theSchedule
   ,
-  customizations: {
+  customizations: { //todo: settings
     'Period 1': {
       color: colors.lime.darken2
     },
@@ -198,6 +199,9 @@ export const state = () => ({
     'Period 8': {
       color: colors.deepPurple.darken1
     },
+    'Period 9': {
+      color: colors.red.darken1
+    },
     'Lunch': {
       color: colors.cyan.base
     },
@@ -220,8 +224,16 @@ export const mutations = {
     //console.log('bye')
     state.now = (new Date())//.addHours(15);
   },
+  loadCustomizations(state, customizations) {
+    if (!customizations) return ;
+    state.customizations = JSON.parse(JSON.stringify(customizations));
+  },
   setCustomizations(state, customizations) {
-    state.customizations = customizations
+    if (!customizations) return ;
+    state.customizations = JSON.parse(JSON.stringify(customizations));
+    // todo: update user preferences.classes
+    this.$axios.$patch('/cc/api/preferences/classes', JSON.stringify(customizations));
+
   },
   updateSchedule:function(state, schedule){
     state.theSchedule = schedule
@@ -232,7 +244,7 @@ export const actions = {
   bindSchedule: firebaseAction( function ({ bindFirebaseRef }) {
     const ref = this.$fire.database
       .ref('/schedule');
-    
+
      return bindFirebaseRef('theSchedule', ref);
   }),
   customize({ state }, courses) {
@@ -263,23 +275,28 @@ export const actions = {
 export const getters = {
   scheduleForDate: (state) => (dob) => {
     const sched = state.theSchedule
-    const ref = dob.getMonth() + '-' + dob.getDate() + '-' + dob.getFullYear()
+    const ref = dob.getMonth() + '-' + dob.getDate() + '-' + dob.getFullYear();
+    let rtv;
     if (dob < new Date(2020, 7, 17)) {
       return []
     }
     if (ref in sched.overrides) {
       //console.log("overridden");
 
-      return sched.overrides[ref]
+      rtv = sched.overrides[ref]
     } else if (ref in sched.holidays) {
       /* if (mainView) {
          this.holidayReason = sched.holidays[ref]
        }*/
-      return [] //empty schedule, and set the holiday reason to what it is
+      let rt = [];
+      rt.reason =  sched.holidays[ref];
+      return rt //empty schedule, and set the holiday reason to what it is
     } else {
       //console.log("default");
       //if (mainView) this.holidayReason = null;
-      return (sched.defaults[dob.getDay()] || []).map(function(event) {
+      rtv = sched.defaults[dob.getDay()] || [];
+    }
+      return (rtv).map(function(event) {
         const start = new Date(dob.getFullYear(), dob.getMonth(), dob.getDate(), event.start[0], event.start[1]);
         const end = new Date(dob.getFullYear(), dob.getMonth(), dob.getDate(), event.end[0], event.end[1]);
         let progress;
@@ -309,7 +326,6 @@ export const getters = {
           color: (state.customizations[event.name] || state.customizations['Other']).color
         }
       })//regular schedule for this day of the week
-    }
   },
   currentEvent: (state, getters) => {
     const now = state.now//.addDays(2)
@@ -377,6 +393,9 @@ export const getters = {
       percent: 0
     }
 
+  },
+  holidayReason: (state) => (ref) => {
+    return state.theSchedule.holidays[ref];
   },
   upcomingEvents: (state, getters) => {
     const schedule = getters.scheduleForDate(state.now)
