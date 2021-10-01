@@ -232,6 +232,11 @@ export default {
         title: 'Schedule',
         icon: 'mdi-calendar',
         to: '/app/schedule'
+      },
+      {
+        title: 'Settings',
+        icon: 'mdi-cog',
+        to: '/app/settings'
       }
     ],
     routes: [
@@ -263,7 +268,6 @@ export default {
       {
         title: 'Settings',
         icon: 'mdi-cog',
-        new: true,
         to: '/app/settings'
       }
     ]
@@ -291,7 +295,7 @@ export default {
         await this.$store.dispatch('setCourses', await this.$axios.$get('/cc/api/users/me/sections'))
         await this.$store.commit('hc/loadCustomizations', await this.$axios.$get('/cc/api/preferences/classes'))
         // this usually raises an error?
-        await this.$store.dispatch('hc/bindSchedule')
+
 
       } catch (e) {
         console.error(e)
@@ -304,7 +308,7 @@ export default {
         await this.$store.commit('hc/setCustomizations', k.classes)
       }
     }
-
+    await this.$store.dispatch('hc/bindSchedule')
     //console.log(this.$store.getters['hc/scheduleForDate'](this.$store.state.hc.now))
 
   },
