@@ -168,8 +168,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar color='background' elevation='0' flat app>
-      <v-app-bar-title v-if='false'>Campus Central</v-app-bar-title>
+    <v-app-bar dense color='background'  elevation='0' flat app>
 
       <v-app-bar-nav-icon @click='sidebar=!sidebar'></v-app-bar-nav-icon>
       <v-progress-circular class=' elevation-0 ml-3 mr-5' style='border-radius: 50%'

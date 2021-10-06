@@ -111,7 +111,9 @@ export default {
     const v = this
     setInterval(() => {
       const now = new Date();
-      if ((now - v.focusedDate) < 15) v.focusedDate = now;
+      if (Math.abs(now - v.focusedDate) < 1000) {
+        v.focusedDate = now;
+      }
       v.schedule = v.$store.getters['hc/scheduleForDate'](v.focusedDate)
     }, 10);
     this.fact = await this.$axios.$get('https://uselessfacts.jsph.pl/today.json?language=en');
@@ -125,6 +127,7 @@ export default {
   methods: {
     nextDay() {
       this.focusedDate = this.focusedDate.addDays(1)
+      console.warn("time changed")
     },
     prevDay() {
       this.focusedDate = this.focusedDate.addDays(-1)
