@@ -1,0 +1,640 @@
+{
+  "67215727": {
+    "sections": [
+      {
+        "id": "5206762416",
+        "course_title": "Tchr Asst",
+        "course_code": "121477",
+        "course_id": "5193949276",
+        "school_id": "1569031",
+        "building_id": "7924989",
+        "access_code": "",
+        "section_title": "1 Hexsel (0676 19 FY)",
+        "section_code": "",
+        "section_school_code": "645926",
+        "synced": "0",
+        "active": 1,
+        "description": "",
+        "subject_area": "0",
+        "grade_level_range_start": 0,
+        "grade_level_range_end": 0,
+        "parent_id": null,
+        "grading_periods": [
+          908157,
+          908160
+        ],
+        "profile_url": "https://asset-cdn.schoology.com/system/files/imagecache/profile_reg/courselogos/logo-5206762416_612d7601a1705.png?1630369281",
+        "location": "",
+        "meeting_days": [
+          ""
+        ],
+        "start_time": "",
+        "end_time": "",
+        "weight": "0",
+        "options": {
+          "weighted_grading_categories": "0",
+          "upload_documents": "0",
+          "create_discussion": "0",
+          "member_post": "1",
+          "member_post_comment": "1",
+          "default_grading_scale_id": 0,
+          "content_index_visibility": {
+            "topics": 0,
+            "assignments": 0,
+            "assessments": 0,
+            "course_assessment": 0,
+            "common_assessments": 0,
+            "documents": 0,
+            "discussion": 0,
+            "album": 0,
+            "pages": 0
+          },
+          "hide_overall_grade": 0,
+          "hide_grading_period_grade": 0,
+          "allow_custom_overall_grade": 0,
+          "allow_custom_overall_grade_text": 0
+        },
+        "admin": 0,
+        "links": {
+          "self": "https://api.schoology.com/v1/sections/5206762416"
+        }
+      },
+      {
+        "id": "5158686477",
+        "course_title": "Theatre 2",
+        "course_code": "121627",
+        "course_id": "5158686474",
+        "school_id": "1569031",
+        "building_id": "7924989",
+        "access_code": "",
+        "section_title": "2 Lo (1073 1 FY)",
+        "section_code": "",
+        "section_school_code": "643206",
+        "synced": "0",
+        "active": 1,
+        "description": "",
+        "subject_area": "0",
+        "grade_level_range_start": 0,
+        "grade_level_range_end": 0,
+        "parent_id": null,
+        "grading_periods": [
+          908157,
+          908160
+        ],
+        "profile_url": "https://asset-cdn.schoology.com/system/files/imagecache/profile_reg/courselogos/logo-5158686477_611161251b1c6.jpg?1628528933",
+        "location": "",
+        "meeting_days": [
+          ""
+        ],
+        "start_time": "",
+        "end_time": "",
+        "weight": "0",
+        "options": {
+          "weighted_grading_categories": "0",
+          "upload_documents": "0",
+          "create_discussion": "0",
+          "member_post": "1",
+          "member_post_comment": "1",
+          "default_grading_scale_id": 0,
+          "content_index_visibility": {
+            "topics": 0,
+            "assignments": 0,
+            "assessments": 0,
+            "course_assessment": 0,
+            "common_assessments": 0,
+            "documents": 0,
+            "discussion": 0,
+            "album": 0,
+            "pages": 0
+          },
+          "hide_overall_grade": 0,
+          "hide_grading_period_grade": 0,
+          "allow_custom_overall_grade": 0,
+          "allow_custom_overall_grade_text": 0
+        },
+        "admin": 0,
+        "links": {
+          "self": "https://api.schoology.com/v1/sections/5158686477"
+        }
+      },
+      {
+        "id": "5158686648",
+        "course_title": "AP US History",
+        "course_code": "121580",
+        "course_id": "5158686201",
+        "school_id": "1569031",
+        "building_id": "7924989",
+        "access_code": "",
+        "section_title": "3 Johnson (1699 3 FY)",
+        "section_code": "",
+        "section_school_code": "643132",
+        "synced": "0",
+        "active": 1,
+        "description": "",
+        "subject_area": "0",
+        "grade_level_range_start": 0,
+        "grade_level_range_end": 0,
+        "parent_id": null,
+        "grading_periods": [
+          908157,
+          908160
+        ],
+        "profile_url": "https://asset-cdn.schoology.com/system/files/imagecache/profile_reg/courselogos/logo-5158686648_6116f532aa9da.png?1628894514",
+        "location": "",
+        "meeting_days": [
+          ""
+        ],
+        "start_time": "",
+        "end_time": "",
+        "weight": "0",
+        "options": {
+          "weighted_grading_categories": "0",
+          "upload_documents": "0",
+          "create_discussion": "0",
+          "member_post": "1",
+          "member_post_comment": "1",
+          "default_grading_scale_id": 0,
+          "content_index_visibility": {
+            "topics": 0,
+            "assignments": 0,
+            "assessments": 0,
+            "course_assessment": 0,
+            "common_assessments": 0,
+            "documents": 0,
+            "discussion": 0,
+            "album": 0,
+            "pages": 0
+          },
+          "hide_overall_grade": 0,
+          "hide_grading_period_grade": 0,
+          "allow_custom_overall_grade": 0,
+          "allow_custom_overall_grade_text": 0
+        },
+        "admin": 0,
+        "links": {
+          "self": "https://api.schoology.com/v1/sections/5158686648"
+        }
+      },
+      {
+        "id": "5158686867",
+        "course_title": "Philos Lit",
+        "course_code": "121448",
+        "course_id": "5158686866",
+        "school_id": "1569031",
+        "building_id": "7924989",
+        "access_code": "",
+        "section_title": "4 Wells (1179 1 S1)",
+        "section_code": "",
+        "section_school_code": "642888",
+        "synced": "0",
+        "active": 1,
+        "description": "",
+        "subject_area": "0",
+        "grade_level_range_start": 0,
+        "grade_level_range_end": 0,
+        "parent_id": null,
+        "grading_periods": [
+          908157
+        ],
+        "profile_url": "https://asset-cdn.schoology.com/system/files/imagecache/profile_reg/courselogos/logo-5158686867_610def735d20c.jpg?1628303219",
+        "location": "",
+        "meeting_days": [
+          ""
+        ],
+        "start_time": "",
+        "end_time": "",
+        "weight": "0",
+        "options": {
+          "weighted_grading_categories": "0",
+          "upload_documents": "0",
+          "create_discussion": "0",
+          "member_post": "1",
+          "member_post_comment": "1",
+          "default_grading_scale_id": 0,
+          "content_index_visibility": {
+            "topics": 0,
+            "assignments": 0,
+            "assessments": 0,
+            "course_assessment": 0,
+            "common_assessments": 0,
+            "documents": 0,
+            "discussion": 0,
+            "album": 0,
+            "pages": 0
+          },
+          "hide_overall_grade": 0,
+          "hide_grading_period_grade": 0,
+          "allow_custom_overall_grade": 0,
+          "allow_custom_overall_grade_text": 0
+        },
+        "admin": 0,
+        "links": {
+          "self": "https://api.schoology.com/v1/sections/5158686867"
+        }
+      },
+      {
+        "id": "5158687002",
+        "course_title": "Chinese 3",
+        "course_code": "121725",
+        "course_id": "5158686564",
+        "school_id": "1569031",
+        "building_id": "7924989",
+        "access_code": "",
+        "section_title": "5 Vrudny (4030 2 FY)",
+        "section_code": "",
+        "section_school_code": "643329",
+        "synced": "0",
+        "active": 1,
+        "description": "",
+        "subject_area": "0",
+        "grade_level_range_start": 0,
+        "grade_level_range_end": 0,
+        "parent_id": null,
+        "grading_periods": [
+          908157,
+          908160
+        ],
+        "profile_url": "https://asset-cdn.schoology.com/system/files/imagecache/profile_reg/courselogos/logo-5158687002_610d72babd41f.png?1628271290",
+        "location": "",
+        "meeting_days": [
+          ""
+        ],
+        "start_time": "",
+        "end_time": "",
+        "weight": "0",
+        "options": {
+          "weighted_grading_categories": "1",
+          "upload_documents": "0",
+          "create_discussion": "0",
+          "member_post": "1",
+          "member_post_comment": "1",
+          "default_grading_scale_id": 0,
+          "content_index_visibility": {
+            "topics": 0,
+            "assignments": 0,
+            "assessments": 0,
+            "course_assessment": 0,
+            "common_assessments": 0,
+            "documents": 0,
+            "discussion": 0,
+            "album": 0,
+            "pages": 0
+          },
+          "hide_overall_grade": 0,
+          "hide_grading_period_grade": 0,
+          "allow_custom_overall_grade": 0,
+          "allow_custom_overall_grade_text": 0
+        },
+        "admin": 0,
+        "links": {
+          "self": "https://api.schoology.com/v1/sections/5158687002"
+        }
+      },
+      {
+        "id": "5158687141",
+        "course_title": "AP Physics C: Mechanics",
+        "course_code": "121565",
+        "course_id": "5158686240",
+        "school_id": "1569031",
+        "building_id": "7924989",
+        "access_code": "",
+        "section_title": "6 Lorey (3859A 1 S1)",
+        "section_code": "",
+        "section_school_code": "643070",
+        "synced": "0",
+        "active": 1,
+        "description": "",
+        "subject_area": "0",
+        "grade_level_range_start": 0,
+        "grade_level_range_end": 0,
+        "parent_id": "0",
+        "grading_periods": [
+          908157
+        ],
+        "profile_url": "https://asset-cdn.schoology.com/system/files/imagecache/profile_reg/courselogos/logo-5158686241_611e6886068bd.gif?1629382790",
+        "location": "",
+        "meeting_days": [
+          ""
+        ],
+        "start_time": "",
+        "end_time": "",
+        "weight": "0",
+        "options": {
+          "weighted_grading_categories": "1",
+          "upload_documents": "0",
+          "create_discussion": "0",
+          "member_post": "1",
+          "member_post_comment": "1",
+          "default_grading_scale_id": 0,
+          "content_index_visibility": {
+            "topics": 0,
+            "assignments": 0,
+            "assessments": 0,
+            "course_assessment": 0,
+            "common_assessments": 0,
+            "documents": 0,
+            "discussion": 0,
+            "album": 0,
+            "pages": 0
+          },
+          "hide_overall_grade": 1,
+          "hide_grading_period_grade": 1,
+          "allow_custom_overall_grade": 0,
+          "allow_custom_overall_grade_text": 0
+        },
+        "admin": 0,
+        "links": {
+          "self": "https://api.schoology.com/v1/sections/5158687141"
+        }
+      },
+      {
+        "id": "5247599558",
+        "course_title": "PRIME",
+        "course_code": "123095",
+        "course_id": "5235438239",
+        "school_id": "1569031",
+        "building_id": "7924989",
+        "access_code": "",
+        "section_title": "9 Lo (9199 80 FY)",
+        "section_code": "",
+        "section_school_code": "646164",
+        "synced": "0",
+        "active": 1,
+        "description": "",
+        "subject_area": "0",
+        "grade_level_range_start": 0,
+        "grade_level_range_end": 0,
+        "parent_id": null,
+        "grading_periods": [
+          908157,
+          908160
+        ],
+        "profile_url": "https://asset-cdn.schoology.com/system/files/imagecache/profile_reg/courselogos/logo-5247599558_612fe13bb5e8b.JPG?1630527803",
+        "location": "",
+        "meeting_days": [
+          ""
+        ],
+        "start_time": "",
+        "end_time": "",
+        "weight": "0",
+        "options": {
+          "weighted_grading_categories": "0",
+          "upload_documents": "0",
+          "create_discussion": "0",
+          "member_post": "1",
+          "member_post_comment": "1",
+          "default_grading_scale_id": 0,
+          "content_index_visibility": {
+            "topics": 0,
+            "assignments": 0,
+            "assessments": 0,
+            "course_assessment": 0,
+            "common_assessments": 0,
+            "documents": 0,
+            "discussion": 0,
+            "album": 0,
+            "pages": 0
+          },
+          "hide_overall_grade": 0,
+          "hide_grading_period_grade": 0,
+          "allow_custom_overall_grade": 0,
+          "allow_custom_overall_grade_text": 0
+        },
+        "admin": 0,
+        "links": {
+          "self": "https://api.schoology.com/v1/sections/5247599558"
+        }
+      },
+      {
+        "id": "5221374131",
+        "course_title": "Counseling",
+        "course_code": "121311",
+        "course_id": "5206762480",
+        "school_id": "1569031",
+        "building_id": "7924989",
+        "access_code": "",
+        "section_title": "Meetings Leftwich - Grade 11 (9575 23 FY)",
+        "section_code": "",
+        "section_school_code": "646056",
+        "synced": "0",
+        "active": 1,
+        "description": "",
+        "subject_area": "0",
+        "grade_level_range_start": 0,
+        "grade_level_range_end": 0,
+        "parent_id": null,
+        "grading_periods": [
+          908157,
+          908160
+        ],
+        "profile_url": "https://api.schoology.com/sites/all/themes/schoology_theme/images/course-default.svg",
+        "location": "",
+        "meeting_days": [
+          ""
+        ],
+        "start_time": "",
+        "end_time": "",
+        "weight": "0",
+        "options": {
+          "weighted_grading_categories": "0",
+          "upload_documents": "0",
+          "create_discussion": "0",
+          "member_post": "1",
+          "member_post_comment": "1",
+          "default_grading_scale_id": 0,
+          "content_index_visibility": {
+            "topics": 0,
+            "assignments": 0,
+            "assessments": 0,
+            "course_assessment": 0,
+            "common_assessments": 0,
+            "documents": 0,
+            "discussion": 0,
+            "album": 0,
+            "pages": 0
+          },
+          "hide_overall_grade": 0,
+          "hide_grading_period_grade": 0,
+          "allow_custom_overall_grade": 0,
+          "allow_custom_overall_grade_text": 0
+        },
+        "admin": 0,
+        "links": {
+          "self": "https://api.schoology.com/v1/sections/5221374131"
+        }
+      },
+      {
+        "id": "5177155554",
+        "course_title": "Gunn Library",
+        "course_code": "LIBx19",
+        "course_id": "60010839",
+        "school_id": "1569031",
+        "building_id": "7924989",
+        "access_code": "",
+        "section_title": "2021-2022",
+        "section_code": "",
+        "section_school_code": "19fy2122",
+        "synced": "0",
+        "active": 1,
+        "description": "",
+        "subject_area": "0",
+        "grade_level_range_start": 0,
+        "grade_level_range_end": 0,
+        "parent_id": null,
+        "grading_periods": [
+          912427
+        ],
+        "profile_url": "https://api.schoology.com/sites/all/themes/schoology_theme/images/course-default.svg",
+        "location": "",
+        "meeting_days": [
+          ""
+        ],
+        "start_time": "",
+        "end_time": "",
+        "weight": "0",
+        "options": {
+          "weighted_grading_categories": "0",
+          "upload_documents": "0",
+          "create_discussion": "0",
+          "member_post": "0",
+          "member_post_comment": "0",
+          "default_grading_scale_id": 0,
+          "content_index_visibility": {
+            "topics": 0,
+            "assignments": 0,
+            "assessments": 0,
+            "course_assessment": 0,
+            "common_assessments": 0,
+            "documents": 0,
+            "discussion": 0,
+            "album": 0,
+            "pages": 0
+          },
+          "hide_overall_grade": 0,
+          "hide_grading_period_grade": 0,
+          "allow_custom_overall_grade": 0,
+          "allow_custom_overall_grade_text": 0
+        },
+        "admin": 0,
+        "links": {
+          "self": "https://api.schoology.com/v1/sections/5177155554"
+        }
+      },
+      {
+        "id": "5177155458",
+        "course_title": "Gunn Student",
+        "course_code": "Gunnstdx19",
+        "course_id": "324610041",
+        "school_id": "1569031",
+        "building_id": "7924989",
+        "access_code": "",
+        "section_title": "Junior 2021-2022",
+        "section_code": "",
+        "section_school_code": "19fy2122g11",
+        "synced": "0",
+        "active": 1,
+        "description": "",
+        "subject_area": "0",
+        "grade_level_range_start": 0,
+        "grade_level_range_end": 0,
+        "parent_id": null,
+        "grading_periods": [
+          912427
+        ],
+        "profile_url": "https://asset-cdn.schoology.com/system/files/imagecache/profile_reg/courselogos/logo-5177155458_611d76508e261.png?1629320784",
+        "location": "",
+        "meeting_days": [
+          ""
+        ],
+        "start_time": "",
+        "end_time": "",
+        "weight": "0",
+        "options": {
+          "weighted_grading_categories": "0",
+          "upload_documents": "0",
+          "create_discussion": "0",
+          "member_post": "0",
+          "member_post_comment": "0",
+          "default_grading_scale_id": 0,
+          "content_index_visibility": {
+            "topics": 0,
+            "assignments": 0,
+            "assessments": 0,
+            "course_assessment": 0,
+            "common_assessments": 0,
+            "documents": 0,
+            "discussion": 0,
+            "album": 0,
+            "pages": 0
+          },
+          "hide_overall_grade": 0,
+          "hide_grading_period_grade": 0,
+          "allow_custom_overall_grade": 0,
+          "allow_custom_overall_grade_text": 0
+        },
+        "admin": 0,
+        "links": {
+          "self": "https://api.schoology.com/v1/sections/5177155458"
+        }
+      },
+      {
+        "id": "5158690297",
+        "course_title": "SELF",
+        "course_code": "121305",
+        "course_id": "5158690132",
+        "school_id": "1569031",
+        "building_id": "7924989",
+        "access_code": "",
+        "section_title": "SELF Miller (SELF 50 FY)",
+        "section_code": "",
+        "section_school_code": "643615",
+        "synced": "0",
+        "active": 1,
+        "description": "",
+        "subject_area": "0",
+        "grade_level_range_start": 0,
+        "grade_level_range_end": 0,
+        "parent_id": null,
+        "grading_periods": [
+          908157,
+          908160
+        ],
+        "profile_url": "https://api.schoology.com/sites/all/themes/schoology_theme/images/course-default.svg",
+        "location": "",
+        "meeting_days": [
+          ""
+        ],
+        "start_time": "",
+        "end_time": "",
+        "weight": "0",
+        "options": {
+          "weighted_grading_categories": "0",
+          "upload_documents": "0",
+          "create_discussion": "0",
+          "member_post": "1",
+          "member_post_comment": "1",
+          "default_grading_scale_id": 0,
+          "content_index_visibility": {
+            "topics": 0,
+            "assignments": 0,
+            "assessments": 0,
+            "course_assessment": 0,
+            "common_assessments": 0,
+            "documents": 0,
+            "discussion": 0,
+            "album": 0,
+            "pages": 0
+          },
+          "hide_overall_grade": 0,
+          "hide_grading_period_grade": 0,
+          "allow_custom_overall_grade": 0,
+          "allow_custom_overall_grade_text": 0
+        },
+        "admin": 0,
+        "links": {
+          "self": "https://api.schoology.com/v1/sections/5158690297"
+        }
+      }
+    ]
+  }
+}

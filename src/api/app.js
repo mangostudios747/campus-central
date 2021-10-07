@@ -10,7 +10,7 @@ const passport = require('passport');
 const uuid = require('node-uuid')
 const MONGO_URL = process.env.MONGO_URL;
 
-const indexRouter = require('./routes/index')
+const indexRouter = require('./routes')
 const apiRouter = require('./routes/api')
 const {mdb} = require("./database");
 let usersmdb, statsmdb;

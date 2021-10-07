@@ -34,6 +34,8 @@
     "passport": "^0.4.1",
     "passport-schoology-oauth": "^1.0.3",
     "request": "^2.88.2",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-http": "^2.7.0",
     "vue-graph": "^0.8.7",
     "vue-linkify": "https://github.com/yuichkun/vue-linkify.git",
     "vue-moment": "^4.1.0",
@@ -52,6 +54,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "postcss": "^8.3.6",
     "prettier": "^2.2.1",
+    "serverless-offline": "^8.2.0",
     "tailwindcss": "^2.2.7"
   }
 }

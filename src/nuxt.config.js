@@ -33,7 +33,7 @@ export default {
   ],
 
   serverMiddleware: [
-    '~/server-middleware/api/app.js'
+    //'~/server-middleware/api/app.js'
     //'~/server-middleware/auth.js'
 
   ],
