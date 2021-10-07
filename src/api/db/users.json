@@ -1,0 +1,37 @@
+{
+  "67215727": {
+    "uid": "67215727",
+    "id": 67215727,
+    "school_id": 1569031,
+    "synced": 0,
+    "school_uid": "s75536",
+    "building_id": 7924989,
+    "additional_buildings": "",
+    "name_title": "",
+    "name_title_show": 0,
+    "name_first": "Saumya",
+    "name_first_preferred": "",
+    "use_preferred_first_name": "1",
+    "name_middle": "",
+    "name_middle_show": 0,
+    "name_last": "Singhal",
+    "name_display": "Saumya Singhal",
+    "username": "95044523",
+    "primary_email": "ss44523@pausd.us",
+    "picture_url": "https://asset-cdn.schoology.com/system/files/imagecache/profile_reg/pictures/picture-6b94c7bc2397d5c88a0acf977a493950_5c255ff0d8c5c.jpeg",
+    "gender": null,
+    "position": null,
+    "grad_year": "",
+    "password": "",
+    "role_id": 65201,
+    "tz_offset": -7,
+    "tz_name": "America/Los_Angeles",
+    "child_uids": null,
+    "send_message": 1,
+    "language": "",
+    "permissions": {
+      "is_directory_public": 0,
+      "allow_connections": 0
+    }
+  }
+}

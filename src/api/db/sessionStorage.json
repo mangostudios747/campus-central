@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "d99f3250-61aa-4958-8457-4660073659c3",
+    "session": {
+      "cookie": {
+        "originalMaxAge": 31536000000,
+        "expires": "2022-09-05T00:47:21.896Z",
+        "secure": false,
+        "httpOnly": true,
+        "path": "/"
+      },
+      "passport": {
+        "user": "67215727"
+      }
+    },
+    "expires": 1630889241897
+  }
+]
