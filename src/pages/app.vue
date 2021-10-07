@@ -168,8 +168,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar color='background' elevation='0' flat app>
-      <v-app-bar-title v-if='false'>Campus Central</v-app-bar-title>
+    <v-app-bar dense color='background'  elevation='0' flat app>
 
       <v-app-bar-nav-icon @click='sidebar=!sidebar'></v-app-bar-nav-icon>
       <v-progress-circular class=' elevation-0 ml-3 mr-5' style='border-radius: 50%'
@@ -232,6 +231,11 @@ export default {
         title: 'Schedule',
         icon: 'mdi-calendar',
         to: '/app/schedule'
+      },
+      {
+        title: 'Settings',
+        icon: 'mdi-cog',
+        to: '/app/settings'
       }
     ],
     routes: [
@@ -263,7 +267,6 @@ export default {
       {
         title: 'Settings',
         icon: 'mdi-cog',
-        new: true,
         to: '/app/settings'
       }
     ]
@@ -291,7 +294,7 @@ export default {
         await this.$store.dispatch('setCourses', await this.$axios.$get('/cc/api/users/me/sections'))
         await this.$store.commit('hc/loadCustomizations', await this.$axios.$get('/cc/api/preferences/classes'))
         // this usually raises an error?
-        await this.$store.dispatch('hc/bindSchedule')
+
 
       } catch (e) {
         console.error(e)
@@ -304,7 +307,7 @@ export default {
         await this.$store.commit('hc/setCustomizations', k.classes)
       }
     }
-
+    await this.$store.dispatch('hc/bindSchedule')
     //console.log(this.$store.getters['hc/scheduleForDate'](this.$store.state.hc.now))
 
   },

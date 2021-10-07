@@ -27,13 +27,13 @@
           <div class="text-center flex flex-row big-screen px-8">
             <div style="align-self: center; text-align: left">
               <span
-                >{{
+              >{{
                   period.status === periodStates.FUTURE ? 'Starting' : 'Started'
                 }}
                 {{ period.start | moment('from', 'now') }}</span
               ><br />
               <span style="color: var(--text)"
-                >at {{ period.start | moment('h:mm A') }}</span
+              >at {{ period.start | moment('h:mm A') }}</span
               >
             </div>
             <v-spacer />
@@ -41,21 +41,21 @@
             <v-spacer />
             <div style="align-self: center; text-align: right">
               <span
-                >{{ period.status === periodStates.PAST ? 'Ended' : 'Ending' }}
+              >{{ period.status === periodStates.PAST ? 'Ended' : 'Ending' }}
                 {{ period.end | moment('from', 'now') }}</span
               ><br />
               <span style="color: var(--text)"
-                >at {{ period.end | moment('h:mm A') }}</span
+              >at {{ period.end | moment('h:mm A') }}</span
               >
             </div>
           </div>
           <div class="text-center flex flex-row small-screen px-3">
             <v-col
-              ><div class="flex flex-row"
-                ><span class="font-semibold text-xl">{{ period.name }}</span></div
-              >
+            ><div class="flex flex-row"
+            ><span class="font-semibold text-xl">{{ period.name }}</span></div
+            >
               <div class="flex flex-row"><span
-                ><span :style="`color: var(--text)`">{{
+              ><span :style="`color: var(--text)`">{{
                   period.start | moment('h:mm A')
                 }}</span> - <span :style="`color: var(--text)`">{{
                   period.end | moment('h:mm A')
@@ -65,10 +65,10 @@
                 <span v-if="period.status === periodStates.FUTURE" style="color: var(--text);">
                   Starting {{period.start | moment('from', 'now')}}
                   </span>
-                  <span v-else
+                <span v-else
                 >{{ period.status === periodStates.PAST ? 'Ended' : 'Ending' }}
                 {{ period.end | moment('from', 'now') }}</span
-              >
+                >
               </div>
             </v-col>
           </div>
@@ -111,7 +111,9 @@ export default {
     const v = this
     setInterval(() => {
       const now = new Date();
-      if ((now - v.focusedDate) < 15) v.focusedDate = now;
+      if (Math.abs(now - v.focusedDate - 500) < 1000) { // if now is close to focusedDate then it's probably just a stale "now"
+        v.focusedDate = now;
+      }
       v.schedule = v.$store.getters['hc/scheduleForDate'](v.focusedDate)
     }, 10);
     this.fact = await this.$axios.$get('https://uselessfacts.jsph.pl/today.json?language=en');
@@ -125,6 +127,7 @@ export default {
   methods: {
     nextDay() {
       this.focusedDate = this.focusedDate.addDays(1)
+      console.warn("time changed")
     },
     prevDay() {
       this.focusedDate = this.focusedDate.addDays(-1)

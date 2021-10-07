@@ -200,7 +200,8 @@ export const state = () => ({
       color: colors.deepPurple.darken1
     },
     'Period 9': {
-      color: colors.red.darken1
+      color: colors.red.darken1,
+      name: "PRIME"
     },
     'Lunch': {
       color: colors.cyan.base

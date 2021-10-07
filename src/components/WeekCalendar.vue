@@ -3,11 +3,22 @@
   <v-row class="fill-height">
     <v-col  style='height: calc(100vh - 92px);padding-bottom: 0'>
       <v-calendar
-
+        class='big-screen'
         ref='calendar'
         type='month'
         color='accent'
-
+        event-overlap-mode='column'
+        :event-overlap-threshold='10'
+        :event-color='e=>e.color||"accentDark"'
+        :weekdays='[0,1, 2, 3, 4, 5,6]'
+        :events='[...sgyevents]'
+      >
+      </v-calendar>
+      <v-calendar
+        class='small-screen'
+        ref='calendar'
+        type='day'
+        color='accent'
         event-overlap-mode='column'
         :event-overlap-threshold='10'
         :event-color='e=>e.color||"accentDark"'
@@ -35,5 +46,11 @@ export default {
 </script>
 
 <style scoped>
+.big-screen {
+  @apply hidden sm:flex !important;
+}
 
+.small-screen {
+  @apply sm:hidden flex !important;
+}
 </style>
