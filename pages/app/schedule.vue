@@ -111,7 +111,7 @@ export default {
     const v = this
     setInterval(() => {
       const now = new Date();
-      if (Math.abs(now - v.focusedDate) < 1000) {
+      if (Math.abs(now - v.focusedDate - 500) < 1000) { // if now is close to focusedDate then it's probably just a stale "now"
         v.focusedDate = now;
       }
       v.schedule = v.$store.getters['hc/scheduleForDate'](v.focusedDate)
