@@ -177,6 +177,10 @@ export default {
   build: {
     //analyze: true,
   },
+  srcDir: 'src/',
+  performance: {
+    gzip: false
+  },
   server: {
     host: process.env.NODE_ENV === 'production' ? '0' : null, // default: localhost
     port: process.env.PORT || '3000'

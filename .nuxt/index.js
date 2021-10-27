@@ -5,7 +5,7 @@ import ClientOnly from 'vue-client-only'
 import NoSsr from 'vue-no-ssr'
 import { createRouter } from './router.js'
 import NuxtChild from './components/nuxt-child.js'
-import NuxtError from '../layouts/error.vue'
+import NuxtError from '../src/layouts/error.vue'
 import Nuxt from './components/nuxt.js'
 import App from './App.js'
 import { setContext, getLocation, getRouteData, normalizeError } from './utils'
@@ -23,9 +23,9 @@ import nuxt_plugin_workbox_cd878208 from 'nuxt_plugin_workbox_cd878208' // Sourc
 import nuxt_plugin_metaplugin_36566be2 from 'nuxt_plugin_metaplugin_36566be2' // Source: ./pwa/meta.plugin.js (mode: 'all')
 import nuxt_plugin_iconplugin_2d0720fa from 'nuxt_plugin_iconplugin_2d0720fa' // Source: ./pwa/icon.plugin.js (mode: 'all')
 import nuxt_plugin_axios_2994c1e0 from 'nuxt_plugin_axios_2994c1e0' // Source: ./axios.js (mode: 'all')
-import nuxt_plugin_vuelinkify_2060a592 from 'nuxt_plugin_vuelinkify_2060a592' // Source: ../plugins/vue-linkify.js (mode: 'all')
-import nuxt_plugin_vuemoment_732aa8ba from 'nuxt_plugin_vuemoment_732aa8ba' // Source: ../plugins/vue-moment.js (mode: 'all')
-import nuxt_plugin_vuegraphclient_063d67a2 from 'nuxt_plugin_vuegraphclient_063d67a2' // Source: ../plugins/vue-graph.client.js (mode: 'client')
+import nuxt_plugin_vuelinkify_2060a592 from 'nuxt_plugin_vuelinkify_2060a592' // Source: ../src/plugins/vue-linkify.js (mode: 'all')
+import nuxt_plugin_vuemoment_732aa8ba from 'nuxt_plugin_vuemoment_732aa8ba' // Source: ../src/plugins/vue-moment.js (mode: 'all')
+import nuxt_plugin_vuegraphclient_063d67a2 from 'nuxt_plugin_vuegraphclient_063d67a2' // Source: ../src/plugins/vue-graph.client.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)

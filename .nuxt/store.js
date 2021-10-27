@@ -8,39 +8,19 @@ const VUEX_PROPERTIES = ['state', 'getters', 'actions', 'mutations']
 let store = {};
 
 (function updateModules () {
-  store = normalizeRoot(require('../store/index.js'), 'store/index.js')
+  store = normalizeRoot(require('../src/store/index.js'), 'store/index.js')
 
   // If store is an exported method = classic mode (deprecated)
-
-  if (typeof store === 'function') {
-    return console.warn('Classic mode for store/ is deprecated and will be removed in Nuxt 3.')
-  }
 
   // Enforce store modules
   store.modules = store.modules || {}
 
-  resolveStoreModules(require('../store/cache.js'), 'cache.js')
-  resolveStoreModules(require('../store/db.js'), 'db.js')
-  resolveStoreModules(require('../store/hc.js'), 'hc.js')
-  resolveStoreModules(require('../store/options.js'), 'options.js')
+  resolveStoreModules(require('../src/store/cache.js'), 'cache.js')
+  resolveStoreModules(require('../src/store/db.js'), 'db.js')
+  resolveStoreModules(require('../src/store/hc.js'), 'hc.js')
+  resolveStoreModules(require('../src/store/options.js'), 'options.js')
 
   // If the environment supports hot reloading...
-
-  if (process.client && module.hot) {
-    // Whenever any Vuex module is updated...
-    module.hot.accept([
-      '../store/cache.js',
-      '../store/db.js',
-      '../store/hc.js',
-      '../store/index.js',
-      '../store/options.js',
-    ], () => {
-      // Update `root.modules` with the latest definitions.
-      updateModules()
-      // Trigger a hot update in the store.
-      window.$nuxt.$store.hotUpdate(store)
-    })
-  }
 })()
 
 // createStore

@@ -4,26 +4,26 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _1d241e66 = () => interopDefault(import('../pages/app.vue' /* webpackChunkName: "pages/app" */))
-const _99382ce0 = () => interopDefault(import('../pages/app/index.vue' /* webpackChunkName: "pages/app/index" */))
-const _5508cff6 = () => interopDefault(import('../pages/app/courses.vue' /* webpackChunkName: "pages/app/courses" */))
-const _fc09f40e = () => interopDefault(import('../pages/app/courses/index.vue' /* webpackChunkName: "pages/app/courses/index" */))
-const _98f0c2be = () => interopDefault(import('../pages/app/courses/_course.vue' /* webpackChunkName: "pages/app/courses/_course" */))
-const _2370e864 = () => interopDefault(import('../pages/app/courses/_course/index.vue' /* webpackChunkName: "pages/app/courses/_course/index" */))
-const _b63bcab8 = () => interopDefault(import('../pages/app/courses/_course/todo.vue' /* webpackChunkName: "pages/app/courses/_course/todo" */))
-const _4ed36448 = () => interopDefault(import('../pages/app/courses/_course/updates.vue' /* webpackChunkName: "pages/app/courses/_course/updates" */))
-const _cf6424a4 = () => interopDefault(import('../pages/app/grades.vue' /* webpackChunkName: "pages/app/grades" */))
-const _7b834cfe = () => interopDefault(import('../pages/app/messages.vue' /* webpackChunkName: "pages/app/messages" */))
-const _77159d01 = () => interopDefault(import('../pages/app/messages/index.vue' /* webpackChunkName: "pages/app/messages/index" */))
-const _1e599cb5 = () => interopDefault(import('../pages/app/messages/inbox.vue' /* webpackChunkName: "pages/app/messages/inbox" */))
-const _77a5668e = () => interopDefault(import('../pages/app/messages/sent.vue' /* webpackChunkName: "pages/app/messages/sent" */))
-const _6387d567 = () => interopDefault(import('../pages/app/profile.vue' /* webpackChunkName: "pages/app/profile" */))
-const _0c6540c9 = () => interopDefault(import('../pages/app/schedule.vue' /* webpackChunkName: "pages/app/schedule" */))
-const _320c7756 = () => interopDefault(import('../pages/app/settings.vue' /* webpackChunkName: "pages/app/settings" */))
-const _37cdb408 = () => interopDefault(import('../pages/app/updates.vue' /* webpackChunkName: "pages/app/updates" */))
-const _42f37b06 = () => interopDefault(import('../pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
-const _9096116a = () => interopDefault(import('../pages/stats.vue' /* webpackChunkName: "pages/stats" */))
-const _032209fe = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _0e088c62 = () => interopDefault(import('../src/pages/app.vue' /* webpackChunkName: "pages/app" */))
+const _b7427d36 = () => interopDefault(import('../src/pages/app/index.vue' /* webpackChunkName: "pages/app/index" */))
+const _1aa5f2ea = () => interopDefault(import('../src/pages/app/courses.vue' /* webpackChunkName: "pages/app/courses" */))
+const _a1c18e64 = () => interopDefault(import('../src/pages/app/courses/index.vue' /* webpackChunkName: "pages/app/courses/index" */))
+const _286a7036 = () => interopDefault(import('../src/pages/app/courses/_course.vue' /* webpackChunkName: "pages/app/courses/_course" */))
+const _b199138e = () => interopDefault(import('../src/pages/app/courses/_course/index.vue' /* webpackChunkName: "pages/app/courses/_course/index" */))
+const _df4803a2 = () => interopDefault(import('../src/pages/app/courses/_course/todo.vue' /* webpackChunkName: "pages/app/courses/_course/todo" */))
+const _75ecba71 = () => interopDefault(import('../src/pages/app/courses/_course/updates.vue' /* webpackChunkName: "pages/app/courses/_course/updates" */))
+const _72a3df0e = () => interopDefault(import('../src/pages/app/grades.vue' /* webpackChunkName: "pages/app/grades" */))
+const _db342dee = () => interopDefault(import('../src/pages/app/messages.vue' /* webpackChunkName: "pages/app/messages" */))
+const _23107668 = () => interopDefault(import('../src/pages/app/messages/index.vue' /* webpackChunkName: "pages/app/messages/index" */))
+const _d4887700 = () => interopDefault(import('../src/pages/app/messages/inbox.vue' /* webpackChunkName: "pages/app/messages/inbox" */))
+const _1d5d00e4 = () => interopDefault(import('../src/pages/app/messages/sent.vue' /* webpackChunkName: "pages/app/messages/sent" */))
+const _012c0bfc = () => interopDefault(import('../src/pages/app/profile.vue' /* webpackChunkName: "pages/app/profile" */))
+const _2347dcd4 = () => interopDefault(import('../src/pages/app/schedule.vue' /* webpackChunkName: "pages/app/schedule" */))
+const _04473f40 = () => interopDefault(import('../src/pages/app/settings.vue' /* webpackChunkName: "pages/app/settings" */))
+const _551c2ac6 = () => interopDefault(import('../src/pages/app/updates.vue' /* webpackChunkName: "pages/app/updates" */))
+const _12fc441b = () => interopDefault(import('../src/pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
+const _181701a0 = () => interopDefault(import('../src/pages/stats.vue' /* webpackChunkName: "pages/stats" */))
+const _63841453 = () => interopDefault(import('../src/pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -38,83 +38,83 @@ export const routerOptions = {
 
   routes: [{
     path: "/app",
-    component: _1d241e66,
+    component: _0e088c62,
     children: [{
       path: "",
-      component: _99382ce0,
+      component: _b7427d36,
       name: "app"
     }, {
       path: "courses",
-      component: _5508cff6,
+      component: _1aa5f2ea,
       children: [{
         path: "",
-        component: _fc09f40e,
+        component: _a1c18e64,
         name: "app-courses"
       }, {
         path: ":course",
-        component: _98f0c2be,
+        component: _286a7036,
         children: [{
           path: "",
-          component: _2370e864,
+          component: _b199138e,
           name: "app-courses-course"
         }, {
           path: "todo",
-          component: _b63bcab8,
+          component: _df4803a2,
           name: "app-courses-course-todo"
         }, {
           path: "updates",
-          component: _4ed36448,
+          component: _75ecba71,
           name: "app-courses-course-updates"
         }]
       }]
     }, {
       path: "grades",
-      component: _cf6424a4,
+      component: _72a3df0e,
       name: "app-grades"
     }, {
       path: "messages",
-      component: _7b834cfe,
+      component: _db342dee,
       children: [{
         path: "",
-        component: _77159d01,
+        component: _23107668,
         name: "app-messages"
       }, {
         path: "inbox",
-        component: _1e599cb5,
+        component: _d4887700,
         name: "app-messages-inbox"
       }, {
         path: "sent",
-        component: _77a5668e,
+        component: _1d5d00e4,
         name: "app-messages-sent"
       }]
     }, {
       path: "profile",
-      component: _6387d567,
+      component: _012c0bfc,
       name: "app-profile"
     }, {
       path: "schedule",
-      component: _0c6540c9,
+      component: _2347dcd4,
       name: "app-schedule"
     }, {
       path: "settings",
-      component: _320c7756,
+      component: _04473f40,
       name: "app-settings"
     }, {
       path: "updates",
-      component: _37cdb408,
+      component: _551c2ac6,
       name: "app-updates"
     }]
   }, {
     path: "/inspire",
-    component: _42f37b06,
+    component: _12fc441b,
     name: "inspire"
   }, {
     path: "/stats",
-    component: _9096116a,
+    component: _181701a0,
     name: "stats"
   }, {
     path: "/",
-    component: _032209fe,
+    component: _63841453,
     name: "index"
   }],
 

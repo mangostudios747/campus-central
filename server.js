@@ -2,7 +2,7 @@ const express = require('express')
 const {Nuxt} = require('nuxt')
 const path = require('path')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
-const api = require('./api/app');
+const api = require('./src/api/app');
 // Create App
 const app = express()
 

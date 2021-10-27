@@ -6,13 +6,15 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "deploy": "npm run build && sls deploy"
   },
   "dependencies": {
     "@nuxt/content": "^1.14.0",
     "@nuxtjs/axios": "^5.13.1",
     "@nuxtjs/firebase": "^7.5.0",
     "@nuxtjs/pwa": "^3.3.5",
+    "aws-serverless-express": "^3.4.0",
     "colorthief": "^2.3.2",
     "connect-mongo": "^4.5.0",
     "connect-mongodb-session": "^3.1.0",
