@@ -109,14 +109,14 @@ export default {
     }
   },
   async fetch() {
-    if (this.$store.state.messages.inbox.length > 0){
-      this.messages= this.$store.state.messages.inbox
+    if (this.$store.state.cache.messages.inbox.length > 0){
+      this.messages = this.$store.state.cache.messages.inbox
     }
-    else {
+    //else {
       const messages = await this.$axios.$get('/cc/api/users/me/messages/inbox');
-      this.$store.commit('setMessagesInbox', messages)
+      this.$store.commit('cache/setMessagesInbox', messages)
       this.messages = messages
-    }
+    //}
   },
   fetchOnServer: false,
   methods:{

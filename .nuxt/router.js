@@ -6,6 +6,7 @@ import scrollBehavior from './router.scrollBehavior.js'
 
 const _1d241e66 = () => interopDefault(import('../pages/app.vue' /* webpackChunkName: "pages/app" */))
 const _99382ce0 = () => interopDefault(import('../pages/app/index.vue' /* webpackChunkName: "pages/app/index" */))
+const _9bca0420 = () => interopDefault(import('../pages/app/calendar.vue' /* webpackChunkName: "pages/app/calendar" */))
 const _5508cff6 = () => interopDefault(import('../pages/app/courses.vue' /* webpackChunkName: "pages/app/courses" */))
 const _fc09f40e = () => interopDefault(import('../pages/app/courses/index.vue' /* webpackChunkName: "pages/app/courses/index" */))
 const _98f0c2be = () => interopDefault(import('../pages/app/courses/_course.vue' /* webpackChunkName: "pages/app/courses/_course" */))
@@ -43,6 +44,10 @@ export const routerOptions = {
       path: "",
       component: _99382ce0,
       name: "app"
+    }, {
+      path: "calendar",
+      component: _9bca0420,
+      name: "app-calendar"
     }, {
       path: "courses",
       component: _5508cff6,

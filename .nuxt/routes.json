@@ -12,6 +12,13 @@
         "_name": "_99382ce0"
       },
       {
+        "name": "app-calendar",
+        "path": "calendar",
+        "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/calendar.vue",
+        "chunkName": "pages/app/calendar",
+        "_name": "_9bca0420"
+      },
+      {
         "path": "courses",
         "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/app/courses.vue",
         "chunkName": "pages/app/courses",

@@ -50,7 +50,7 @@
              </v-list-item-action>
 
              <div class='w-3/4 md:w-full'>
-               <a  target='_blank' :href='asg.web_url'><v-list-item-title > {{asg.title||asg.id}}</v-list-item-title></a>
+               <a  target='_blank' :href='asg.web_url.replace(`app.schoology`, `pausd.schoology`)'><v-list-item-title > {{asg.title||asg.id}}</v-list-item-title></a>
                <v-list-item-subtitle v-if='asg.comment'> {{asg.comment}}</v-list-item-subtitle>
              </div>
 

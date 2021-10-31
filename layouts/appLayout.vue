@@ -4,6 +4,7 @@
 
     <v-footer
 fixed
+class="d-none d-sm-flex"
 style='border-top: 1px solid #ffffff22 !important'
       app
 color='background'

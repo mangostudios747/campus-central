@@ -4,6 +4,7 @@ export const state = () => ({
   courses: [],
   courseMaterials:{},
   courseUpdates:{},
+  sgyevents:[],
   updates: [],
   messages: {
     inbox: [],
@@ -27,6 +28,9 @@ export const mutations = {
   },
   setCourseNotes(state, {courseid, notes}){
     state.courseNotes[courseid] = JSON.parse(JSON.stringify(notes));
+  },
+  setEvents(state, events){
+    state.sgyevents = JSON.parse(JSON.stringify(events));
   }
 }
 

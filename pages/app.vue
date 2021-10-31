@@ -240,9 +240,10 @@ export default {
     ],
     routes: [
       { title: 'Home', icon: 'mdi-home', to: '/app' },
+      {title:'Calendar', icon:'mdi-calendar', to:'/app/calendar', new: true},
       {
         title: 'Schedule',
-        icon: 'mdi-calendar',
+        icon: 'mdi-clock-outline',
         to: '/app/schedule'
       }
       ],
@@ -263,6 +264,11 @@ export default {
         icon: 'mdi-book-open-variant',
         new: true,
         to: '/app/grades'
+      },
+      {
+        title:'Utilities',
+        icon: "mdi-wrench",
+        new: true
       },
       {
         title: 'Settings',
