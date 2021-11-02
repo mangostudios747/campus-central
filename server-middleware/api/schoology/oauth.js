@@ -1,4 +1,4 @@
-const { key, secret } = { key: process.env.schoology_key, secret: process.env.schoology_secret}
+const { key, secret } = { key: process.env.SCHOOLOGY_KEY, secret: process.env.SCHOOLOGY_SECRET}
 const {OAuth} = require('oauth')
 const apiBase = 'https://api.schoology.com/v1'
 
