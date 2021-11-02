@@ -20,10 +20,17 @@ jobs:
         cache: 'yarn'
     - run: "echo '  CONTAINER: appengine' >> app.yaml"
     - run: "echo '  RHOST: ${{ secrets.RHOST }}' >> app.yaml"
-    - run: "echo '  schoology_key: ${{ secrets.schoology_key }}' >> app.yaml"
-    - run: "echo '  schoology_secret: ${{ secrets.schoology_secret }}' >> app.yaml"
+    - run: "echo '  SCHOOLOGY_KEY: ${{ secrets.SCHOOLOGY_KEY }}' >> app.yaml"
+    - run: "echo '  SCHOOLOGY_SECRET: ${{ secrets.SCHOOLOGY_SECRET }}' >> app.yaml"
     - run: "echo '  MONGO_URL: ${{ secrets.MONGO_URL }}' >> app.yaml"
     - run: "echo '  cookie_secret: ${{ secrets.cookie_secret }}' >> app.yaml"
+    - run: "echo 'build_env_variables:' >> app.yaml"
+    - run: "echo '  CONTAINER: appengine' >> app.yaml"
+    - run: "echo '  RHOST: ${{ secrets.RHOST }}' >> app.yaml"
+    - run: "echo '  SCHOOLOGY_KEY: ${{ secrets.SCHOOLOGY_KEY }}' >> app.yaml"
+    - run: "echo '  SCHOOLOGY_SECRET: ${{ secrets.SCHOOLOGY_SECRET }}' >> app.yaml"
+    - run: "echo '  MONGO_URL: ${{ secrets.MONGO_URL }}' >> app.yaml"
+    - run: "echo '  COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}' >> app.yaml"
     - id: Deploy
       uses: google-github-actions/deploy-appengine@main
       with:
