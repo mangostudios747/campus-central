@@ -18,6 +18,8 @@ jobs:
       with:
         node-version: '14'
         cache: 'yarn'
+    - run: yarn
+    - run: yarn build
     - run: "echo '  CONTAINER: appengine' >> app.yaml"
     - run: "echo '  RHOST: ${{ secrets.RHOST }}' >> app.yaml"
     - run: "echo '  SCHOOLOGY_KEY: ${{ secrets.SCHOOLOGY_KEY }}' >> app.yaml"
