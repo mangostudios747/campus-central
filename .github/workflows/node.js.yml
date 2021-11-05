@@ -33,6 +33,7 @@ jobs:
     - run: "echo '  SCHOOLOGY_SECRET: ${{ secrets.SCHOOLOGY_SECRET }}' >> app.yaml"
     - run: "echo '  MONGO_URL: ${{ secrets.MONGO_URL }}' >> app.yaml"
     - run: "echo '  COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}' >> app.yaml"
+    - run: cat app.yaml
     - id: Deploy
       uses: google-github-actions/deploy-appengine@main
       with:
