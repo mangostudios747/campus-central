@@ -190,25 +190,7 @@
       <div class='block flex flex-grow'></div>
       <breakpoint-detection v-if='dev' />
 
-      <v-menu offset-y offset-x v-if='$store.state.user'>
-        <template v-slot:activator="{ on }">
-          <v-btn v-on='on' icon>
-            <v-avatar  size='40'>
-              <img
-                :src='$store.state.user.picture_url'
-                :alt='$store.state.user.name_display'
-              >
-              <!-- todo: make this a profile dropdown -->
-            </v-avatar>
-          </v-btn>
-
-        </template>
-        <v-list color='primary'>
-          <v-list-item>
-            <v-btn href='/cc/api/sign-out' icon><v-icon>mdi-exit-to-app</v-icon></v-btn>
-          </v-list-item>
-        </v-list>
-      </v-menu>
+    
     </v-app-bar>
     <v-main style='height: 100%;'>
 
