@@ -11,7 +11,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment: gunn1
-
+    env:
+      CONTAINER: appengine
+      RHOST: ${{ secrets.RHOST }}
+      SCHOOLOGY_KEY: ${{ secrets.SCHOOLOGY_KEY }}
+      SCHOOLOGY_SECRET: ${{ secrets.SCHOOLOGY_SECRET }}
+      MONGO_URL: ${{ secrets.MONGO_URL }}
+      COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
