@@ -137,6 +137,11 @@
 <script>
 
 export default {
-  middleware:'storeUser'
+  middleware:'storeUser',
+  head(){
+    return {
+      title: 'Schoology struggles, solved'
+    }
+  }
 }
 </script>

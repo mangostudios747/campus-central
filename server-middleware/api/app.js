@@ -1,3 +1,4 @@
+require('dotenv').config();
 const createError = require('http-errors')
 const express = require('express')
 const path = require('path')
@@ -43,7 +44,7 @@ const store = MongoStore.create({
 
 
 app.use(session({
-  secret: process.env.cookie_secret, // TODO: legit secret
+  secret: process.env.COOKIE_SECRET,
   resave: false,
   store,
   genid: function () {

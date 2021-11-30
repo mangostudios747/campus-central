@@ -10,7 +10,7 @@
       Home page
     </NuxtLink>
     <div>Trying to log in? <a href='/cc/api/auth'>Click here</a></div>
-    <div>Seeing this an annoying number of times in a row? <a onclick='document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); }); window.location.href="/cc/api/auth"'>Clear your cookies.</a></div>
+    <div>Seeing this an annoying number of times in a row? <v-btn large tag="a" color="accent" onclick='document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); }); window.location.href="/cc/api/auth"'>Click Here</v-btn></div>
   </v-app>
 </template>
 
