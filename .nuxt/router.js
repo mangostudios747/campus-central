@@ -21,7 +21,6 @@ const _6387d567 = () => interopDefault(import('../pages/app/profile.vue' /* webp
 const _0c6540c9 = () => interopDefault(import('../pages/app/schedule.vue' /* webpackChunkName: "pages/app/schedule" */))
 const _320c7756 = () => interopDefault(import('../pages/app/settings.vue' /* webpackChunkName: "pages/app/settings" */))
 const _37cdb408 = () => interopDefault(import('../pages/app/updates.vue' /* webpackChunkName: "pages/app/updates" */))
-const _42f37b06 = () => interopDefault(import('../pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
 const _9096116a = () => interopDefault(import('../pages/stats.vue' /* webpackChunkName: "pages/stats" */))
 const _032209fe = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
@@ -104,10 +103,6 @@ export const routerOptions = {
       component: _37cdb408,
       name: "app-updates"
     }]
-  }, {
-    path: "/inspire",
-    component: _42f37b06,
-    name: "inspire"
   }, {
     path: "/stats",
     component: _9096116a,

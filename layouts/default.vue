@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
   <v-app-bar color='secondary' app>
-    <v-app-bar-title >Campus Central</v-app-bar-title>
+    <v-app-bar-title >Gunn.One</v-app-bar-title>
     <v-spacer></v-spacer>
     <v-btn v-if='!$store.state.user' color='accent' href='/cc/api/sign-in'>login</v-btn>
     <v-btn v-else color='accent' to='/app'>open campus</v-btn>

@@ -123,13 +123,6 @@
     "_name": "_1d241e66"
   },
   {
-    "name": "inspire",
-    "path": "/inspire",
-    "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/inspire.vue",
-    "chunkName": "pages/inspire",
-    "_name": "_42f37b06"
-  },
-  {
     "name": "stats",
     "path": "/stats",
     "component": "/Users/saumyasinghal/WebstormProjects/campus-central/pages/stats.vue",
