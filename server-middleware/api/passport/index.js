@@ -9,7 +9,7 @@ mdb.then(c=> {
   authmdb = c.collection('auth');
 })
 const {getProfile} = require('../schoology')
-const { key, secret } = { key: process.env.schoology_key, secret: process.env.schoology_secret }
+const { key, secret } = { key: process.env.SCHOOLOGY_KEY, secret: process.env.SCHOOLOGY_SECRET }
 
 /* CONSTANTS */
 const HOSTING_DOMAIN = process.env.RHOST || 'http://localhost:3000';
