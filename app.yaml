@@ -1,20 +1,24 @@
-runtime: nodejs14
+#runtime: nodejs14
 
-instance_class: F2
+#instance_class: F2
+#
+#handlers:
+#  - url: /_nuxt
+#    static_dir: .nuxt/dist/client
+#    secure: always
+#
+#  - url: /(.*\.(gif|png|jpg|ico|txt))$
+#    static_files: static/\1
+#    upload: static/.*\.(gif|png|jpg|ico|txt)$
+#    secure: always
+#
+#  - url: /.*
+#    script: auto
+#    secure: always
 
-handlers:
-  - url: /_nuxt
-    static_dir: .nuxt/dist/client
-    secure: always
-
-  - url: /(.*\.(gif|png|jpg|ico|txt))$
-    static_files: static/\1
-    upload: static/.*\.(gif|png|jpg|ico|txt)$
-    secure: always
-
-  - url: /.*
-    script: auto
-    secure: always
+runtime: nodejs
+env: flex
 
 env_variables:
   HOST: '0.0.0.0'
+
