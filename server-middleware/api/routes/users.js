@@ -70,6 +70,11 @@ router.get('/profile/:uid', async function(req, res, next) {
   // use this on the client lol!
 })
 
+router.get('/me', async function(req, res, next) {
+  res.send(user.profile)
+  // use this on the client lol!
+})
+
 // to reply to a thread
 router.post('/me/messages/:messageid', async function(req, res, next) {
   // recipient, message, subject

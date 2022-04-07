@@ -221,7 +221,8 @@
 <script>
 export default {
   name: 'app',
-  middleware: 'storeUser',
+  middleware: [
+  'auth', 'storeUser'],
   layout: 'appLayout',
   data: () => ({
     mini: false,

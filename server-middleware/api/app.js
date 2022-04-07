@@ -13,7 +13,7 @@ const MONGO_URL = process.env.MONGO_URL;
 
 console.log("I AM RUNNING")
 
-const indexRouter = require('./routes/index')
+//const indexRouter = require('./routes/index')
 const apiRouter = require('./routes/api')
 const {mdb} = require("./database");
 let usersmdb, statsmdb;
@@ -75,8 +75,8 @@ const [pinitialize, psession] = [passport.initialize(), passport.session()]
 app.use(pinitialize);
 app.use(psession);
 
-app.use('/app', indexRouter)
-app.use('/cc/api', apiRouter);
+//app.use('/app', indexRouter)
+app.use(apiRouter); // app will be injected at `/cc/api`
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -97,4 +97,4 @@ app.use(function(err, req, res, next) {
   next()
 });
 
-module.exports = {path: '/', handler: app};
+module.exports = app;

@@ -33,11 +33,11 @@ export default {
     ///'~plugins/pdf.client.js'
   ],
 
-  serverMiddleware: [
-    '~/server-middleware/api/app.js'
+  serverMiddleware: {
+    '/cc/api': '~/server-middleware/api/app'
     //'~/server-middleware/auth.js'
 
-  ],
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -57,6 +57,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/auth-next',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     ['nuxt-vuex-localstorage', {
@@ -82,6 +83,31 @@ export default {
       }
     ]
   ],
+  auth: {
+    redirect: {
+      login: '/cc/api/sign-in',
+      logout: '/',
+      callback: '/login',
+      home: '/app'
+    },
+    strategies: {
+      local: {
+        user: {
+          property: 'user',
+
+        },
+        endpoints: {
+          login: {
+            url: "/cc/api/sign-in/",
+            method: "get",
+          },
+          logout: { url: "/cc/api/sign-out", method: "get" },
+          user: { url: "/cc/api/users/me", method: "get" },
+        }
+      },
+    }
+  },
+
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
